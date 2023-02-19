@@ -4,7 +4,4 @@
 format: jb-book
 root: intro
 chapters:
-- file: 1_spikes/01_visualization
-# - file: markdown
-# - file: notebooks
-# - file: markdown-notebooks
+  - file: 1_spikes/01_visualization
