@@ -1,4 +1,4 @@
-# 3. Python
+# 3. Introducing Python
 
 ## 3.1. About Python Language
 

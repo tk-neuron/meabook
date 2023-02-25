@@ -50,10 +50,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="../_static/icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4. Cross-Correlation" href="04_cross_correlation.html" />
+    <link rel="next" title="4. Correlation Analysis" href="04_cross_correlation.html" />
     <link rel="prev" title="2. Interactive Visualization with Bokeh" href="02_visualization_bokeh.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -127,12 +129,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../0_introduction/02_datasets.html">
-   2. Datasets
+   2. Introducing Datasets
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../0_introduction/03_python.html">
-   3. Python
+   3. Introducing Python
   </a>
  </li>
 </ul>
@@ -159,7 +161,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04_cross_correlation.html">
-   4. Cross-Correlation
+   4. Correlation Analysis
   </a>
  </li>
  <li class="toctree-l1">
@@ -481,7 +483,7 @@ title="Print to PDF"
 </div>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datadir</span> <span class="o">=</span> <span class="s1">&#39;../datasets/&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datadir</span> <span class="o">=</span> <span class="s1">&#39;../datasets/01/&#39;</span>
 <span class="n">df_map</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">datadir</span> <span class="o">+</span> <span class="s1">&#39;mapping.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">df_sp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">datadir</span> <span class="o">+</span> <span class="s1">&#39;spikes.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
@@ -626,6 +628,11 @@ title="Print to PDF"
 <img alt="../_images/03_burst_detection_11_0.png" src="../_images/03_burst_detection_11_0.png" />
 </div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Global Firing Rateにより検知されたburst区間は，上記のグラフのように細切れになることがある．<br />
+この際，<span class="math notranslate nohighlight">\(T_{interval}\)</span>以下の期間で連続して発生したburstは同一のburstとみなす，といった処理をはさむことが多い．</p>
+</div>
 </section>
 <section id="thresholding-with-isi">
 <h2>3.2. Thresholding with ISI<a class="headerlink" href="#thresholding-with-isi" title="Permalink to this headline">#</a></h2>
@@ -663,7 +670,7 @@ title="Print to PDF"
             
         <span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$isi_N [ms]$&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$ISI_N [ms]$&quot;</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;probability [%]&quot;</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">10</span> <span class="o">**</span> <span class="n">xmin</span><span class="p">,</span> <span class="mi">10</span> <span class="o">**</span> <span class="n">xmax</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">10</span> <span class="o">**</span> <span class="n">ymin</span><span class="p">,</span> <span class="mi">10</span> <span class="o">**</span> <span class="n">ymax</span><span class="p">)</span>
@@ -701,27 +708,27 @@ title="Print to PDF"
 <span class="n">n_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
 <span class="n">thre_list</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;gist_heat&#39;</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">detector</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">n_list</span><span class="o">=</span><span class="n">n_list</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">filtered</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
     <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">filtered</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">filtered</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+    
+    <span class="c1"># detect local minima of smoothed histogram as the ISIn threshold</span>
     <span class="n">idx_min</span> <span class="o">=</span> <span class="n">argrelextrema</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">less</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">x_min</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">idx_min</span><span class="p">]</span>
     <span class="n">thre_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_min</span><span class="p">)</span>
     
     <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_min</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)))</span>
-    
-    <span class="n">trans</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xaxis_transform</span><span class="p">()</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_min</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.9</span><span class="o">-</span><span class="n">i</span><span class="o">*</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">x_min</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">trans</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_min</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.9</span><span class="o">-</span><span class="n">i</span><span class="o">*</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">x_min</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xaxis_transform</span><span class="p">(),</span> <span class="n">c</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)))</span>
     
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03_burst_detection_15_0.png" src="../_images/03_burst_detection_15_0.png" />
+<img alt="../_images/03_burst_detection_16_0.png" src="../_images/03_burst_detection_16_0.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
@@ -749,7 +756,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03_burst_detection_16_0.png" src="../_images/03_burst_detection_16_0.png" />
+<img alt="../_images/03_burst_detection_17_0.png" src="../_images/03_burst_detection_17_0.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
@@ -777,7 +784,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03_burst_detection_17_0.png" src="../_images/03_burst_detection_17_0.png" />
+<img alt="../_images/03_burst_detection_18_0.png" src="../_images/03_burst_detection_18_0.png" />
 </div>
 </div>
 </section>
@@ -820,7 +827,7 @@ title="Print to PDF"
     <a class='right-next' id="next-link" href="04_cross_correlation.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">4. Cross-Correlation</p>
+        <p class="prev-next-title">4. Correlation Analysis</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
