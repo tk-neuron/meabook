@@ -166,7 +166,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="05_stimulus.html">
-   5. Stimulus
+   5. PSTH
   </a>
  </li>
 </ul>
@@ -636,6 +636,8 @@ title="Print to PDF"
 </section>
 <section id="thresholding-with-isi">
 <h2>3.2. Thresholding with ISI<a class="headerlink" href="#thresholding-with-isi" title="Permalink to this headline">#</a></h2>
+<p>次に，ISI（inter-spike interval）を元にした代表的な手法として，ISInについて述べる．<br />
+ISIを元にした手法の基本的な考えは，バースト中はISIが短くなり，バースト外ではISIが長くなるため，ISIのヒストグラムは多くの場合，二峰性（bi-modal）の分布を取るというものである．二峰性の分布における二つの山の間が，バースト内外を隔てるISIの閾値であると考える．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
@@ -728,7 +730,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03_burst_detection_16_0.png" src="../_images/03_burst_detection_16_0.png" />
+<img alt="../_images/03_burst_detection_17_0.png" src="../_images/03_burst_detection_17_0.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
@@ -756,7 +758,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03_burst_detection_17_0.png" src="../_images/03_burst_detection_17_0.png" />
+<img alt="../_images/03_burst_detection_18_0.png" src="../_images/03_burst_detection_18_0.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
@@ -784,7 +786,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03_burst_detection_18_0.png" src="../_images/03_burst_detection_18_0.png" />
+<img alt="../_images/03_burst_detection_19_0.png" src="../_images/03_burst_detection_19_0.png" />
 </div>
 </div>
 </section>
