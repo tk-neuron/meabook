@@ -6,4 +6,4 @@
 
 ## 3.3. Learning Resources
 
-## 3.4. Snippets
+## 3.4. Practices

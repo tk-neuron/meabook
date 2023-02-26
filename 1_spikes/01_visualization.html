@@ -164,7 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="05_stimulus.html">
-   5. Stimulus
+   5. PSTH
   </a>
  </li>
 </ul>
@@ -484,8 +484,8 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="visualization-of-spike-data">
 <h1>1. Visualization of Spike Data<a class="headerlink" href="#visualization-of-spike-data" title="Permalink to this headline">#</a></h1>
-<p>神経細胞はスパイクと呼ばれる活動電位によって互いに情報を交換する．神経細胞集団の電気活動を分析する上で中心となるのはスパイク時刻の情報である．多電極アレイでは，各電極についてスパイク時刻の列 (spike train) が取得されるが，本章ではそのようなデータの可視化方法について述べる．</p>
-<p>Neurons exchange information with each other by means of action potentials called spikes. Spike times are central to the analysis of the electrical activity of a neuronal population. In a multi-electrode array, a sequence of spike times is obtained for each electrode, and this chapter describes how to visualize such data.</p>
+<p>神経細胞はスパイクと呼ばれる活動電位によって互いに情報を交換する．神経細胞集団の電気活動を分析する上で中心となるのはスパイク時刻の情報である．多電極アレイでは，各電極についてスパイク時刻の列 (spike train) が取得される．</p>
+<p>解析の手始めに，可視化によってなるべく生の現象に近い状態でデータを観察する．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -1147,42 +1147,42 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_img4d21df2926cb4b33a91657d2a54ccfb0">
+  <img id="_anim_imgab8b27f8c63f4cb281cbb428cf0847b9">
   <div class="anim-controls">
-    <input id="_anim_slider4d21df2926cb4b33a91657d2a54ccfb0" type="range" class="anim-slider"
+    <input id="_anim_sliderab8b27f8c63f4cb281cbb428cf0847b9" type="range" class="anim-slider"
            name="points" min="0" max="1" step="1" value="0"
-           oninput="anim4d21df2926cb4b33a91657d2a54ccfb0.set_frame(parseInt(this.value));">
+           oninput="animab8b27f8c63f4cb281cbb428cf0847b9.set_frame(parseInt(this.value));">
     <div class="anim-buttons">
-      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim4d21df2926cb4b33a91657d2a54ccfb0.slower()">
+      <button title="Decrease speed" aria-label="Decrease speed" onclick="animab8b27f8c63f4cb281cbb428cf0847b9.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" aria-label="First frame" onclick="anim4d21df2926cb4b33a91657d2a54ccfb0.first_frame()">
+      <button title="First frame" aria-label="First frame" onclick="animab8b27f8c63f4cb281cbb428cf0847b9.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" aria-label="Previous frame" onclick="anim4d21df2926cb4b33a91657d2a54ccfb0.previous_frame()">
+      <button title="Previous frame" aria-label="Previous frame" onclick="animab8b27f8c63f4cb281cbb428cf0847b9.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" aria-label="Play backwards" onclick="anim4d21df2926cb4b33a91657d2a54ccfb0.reverse_animation()">
+      <button title="Play backwards" aria-label="Play backwards" onclick="animab8b27f8c63f4cb281cbb428cf0847b9.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" aria-label="Pause" onclick="anim4d21df2926cb4b33a91657d2a54ccfb0.pause_animation()">
+      <button title="Pause" aria-label="Pause" onclick="animab8b27f8c63f4cb281cbb428cf0847b9.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" aria-label="Play" onclick="anim4d21df2926cb4b33a91657d2a54ccfb0.play_animation()">
+      <button title="Play" aria-label="Play" onclick="animab8b27f8c63f4cb281cbb428cf0847b9.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" aria-label="Next frame" onclick="anim4d21df2926cb4b33a91657d2a54ccfb0.next_frame()">
+      <button title="Next frame" aria-label="Next frame" onclick="animab8b27f8c63f4cb281cbb428cf0847b9.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" aria-label="Last frame" onclick="anim4d21df2926cb4b33a91657d2a54ccfb0.last_frame()">
+      <button title="Last frame" aria-label="Last frame" onclick="animab8b27f8c63f4cb281cbb428cf0847b9.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" aria-label="Increase speed" onclick="anim4d21df2926cb4b33a91657d2a54ccfb0.faster()">
+      <button title="Increase speed" aria-label="Increase speed" onclick="animab8b27f8c63f4cb281cbb428cf0847b9.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select4d21df2926cb4b33a91657d2a54ccfb0"
+    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_selectab8b27f8c63f4cb281cbb428cf0847b9"
           class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_4d21df2926cb4b33a91657d2a54ccfb0"
+      <input type="radio" name="state" value="once" id="_anim_radio1_ab8b27f8c63f4cb281cbb428cf0847b9"
              >
-      <label for="_anim_radio1_4d21df2926cb4b33a91657d2a54ccfb0">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_4d21df2926cb4b33a91657d2a54ccfb0"
+      <label for="_anim_radio1_ab8b27f8c63f4cb281cbb428cf0847b9">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_ab8b27f8c63f4cb281cbb428cf0847b9"
              checked>
-      <label for="_anim_radio2_4d21df2926cb4b33a91657d2a54ccfb0">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_4d21df2926cb4b33a91657d2a54ccfb0"
+      <label for="_anim_radio2_ab8b27f8c63f4cb281cbb428cf0847b9">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_ab8b27f8c63f4cb281cbb428cf0847b9"
              >
-      <label for="_anim_radio3_4d21df2926cb4b33a91657d2a54ccfb0">Reflect</label>
+      <label for="_anim_radio3_ab8b27f8c63f4cb281cbb428cf0847b9">Reflect</label>
     </form>
   </div>
 </div>
@@ -1192,9 +1192,9 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_img4d21df2926cb4b33a91657d2a54ccfb0";
-    var slider_id = "_anim_slider4d21df2926cb4b33a91657d2a54ccfb0";
-    var loop_select_id = "_anim_loop_select4d21df2926cb4b33a91657d2a54ccfb0";
+    var img_id = "_anim_imgab8b27f8c63f4cb281cbb428cf0847b9";
+    var slider_id = "_anim_sliderab8b27f8c63f4cb281cbb428cf0847b9";
+    var loop_select_id = "_anim_loop_selectab8b27f8c63f4cb281cbb428cf0847b9";
     var frames = new Array(100);
 
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABGAAAAK8CAYAAACgIsnHAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
@@ -44899,7 +44899,7 @@ MAAAAACJCTAAAAAAif1/gYrpVunHUooAAAAASUVORK5CYII=\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        anim4d21df2926cb4b33a91657d2a54ccfb0 = new Animation(frames, img_id, slider_id, 65.0,
+        animab8b27f8c63f4cb281cbb428cf0847b9 = new Animation(frames, img_id, slider_id, 65.0,
                                  loop_select_id);
     }, 0);
   })()
