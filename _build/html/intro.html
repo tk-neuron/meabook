@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Welcome to your Jupyter Book &#8212; Python Tutorial for Analyzing MEA Recording</title>
+    <title>Welcome to MEA Book &#8212; MEA Book: Python Tutorial for Analyzing MEA Recording</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -50,9 +50,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="_static/icon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Spike Data Analysis" href="1_spikes/01_visualization.html" />
+    <link rel="next" title="1. General" href="0_introduction/01_general.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -93,10 +94,10 @@ const thebe_selector_output = ".output, .cell_output"
         
       
       
-      <img src="_static/signals_unit.png" class="logo" alt="logo">
+      <img src="_static/icon.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">Python Tutorial for Analyzing MEA Recording</h1>
+      <h1 class="site-logo" id="site-title">MEA Book: Python Tutorial for Analyzing MEA Recording</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -108,14 +109,83 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    Welcome to your Jupyter Book
+                    Welcome to MEA Book
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="0_introduction/01_general.html">
+   1. General
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="0_introduction/02_datasets.html">
+   2. Introducing Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="0_introduction/03_python.html">
+   3. Introducing Python
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  spikes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="1_spikes/01_visualization.html">
-   Spike Data Analysis
+   1. Visualization of Spike Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_spikes/02_visualization_bokeh.html">
+   2. Interactive Visualization with Bokeh
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_spikes/03_burst_detection.html">
+   3. Burst Detection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_spikes/04_cross_correlation.html">
+   4. Correlation Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_spikes/05_stimulus.html">
+   5. PSTH
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  signals
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2_signals/01_spike_detection.html">
+   1. Spike Detection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2_signals/02_spike_sorting.html">
+   2. Spike Sorting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2_signals/03_simulation.html">
+   3. Simulation
   </a>
  </li>
 </ul>
@@ -191,7 +261,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
+        <a href="https://github.com/tk-neuron/meabook"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -208,7 +278,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/tk-neuron/meabook/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -285,7 +355,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Welcome to your Jupyter Book</h1>
+                <h1>Welcome to MEA Book</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -297,16 +367,38 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="welcome-to-your-jupyter-book">
-<h1>Welcome to your Jupyter Book<a class="headerlink" href="#welcome-to-your-jupyter-book" title="Permalink to this headline">#</a></h1>
-<p>This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out <a class="reference external" href="https://jupyterbook.org">the Jupyter Book documentation</a> for more information.</p>
-<p>Check out the content pages bundled with this sample book to see more.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="welcome-to-mea-book">
+<h1>Welcome to MEA Book<a class="headerlink" href="#welcome-to-mea-book" title="Permalink to this headline">#</a></h1>
+<p>このノートブックは，プログラミング言語 Python を用いて，微小電極アレイ（microelectrode array; MEA) から取得した，神経活動データの分析や可視化を行うさまざまな手法をまとめたものです．</p>
+<p>研究の際にぜひご活用ください．<br />
+編集のリクエスト，間違いの訂正などございましたら，お手数ですが Github の Issue よりお寄せいただけますと幸いです．</p>
+<p>This notebook provides various methods for analyzing and visualizing neural activity data obtained from microelectrode arrays (MEAs) using the Python programming language.</p>
+<p>I hope you will find it useful in your research.<br />
+If you have any requests or corrections, please send via Github Issue.</p>
 <div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="1_spikes/01_visualization.html">Spike Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0_introduction/01_general.html">1. General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0_introduction/02_datasets.html">2. Introducing Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0_introduction/03_python.html">3. Introducing Python</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">spikes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1_spikes/01_visualization.html">1. Visualization of Spike Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_spikes/02_visualization_bokeh.html">2. Interactive Visualization with Bokeh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_spikes/03_burst_detection.html">3. Burst Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_spikes/04_cross_correlation.html">4. Correlation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_spikes/05_stimulus.html">5. PSTH</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">signals</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="2_signals/01_spike_detection.html">1. Spike Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_signals/02_spike_sorting.html">2. Spike Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_signals/03_simulation.html">3. Simulation</a></li>
 </ul>
 </div>
 </section>
@@ -338,10 +430,10 @@ It does not go in-depth into any particular topic - check out <a class="referenc
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="1_spikes/01_visualization.html" title="next page">
+    <a class='right-next' id="next-link" href="0_introduction/01_general.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Spike Data Analysis</p>
+        <p class="prev-next-title">1. General</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
