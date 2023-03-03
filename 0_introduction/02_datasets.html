@@ -240,6 +240,53 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/tk-neuron/meabook/main?urlpath=tree/docs/0_introduction/02_datasets.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/tk-neuron/meabook/blob/main/docs/0_introduction/02_datasets.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -307,7 +354,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/0_introduction/02_datasets.md"
+        <a href="../_sources/0_introduction/02_datasets.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -318,7 +365,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -344,12 +391,41 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-directories">
+   2.1. Create Directories
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-datasets">
+   2.2. Download Datasets
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -361,6 +437,24 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-directories">
+   2.1. Create Directories
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-datasets">
+   2.2. Download Datasets
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -370,6 +464,38 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="introducing-datasets">
 <h1>2. Introducing Datasets<a class="headerlink" href="#introducing-datasets" title="Permalink to this headline">#</a></h1>
+<section id="create-directories">
+<h2>2.1. Create Directories<a class="headerlink" href="#create-directories" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PosixPath(&#39;/Users/TAKUMA/NeuroLab/meabook&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="download-datasets">
+<h2>2.2. Download Datasets<a class="headerlink" href="#download-datasets" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">urllib.request</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
