@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1. 1. Spike Detection &#8212; MEA Book: Python Tutorial for Analyzing MEA Recording</title>
+    <title>1. Spike Detection &#8212; MEA Book: Python Tutorial for Analyzing MEA Recording</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2. 2. Spike Sorting" href="02_spike_sorting.html" />
-    <link rel="prev" title="5. 5. PSTH" href="../1_spikes/05_stimulus.html" />
+    <link rel="next" title="2. Spike Sorting" href="02_spike_sorting.html" />
+    <link rel="prev" title="5. PSTH" href="../1_spikes/05_stimulus.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -124,17 +124,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../0_introduction/01_general.html">
-   1. 1. General
+   1. General
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../0_introduction/02_datasets.html">
-   2. 2. Introducing Datasets
+   2. Introducing Datasets
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../0_introduction/03_python.html">
-   3. 3. Introducing Python
+   3. Introducing Python
   </a>
  </li>
 </ul>
@@ -166,7 +166,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../1_spikes/05_stimulus.html">
-   5. 5. PSTH
+   5. PSTH
   </a>
  </li>
 </ul>
@@ -178,17 +178,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   1. 1. Spike Detection
+   1. Spike Detection
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="02_spike_sorting.html">
-   2. 2. Spike Sorting
+   2. Spike Sorting
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="03_simulation.html">
-   3. 3. Simulation
+   3. Simulation
   </a>
  </li>
 </ul>
@@ -416,13 +416,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   1.1. 1.1. フィルタ処理
+  <a class="reference internal nav-link" href="#band-pass-filtering">
+   1.1. Band-pass Filtering
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#peak-detection">
-   1.2. 1.2. Peak Detection
+   1.2. Peak Detection
   </a>
  </li>
 </ul>
@@ -434,7 +434,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>1. Spike Detection</h1>
+                <h1>Spike Detection</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -445,13 +445,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   1.1. 1.1. フィルタ処理
+  <a class="reference internal nav-link" href="#band-pass-filtering">
+   1.1. Band-pass Filtering
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#peak-detection">
-   1.2. 1.2. Peak Detection
+   1.2. Peak Detection
   </a>
  </li>
 </ul>
@@ -465,9 +465,9 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="spike-detection">
-<h1><span class="section-number">1. </span>1. Spike Detection<a class="headerlink" href="#spike-detection" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">1. </span>Spike Detection<a class="headerlink" href="#spike-detection" title="Permalink to this headline">#</a></h1>
 <p>この章では，実際のHD-MEAで取得された信号の一部を用いて，spike検出の一例を示す．<br />
-使用するデータセットは，3×3の正方形状に隣接する9個の電極から取得された5分間の電位記録を圧縮したh5データである（サンプリング周波数 <span class="math notranslate nohighlight">\(f_s = 20 \mathrm{kHz}\)</span>）．電極の座標（<span class="math notranslate nohighlight">\(x, y\)</span>）[<span class="math notranslate nohighlight">\(\mathrm{\mu m}\)</span>]に関する情報は<code class="docutils literal notranslate"><span class="pre">mapping</span></code>に記録した．</p>
+使用するデータセットは，3×3の正方形状に隣接する9個の電極から取得された5分間の電位記録を圧縮したh5データである．サンプリング周波数は<span class="math notranslate nohighlight">\(f_s = 20 \mathrm{kHz}\)</span>である．電極の座標（<span class="math notranslate nohighlight">\(x, y\)</span>）[<span class="math notranslate nohighlight">\(\mathrm{\mu m}\)</span>]に関する情報は<code class="docutils literal notranslate"><span class="pre">mapping</span></code>に記録した．</p>
 <p>h5データの取り扱いに関する詳細は，別の章で述べる．</p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
@@ -533,13 +533,13 @@ title="Print to PDF"
 <img alt="../_images/01_spike_detection_5_0.png" src="../_images/01_spike_detection_5_0.png" />
 </div>
 </div>
-<section id="id1">
-<h2><span class="section-number">1.1. </span>1.1. フィルタ処理<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<section id="band-pass-filtering">
+<h2><span class="section-number">1.1. </span>Band-pass Filtering<a class="headerlink" href="#band-pass-filtering" title="Permalink to this headline">#</a></h2>
 <p>フィルタ前の生信号には，活動電位（spike）にとってあまり本質的ではない低周波，および高周波の成分が多く含まれている．<br />
 活動電位は大まかに1msのオーダーの現象であるため，一般には数百〜数千の帯域幅でバンドパスフィルタをかけることにより，spikeに関する情報を扱いやすくする前処理を施す．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">butter</span><span class="p">,</span> <span class="n">filtfilt</span><span class="p">,</span> <span class="n">lfilter</span><span class="p">,</span> <span class="n">find_peaks</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">butter</span><span class="p">,</span> <span class="n">filtfilt</span><span class="p">,</span> <span class="n">lfilter</span>
 </pre></div>
 </div>
 </div>
@@ -646,7 +646,7 @@ title="Print to PDF"
 <p class="admonition-title">Note</p>
 <p>上の例ではゼロ位相フィルタである<code class="docutils literal notranslate"><span class="pre">filtfilt</span></code>関数を採用している．フィルタをかけると元の信号と比較して遅延が生じる．ゼロ位相フィルタは，信号の順方向および逆方向の両方で処理することにより位相遅れの問題を解消する．ただし，spike立ち上がり時の信号がspike発生時刻の後ろだけではなく前にもはみ出すため，spike発生前の信号を元にした識別モデルを作成するケースなどにおいて注意が必要である．</p>
 </div>
-<p>以下に，フィルタによるスパイク波形の歪みを比較する．通常のIIRフィルタではspike検出点である負のピークに遅延があることが分かる．また，ゼロ位相フィルタでは負のピークの位置が保たれているものの，活動電位の発生前から電位の立ち上がりが出現することがわかる．</p>
+<p>以下に，フィルタによるスパイク波形の歪みを比較する．</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start_sec</span><span class="p">,</span> <span class="n">end_sec</span> <span class="o">=</span> <span class="mf">6.975</span><span class="p">,</span> <span class="mf">6.990</span>
@@ -675,9 +675,10 @@ title="Print to PDF"
 <img alt="../_images/01_spike_detection_16_0.png" src="../_images/01_spike_detection_16_0.png" />
 </div>
 </div>
+<p>通常のIIRフィルタではspike検出点である負のピークに遅延があることが分かる．また，ゼロ位相フィルタでは負のピークの位置が保たれているものの，活動電位の発生前から電位の立ち上がりが出現し，ピークの形状が対称に近くなっていることが見てとれる．</p>
 </section>
 <section id="peak-detection">
-<h2><span class="section-number">1.2. </span>1.2. Peak Detection<a class="headerlink" href="#peak-detection" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.2. </span>Peak Detection<a class="headerlink" href="#peak-detection" title="Permalink to this headline">#</a></h2>
 <p>MEAは細胞外電位を計測するため，細胞内の電位が正に転じる活動電位は，細胞外の電極では負に反転して計測される．ある閾値を超えた負のピークを活動電位とみなす手法が最も用いられる．<br />
 閾値は信号をみて肉眼で設定することも可能だが，スケール性を考えると自動化することが望まれる．電極によりSN比が異なるため，ノイズの大きさとの兼ね合いで最適な閾値を考える必要がある．</p>
 <p>絶対中央偏差（median absolute deviation; MAD）はデータのバラつきを評価する指標の一つであり，次のように定義される．</p>
@@ -685,20 +686,181 @@ title="Print to PDF"
 \[
 \mathrm{MAD} = \mathrm{median}(|X_i - \mathrm{median}(X)|)
 \]</div>
-<p>標準偏差と比較して，外れ値に対してロバストである．</p>
-<p>スパイク検出の閾値<span class="math notranslate nohighlight">\(\theta\)</span>は，<span class="math notranslate nohighlight">\(\mathrm{MAD}\)</span>の定数倍を用いる．定数は計測系のノイズレベルや，細胞の特性に応じて設定する．</p>
+<p>標準偏差と比較して，MADは外れ値に対してロバストである．</p>
+<p>スパイク検出の閾値<span class="math notranslate nohighlight">\(\theta\)</span>は，<span class="math notranslate nohighlight">\(\mathrm{MAD}\)</span>の定数倍を用いる．定数<span class="math notranslate nohighlight">\(\lambda\)</span>は計測系のノイズレベルや，細胞の特性に応じて設定する．</p>
 <div class="math notranslate nohighlight">
 \[
 \theta = \lambda \cdot \mathrm{MAD}
 \]</div>
-<p>閾値法以外のspike検出手法として，神経細胞の活動電位波形が既知の場合（cf. spike-sorting）にテンプレートマッチングを用いて検出する手法 <span id="id2">[<a class="reference internal" href="#id14" title="Keven J. Laboy-Juárez, Seoiyoung Ahn, and Daniel E. Feldman. A normalized template matching method for improving spike detection in extracellular voltage recordings. Scientific Reports, 9(1):1–12, 2019. doi:10.1038/s41598-019-48456-y.">LJuarezAF19</a>]</span> や，機械学習モデルによりspikeとしてもっともらしい波形を評価する手法 <span id="id3">[<a class="reference internal" href="#id13" title="Jin Hyung Lee, Catalin Mitelut, Hooshmand Shokri, Ian Kinsella, Nishchal Dethe, Shenghao Wu, Kevin Li, Eduardo Blancas Reyes, Denis Turcu, Eleanor Batty, Young Joon Kim, Nora Brackbill, Alexandra Kling, Georges Goetz, E. J. Chichilnisky, David Carlson, and Liam Paninski. YASS: Yet another spike sorter applied to large-scale multi-electrode array recordings in primate retina. bioRxiv, pages 1–46, 2020. doi:10.1101/2020.03.18.997924.">LMS+20</a>]</span> がある．</p>
+<p>閾値法以外のspike検出手法として，神経細胞の活動電位波形が既知の場合（cf. spike-sorting）にテンプレートマッチングを用いて検出する手法 <span id="id1">[<a class="reference internal" href="#id13" title="Keven J. Laboy-Juárez, Seoiyoung Ahn, and Daniel E. Feldman. A normalized template matching method for improving spike detection in extracellular voltage recordings. Scientific Reports, 9(1):1–12, 2019. doi:10.1038/s41598-019-48456-y.">LJuarezAF19</a>]</span> や，機械学習モデルによりspikeとしてもっともらしい波形を評価する手法 <span id="id2">[<a class="reference internal" href="#id12" title="Jin Hyung Lee, Catalin Mitelut, Hooshmand Shokri, Ian Kinsella, Nishchal Dethe, Shenghao Wu, Kevin Li, Eduardo Blancas Reyes, Denis Turcu, Eleanor Batty, Young Joon Kim, Nora Brackbill, Alexandra Kling, Georges Goetz, E. J. Chichilnisky, David Carlson, and Liam Paninski. YASS: Yet another spike sorter applied to large-scale multi-electrode array recordings in primate retina. bioRxiv, pages 1–46, 2020. doi:10.1101/2020.03.18.997924.">LMS+20</a>]</span> がある．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">find_peaks</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">peak_detection</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">thr</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+    <span class="n">peaks</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">find_peaks</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">sig</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">thr</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="n">distance</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">peaks</span>
+
+<span class="k">def</span> <span class="nf">thr_mad</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">7</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">stats</span><span class="o">.</span><span class="n">median_abs_deviation</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span> <span class="o">*</span> <span class="n">n</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">scipy</span></code>の<code class="docutils literal notranslate"><span class="pre">find_peaks</span></code>関数では閾値以外にいくつかのパラメタがあり，特に<code class="docutils literal notranslate"><span class="pre">distance</span></code>は検出するspike間隔の最小値を決める重要なパラメタである．<br />
+以下に，2種類の<code class="docutils literal notranslate"><span class="pre">distance</span></code>によるスパイク検出の結果を比較する．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use electrode with maximum amplitude</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">sig_filt</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">amps</span><span class="p">)]</span>
+<span class="n">thr</span> <span class="o">=</span> <span class="n">thr_mad</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="c1"># range for spike detection</span>
+<span class="n">start_sec</span><span class="p">,</span> <span class="n">end_sec</span> <span class="o">=</span> <span class="mf">6.90</span><span class="p">,</span> <span class="mf">6.97</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start_sec</span> <span class="o">*</span> <span class="n">fs</span><span class="p">,</span> <span class="n">end_sec</span> <span class="o">*</span> <span class="n">fs</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c1"># plotting</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span> <span class="o">/</span> <span class="n">fs</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=-</span><span class="n">thr</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()</span>
+
+<span class="c1"># distance = 20</span>
+<span class="n">peaks</span> <span class="o">=</span> <span class="n">peak_detection</span><span class="p">(</span><span class="n">sig</span><span class="o">=</span><span class="n">s</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">thr</span><span class="o">=</span><span class="n">thr</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">peaks</span><span class="p">]</span> <span class="o">/</span> <span class="n">fs</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="n">peaks</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">50</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;distance: 20&#39;</span><span class="p">)</span>
+
+<span class="c1"># distance = 50</span>
+<span class="n">peaks</span> <span class="o">=</span> <span class="n">peak_detection</span><span class="p">(</span><span class="n">sig</span><span class="o">=</span><span class="n">s</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">thr</span><span class="o">=</span><span class="n">thr</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">peaks</span><span class="p">]</span> <span class="o">/</span> <span class="n">fs</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="n">peaks</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">120</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;distance: 50&#39;</span><span class="p">)</span>
+
+<span class="n">scalebar</span> <span class="o">=</span> <span class="n">AnchoredSizeBar</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">transData</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="s1">&#39;10 ms&#39;</span><span class="p">,</span> <span class="s1">&#39;lower right&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">borderpad</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">size_vertical</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">scalebar</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.01</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">fs</span><span class="p">,</span> <span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">fs</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/01_spike_detection_23_0.png" src="../_images/01_spike_detection_23_0.png" />
+</div>
+</div>
+<p>spike検出で注意すべきこととして，フィルタの影響により，活動電位による負のピークの後，ベースラインに戻る際に再び負方向への沈み込みが出現する．これがピークとして重複検出されることがあるため，<code class="docutils literal notranslate"><span class="pre">distance</span></code>の設定を工夫して誤検出を減らすか，後述するspike-sortingの手法により，偽陽性（false-positive）によるノイズを除去する必要がある．</p>
+<p>上図で比較すると，<code class="docutils literal notranslate"><span class="pre">distance:</span> <span class="pre">50</span></code>の場合は<code class="docutils literal notranslate"><span class="pre">distance:</span> <span class="pre">20</span></code>と比較して偽陽性（ノイズをspikeとして誤検出するケース）が少ないが，一方で偽陰性（spikeを取りこぼすケース）が増加する．解析の目的に応じて調整するのが良いと考えられる．</p>
+<p>実際にscriptとしてspike検出を全電極について行う際は，例えば次のようにpeakとchannelの列を格納していく方法がある．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spiketimes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">channels</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_channels</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">sig_filt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">peaks</span> <span class="o">=</span> <span class="n">peak_detection</span><span class="p">(</span><span class="n">sig</span><span class="o">=</span><span class="n">s</span><span class="p">,</span> <span class="n">thr</span><span class="o">=</span><span class="n">thr_mad</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="n">distance</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">spiketimes</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">peaks</span> <span class="o">/</span> <span class="n">fs</span><span class="p">)</span>
+    <span class="n">channels</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">peaks</span><span class="p">))</span>
+
+<span class="n">df_sp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;spiketime&#39;</span><span class="p">:</span> <span class="n">spiketimes</span><span class="p">,</span> <span class="s1">&#39;channel&#39;</span><span class="p">:</span> <span class="n">channels</span><span class="p">})</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_sp</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>spiketime</th>
+      <th>channel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.42215</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.42490</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.42705</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.42935</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.43070</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>以下に，ラスタープロットと各電極の信号を合わせて表示する．隣接する電極であるため，信号は強く相関し，同じ神経細胞の信号が複数の電極にまたがって観測されることがわかる．次章では同じデータを使用して，混在する複数の細胞の信号を単一の細胞ごとに分離する統計処理であるspike-sortingについて述べる．</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">start_sec</span><span class="p">,</span> <span class="n">end_sec</span> <span class="o">=</span> <span class="mf">6.90</span><span class="p">,</span> <span class="mf">6.97</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start_sec</span> <span class="o">*</span> <span class="n">fs</span><span class="p">,</span> <span class="n">end_sec</span> <span class="o">*</span> <span class="n">fs</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_channels</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">sig_filt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span> <span class="o">/</span> <span class="n">fs</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mf">0.2</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">/</span> <span class="mi">500</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+    
+<span class="n">df_sp</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">start_sec</span><span class="si">}</span><span class="s1"> &lt; spiketime &lt; </span><span class="si">{</span><span class="n">end_sec</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;spiketime&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;channel&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;v&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">fs</span><span class="p">,</span> <span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">fs</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;whitesmoke&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">locator_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">nbins</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/01_spike_detection_27_0.png" src="../_images/01_spike_detection_27_0.png" />
+</div>
+</div>
 <hr class="docutils" />
-<div class="docutils container" id="id4">
+<div class="docutils container" id="id3">
 <dl class="citation">
-<dt class="label" id="id14"><span class="brackets"><a class="fn-backref" href="#id2">LJuarezAF19</a></span></dt>
+<dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id1">LJuarezAF19</a></span></dt>
 <dd><p>Keven J. Laboy-Juárez, Seoiyoung Ahn, and Daniel E. Feldman. A normalized template matching method for improving spike detection in extracellular voltage recordings. <em>Scientific Reports</em>, 9(1):1–12, 2019. <a class="reference external" href="https://doi.org/10.1038/s41598-019-48456-y">doi:10.1038/s41598-019-48456-y</a>.</p>
 </dd>
-<dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id3">LMS+20</a></span></dt>
+<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id2">LMS+20</a></span></dt>
 <dd><p>Jin Hyung Lee, Catalin Mitelut, Hooshmand Shokri, Ian Kinsella, Nishchal Dethe, Shenghao Wu, Kevin Li, Eduardo Blancas Reyes, Denis Turcu, Eleanor Batty, Young Joon Kim, Nora Brackbill, Alexandra Kling, Georges Goetz, E. J. Chichilnisky, David Carlson, and Liam Paninski. YASS: Yet another spike sorter applied to large-scale multi-electrode array recordings in primate retina. <em>bioRxiv</em>, pages 1–46, 2020. <a class="reference external" href="https://doi.org/10.1101/2020.03.18.997924">doi:10.1101/2020.03.18.997924</a>.</p>
 </dd>
 </dl>
@@ -737,13 +899,13 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">5. </span>5. PSTH</p>
+            <p class="prev-next-title"><span class="section-number">5. </span>PSTH</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="02_spike_sorting.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>2. Spike Sorting</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Spike Sorting</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
