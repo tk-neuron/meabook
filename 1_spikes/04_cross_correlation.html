@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5. PSTH" href="05_stimulus.html" />
+    <link rel="next" title="5. 5. PSTH" href="05_stimulus.html" />
     <link rel="prev" title="3. Burst Detection" href="03_burst_detection.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -124,17 +124,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../0_introduction/01_general.html">
-   1. General
+   1. 1. General
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../0_introduction/02_datasets.html">
-   2. Introducing Datasets
+   2. 2. Introducing Datasets
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../0_introduction/03_python.html">
-   3. Introducing Python
+   3. 3. Introducing Python
   </a>
  </li>
 </ul>
@@ -166,7 +166,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="05_stimulus.html">
-   5. PSTH
+   5. 5. PSTH
   </a>
  </li>
 </ul>
@@ -178,17 +178,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../2_signals/01_spike_detection.html">
-   1. Spike Detection
+   1. 1. Spike Detection
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../2_signals/02_spike_sorting.html">
-   2. Spike Sorting
+   2. 2. Spike Sorting
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../2_signals/03_simulation.html">
-   3. Simulation
+   3. 3. Simulation
   </a>
  </li>
 </ul>
@@ -426,8 +426,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizing-connectivity-with-networkx">
-   4.3. Visualizing Connectivity with Networkx
+  <a class="reference internal nav-link" href="#visualizing-connectivity-network">
+   4.3. Visualizing Connectivity Network
   </a>
  </li>
 </ul>
@@ -439,7 +439,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>4. Correlation Analysis</h1>
+                <h1>Correlation Analysis</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -460,8 +460,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizing-connectivity-with-networkx">
-   4.3. Visualizing Connectivity with Networkx
+  <a class="reference internal nav-link" href="#visualizing-connectivity-network">
+   4.3. Visualizing Connectivity Network
   </a>
  </li>
 </ul>
@@ -475,7 +475,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="correlation-analysis">
-<h1>4. Correlation Analysis<a class="headerlink" href="#correlation-analysis" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">4. </span>Correlation Analysis<a class="headerlink" href="#correlation-analysis" title="Permalink to this headline">#</a></h1>
 <p>各細胞の発火時系列が与えられたとき，2細胞の発火の時間的相関（temporal correlation）から，ネットワークの構造を推定することができる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -560,8 +560,7 @@ title="Print to PDF"
 <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;@start &lt;= spiketime &lt;= @end&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;spiketime&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;unit&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;spiketime [ms]&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;unit #&#39;</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">19</span><span class="p">])</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">locator_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">nbins</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -573,14 +572,12 @@ title="Print to PDF"
 </div>
 </div>
 <section id="cross-correlation">
-<h2>4.1. Cross-Correlation<a class="headerlink" href="#cross-correlation" title="Permalink to this headline">#</a></h2>
-<p>相互相関分析を行う際，発火時刻の列としてのspike train，またはbinningされたspike trainを扱う2種類の方法がある．binningとは，例えば0.5msのbinに時間を区切り，各binごとに何回のspikeが発生したかを行列（ベクトル）形式で格納する手法である．刺激後の神経活動（peri-stimulus time-histogram PSTH）を分析する際などはbinningされたspike trainを使うことが多いように思われる．</p>
-<p>結合推定を行う際は，計測時間を長めに取ることが多いので，メモリ消費の少ないbinningされていないspike trainを扱うのが望ましいと考えられる．
-この場合，相互相関ヒストグラムを取る手順は次のようになる．</p>
+<h2><span class="section-number">4.1. </span>Cross-Correlation<a class="headerlink" href="#cross-correlation" title="Permalink to this headline">#</a></h2>
+<p>相互相関ヒストグラムを取る手順は次のようになる．</p>
 <ol class="simple">
-<li><p>相互相関ヒストグラムの窓幅（50ms），bin幅（1ms）を決める．</p></li>
-<li><p>二つのspike train（reference unit: <span class="math notranslate nohighlight">\(j\)</span>, target unit: <span class="math notranslate nohighlight">\(i\)</span>）における各spikeについて，窓幅以内の時間差で発生した2つのspikeについて，相対発火時刻を列に格納する．相対発火時刻をreferenced spike trainと呼ぶこともある．</p></li>
-<li><p>相対発火時刻の列について，bin幅でヒストグラムを作成する．</p></li>
+<li><p>相互相関ヒストグラムの窓幅（50ms）を決める．</p></li>
+<li><p>二つのspike train（reference unit: <span class="math notranslate nohighlight">\(j\)</span>, target unit: <span class="math notranslate nohighlight">\(i\)</span>）における各spikeについて，窓幅以内の時間差で発生した2つのspikeについて，相対発火時刻（target - reference）を列に格納する．</p></li>
+<li><p>相対発火時刻の列について，特定のbin幅（1ms）によりヒストグラムを作成する．</p></li>
 </ol>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -614,21 +611,88 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<div class="cell tag_hide-input docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">11</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">9</span>
 <span class="n">spike_times_i</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;unit==</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">spiketime</span><span class="o">.</span><span class="n">values</span>
 <span class="n">spike_times_j</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;unit==</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">spiketime</span><span class="o">.</span><span class="n">values</span>
 
 <span class="n">hist</span><span class="p">,</span> <span class="n">edges</span> <span class="o">=</span> <span class="n">cross_correlogram</span><span class="p">(</span><span class="n">spike_times_i</span><span class="p">,</span> <span class="n">spike_times_j</span><span class="p">)</span>
-<span class="n">hist_g</span> <span class="o">=</span> <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">hist</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">hist_g</span> <span class="o">=</span> <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">hist</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Cross-correlogram: from neuron </span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">hist</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#C0C0C0&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;CC&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">hist_g</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Gaussian Convolved&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;time lag $\tau$ [ms]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;count $C(\tau)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04_cross_correlation_10_0.png" src="../_images/04_cross_correlation_10_0.png" />
+</div>
+</div>
+<p>上に示した相互相関ヒストグラムの見方は次の通りである．横軸<span class="math notranslate nohighlight">\(\tau\)</span>は，<strong>reference neuronのspike時刻を基準とした相対発火時刻</strong>を表す．<br />
+neuron 9の発火はneuron 19の発火を促進する傾向（<span class="math notranslate nohighlight">\(\tau &gt; 0\)</span>）があり，一方でneuron 19の発火はneuron 9の発火を抑制する傾向（<span class="math notranslate nohighlight">\(\tau &lt; 0\)</span>）がある．</p>
+</section>
+<section id="effective-connectivity">
+<h2><span class="section-number">4.2. </span>Effective Connectivity<a class="headerlink" href="#effective-connectivity" title="Permalink to this headline">#</a></h2>
+<p>シナプス結合は，以下の3種類に大別することができる <span id="id1">[<a class="reference internal" href="#id10" title="Olaf Sporns, Dante R Chialvo, Marcus Kaiser, and Claus C Hilgetag. Organization, development and function of complex brain networks. Trends in cognitive sciences, 8(9):418–425, 2004.">SCKH04</a>]</span>．</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ol class="simple">
+<li><p><strong>構造的結合（structural connectivity）/ 解剖学的結合（anatomical connectivity）</strong>:<br />
+ニューロン間のシナプスを形成する軸索や樹状突起など、脳領域間の物理的結合を指す。</p></li>
+<li><p><strong>機能的結合（functional connectivity）</strong>:<br />
+領域間の統計的な依存関係や相関関係を指す．機能的結合は必ずしも解剖学的な直接的結合とは対応せず、異なる脳領域が機能的に結合または同期している度合いを反映する。</p></li>
+<li><p><strong>実効的結合（effective connectivity）</strong>:<br />
+ある脳領域が他の脳領域に与える因果的な影響のことで、脳内ネットワークにおける情報の流れの方向と強さに関する情報を提供する。</p></li>
+</ol>
+</div>
+<p>相互相関ヒストグラムにより推定される結合強度は，実効的結合である．実効的結合は，必ずしも神経伝達物質の放出量や受容体の密度といったシナプスの生理学的特性と対応するとは限らないが，発火活動における因果的な影響の指標として有効である．</p>
+<p>ここで，<strong><span class="math notranslate nohighlight">\(W_{ij}\)</span>をneuron <span class="math notranslate nohighlight">\(j\)</span>からneuron <span class="math notranslate nohighlight">\(i\)</span>への実効的結合強度とする</strong>．相互相関ヒストグラムは，以下の3要素に分解できる<span id="id2">[<a class="reference internal" href="#id11" title="Lidor Spivak, Amir Levi, Hadas E. Sloin, Shirly Someck, and Eran Stark. Deconvolution improves the detection and quantification of spike transmission gain from spike trains. Communications Biology, 5(1):1–17, 2022. doi:10.1038/s42003-022-03450-5.">SLS+22</a>]</span>．</p>
+<ol class="simple">
+<li><p>多数の神経細胞から流入するbackground活動（baseline）</p></li>
+<li><p>neuron <span class="math notranslate nohighlight">\(j\)</span>からneuron <span class="math notranslate nohighlight">\(i\)</span>への因果的影響力（<span class="math notranslate nohighlight">\(\tau &gt; 0\)</span>）</p></li>
+<li><p>neuron <span class="math notranslate nohighlight">\(i\)</span>からneuron <span class="math notranslate nohighlight">\(j\)</span>への因果的影響力（<span class="math notranslate nohighlight">\(\tau &lt; 0\)</span>）</p></li>
+</ol>
+<p>1は，相互相関ヒストグラムを平滑化した曲線により近似することができ，簡易的にはガウシアンカーネルによる畳み込みがよく用いられる．<br />
+2, 3については，シナプス伝達遅れが一般に <span class="math notranslate nohighlight">\(\tau=1 \sim 5 \)</span> msであることを踏まえ，簡易的には該当範囲でCCを加算した結果を正規化した値を用いたり，シナプス効果のモデル（e.g. アルファ関数）をフィッティングした係数が用いられたりする．</p>
+<p>以下では，<span id="id3">[<a class="reference internal" href="#id13" title="Daniel Fine English, Sam McKenzie, Talfan Evans, Kanghwan Kim, Euisik Yoon, and György Buzsáki. Pyramidal Cell-Interneuron Circuit Architecture and Dynamics in Hippocampal Networks. Neuron, 96(2):505–520.e7, 2017. doi:10.1016/j.neuron.2017.09.033.">EME+17</a>]</span>を元にした実装を述べる．シナプス効果を忠実にモデル化した例としては<span id="id4">[<a class="reference internal" href="#id12" title="Ryota Kobayashi, Shuhei Kurita, Anno Kurth, Katsunori Kitano, Kenji Mizuseki, Markus Diesmann, Barry J. Richmond, and Shigeru Shinomoto. Reconstructing neuronal circuitry from parallel spike trains. Nature Communications, 10(1):4468, dec 2019. doi:10.1038/s41467-019-12225-2.">KKK+19</a>]</span>などがある．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">9</span>
+<span class="n">spike_times_i</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;unit==</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">spiketime</span><span class="o">.</span><span class="n">values</span>
+<span class="n">spike_times_j</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;unit==</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">spiketime</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">hist</span><span class="p">,</span> <span class="n">edges</span> <span class="o">=</span> <span class="n">cross_correlogram</span><span class="p">(</span><span class="n">spike_times_i</span><span class="p">,</span> <span class="n">spike_times_j</span><span class="p">)</span>
+<span class="n">hist_g</span> <span class="o">=</span> <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">hist</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">])</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;CC: from $j$ to $i$&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">rf</span><span class="s1">&#39;from neuron $j=</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s1">$ to $i=</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">hist</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;CC&#39;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">hist_g</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lime&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Gaussian Convolved&#39;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\tau$ [ms]&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$C(\tau)$&#39;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
@@ -637,9 +701,11 @@ title="Print to PDF"
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Baseline Subtracted&#39;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">hist_sub</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">1.1</span><span class="p">)</span>
 
-<span class="n">ax2</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:][</span><span class="mi">52</span><span class="p">:</span><span class="mi">56</span><span class="p">],</span> <span class="n">hist_sub</span><span class="p">[</span><span class="mi">52</span><span class="p">:</span><span class="mi">56</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$W_</span><span class="si">{ij}</span><span class="s1">$&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:][</span><span class="mi">44</span><span class="p">:</span><span class="mi">48</span><span class="p">],</span> <span class="n">hist_sub</span><span class="p">[</span><span class="mi">44</span><span class="p">:</span><span class="mi">48</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$W_</span><span class="si">{ji}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:][</span><span class="mi">52</span><span class="p">:</span><span class="mi">56</span><span class="p">],</span> <span class="n">hist_sub</span><span class="p">[</span><span class="mi">52</span><span class="p">:</span><span class="mi">56</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$W_</span><span class="si">{ij}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:][</span><span class="mi">44</span><span class="p">:</span><span class="mi">48</span><span class="p">],</span> <span class="n">hist_sub</span><span class="p">[</span><span class="mi">44</span><span class="p">:</span><span class="mi">48</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$W_</span><span class="si">{ji}</span><span class="s1">$&#39;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\tau$ [ms]&#39;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
@@ -650,30 +716,14 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/04_cross_correlation_10_0.png" src="../_images/04_cross_correlation_10_0.png" />
-</div>
-</div>
-</section>
-<section id="effective-connectivity">
-<h2>4.2. Effective Connectivity<a class="headerlink" href="#effective-connectivity" title="Permalink to this headline">#</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><span class="math notranslate nohighlight">\(W_{ij}\)</span>: neuron <span class="math notranslate nohighlight">\(j\)</span>からneuron <span class="math notranslate nohighlight">\(i\)</span>へのシナプス強度とする．</p>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">itertools</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
-</pre></div>
-</div>
+<img alt="../_images/04_cross_correlation_15_0.png" src="../_images/04_cross_correlation_15_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">estimate_connectivity</span><span class="p">(</span><span class="n">spike_times_i</span><span class="p">,</span> <span class="n">spike_times_j</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mf">50.</span><span class="p">,</span> <span class="n">nbins</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
     <span class="n">hist</span><span class="p">,</span> <span class="n">edges</span> <span class="o">=</span> <span class="n">cross_correlogram</span><span class="p">(</span><span class="n">spike_times_i</span><span class="p">,</span> <span class="n">spike_times_j</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">nbins</span><span class="p">)</span>
-    <span class="n">hist_g</span> <span class="o">=</span> <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">hist</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+    <span class="n">hist_g</span> <span class="o">=</span> <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">hist</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">])</span>
     <span class="n">hist_sub</span> <span class="o">=</span> <span class="n">hist</span> <span class="o">-</span> <span class="n">hist_g</span>
 
     <span class="n">w_ij</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">hist_sub</span><span class="p">[</span><span class="n">nbins</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">start</span> <span class="p">:</span> <span class="n">nbins</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">end</span><span class="p">])</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">spike_times_j</span><span class="p">)</span>
@@ -709,7 +759,7 @@ title="Print to PDF"
 <span class="c1"># thresholding weight matrix</span>
 <span class="n">w_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
 
-<span class="n">thre_exc</span> <span class="o">=</span> <span class="mf">0.003</span>
+<span class="n">thre_exc</span> <span class="o">=</span> <span class="mf">0.005</span>
 <span class="n">thre_inh</span> <span class="o">=</span> <span class="mf">0.002</span>
 <span class="n">w_</span><span class="p">[</span><span class="n">w</span> <span class="o">&gt;</span> <span class="n">thre_exc</span><span class="p">]</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="n">w</span> <span class="o">&gt;</span> <span class="n">thre_exc</span><span class="p">]</span>
 <span class="n">w_</span><span class="p">[</span><span class="n">w</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">thre_inh</span><span class="p">]</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="n">w</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">thre_inh</span><span class="p">]</span>
@@ -718,10 +768,12 @@ title="Print to PDF"
 <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">w_</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">),</span> 
             <span class="n">linewidths</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">cbar_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.01</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;effective connectivity&#39;</span><span class="p">))</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">19.5</span><span class="p">])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">19.5</span><span class="p">])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">10.5</span><span class="p">,</span> <span class="mf">19.5</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">10.5</span><span class="p">,</span> <span class="mf">19.5</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">19</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">19</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;pre-unit&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;post-unit&#39;</span><span class="p">)</span>
@@ -731,17 +783,24 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/04_cross_correlation_16_0.png" src="../_images/04_cross_correlation_16_0.png" />
+<img alt="../_images/04_cross_correlation_18_0.png" src="../_images/04_cross_correlation_18_0.png" />
 </div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <p>推定されたシナプス強度は，同じpre-unit（シナプス前細胞）について，興奮性あるいは抑制性の分類が一貫しているか確かめると良い．上の例では，列方向（縦）．例えば，neuron 18, 19, 20は抑制性細胞である可能性が高い．</p>
 </div>
 </section>
-<section id="visualizing-connectivity-with-networkx">
-<h2>4.3. Visualizing Connectivity with Networkx<a class="headerlink" href="#visualizing-connectivity-with-networkx" title="Permalink to this headline">#</a></h2>
+<section id="visualizing-connectivity-network">
+<h2><span class="section-number">4.3. </span>Visualizing Connectivity Network<a class="headerlink" href="#visualizing-connectivity-network" title="Permalink to this headline">#</a></h2>
 <p>推定された実効的結合強度に基づき，神経ネットワークをnetworkxにより可視化するコードの一例を以下に示す．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
@@ -753,9 +812,9 @@ title="Print to PDF"
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
         <span class="n">w_ij</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">w_ij</span> <span class="o">&gt;</span> <span class="n">thre_exc</span><span class="p">:</span>
-            <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">w_ij</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;magenta&#39;</span><span class="p">)</span>  <span class="c1"># exc</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">w_ij</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;magenta&#39;</span><span class="p">)</span>  <span class="c1"># exc</span>
         <span class="k">elif</span> <span class="n">w_ij</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">thre_inh</span><span class="p">:</span>
-            <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">w_ij</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;cyan&#39;</span><span class="p">)</span>  <span class="c1"># inh</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">w_ij</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;cyan&#39;</span><span class="p">)</span>  <span class="c1"># inh</span>
 </pre></div>
 </div>
 </div>
@@ -776,10 +835,10 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/04_cross_correlation_21_0.png" src="../_images/04_cross_correlation_21_0.png" />
+<img alt="../_images/04_cross_correlation_24_0.png" src="../_images/04_cross_correlation_24_0.png" />
 </div>
 </div>
-<p>また，ネットワークはBokehを使えばインタラクティブに可視化することもできる．ただしBokehでは有向グラフを矢印付きで可視化する機能がない．</p>
+<p>ネットワークはBokehを使えばインタラクティブに可視化することもできる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">show</span><span class="p">,</span> <span class="n">output_notebook</span>
@@ -1098,7 +1157,7 @@ if (force === true) {
     <span class="n">plot</span><span class="o">.</span><span class="n">ygrid</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="kc">False</span>  
     
     <span class="n">network_graph</span> <span class="o">=</span> <span class="n">from_networkx</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-    <span class="n">network_graph</span><span class="o">.</span><span class="n">node_renderer</span><span class="o">.</span><span class="n">glyph</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">fill_color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">fill_alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+    <span class="n">network_graph</span><span class="o">.</span><span class="n">node_renderer</span><span class="o">.</span><span class="n">glyph</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">fill_color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
     <span class="n">network_graph</span><span class="o">.</span><span class="n">node_renderer</span><span class="o">.</span><span class="n">hover_glyph</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">fill_color</span><span class="o">=</span><span class="n">node_highlight_color</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">network_graph</span><span class="o">.</span><span class="n">node_renderer</span><span class="o">.</span><span class="n">selection_glyph</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">fill_color</span><span class="o">=</span><span class="n">node_highlight_color</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
@@ -1135,11 +1194,11 @@ if (force === true) {
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="80b0227e-6c9e-479a-a104-0f155b017b6f" data-root-id="p1002" style="display: contents;"></div>
+<div id="782b3c3d-419b-4f1c-a9f8-7a7dd250dace" data-root-id="p1002" style="display: contents;"></div>
 </div><script type="application/javascript">(function(root) {
   function embed_document(root) {
-  const docs_json = {"64d0465a-1659-4b5b-bd2b-40713596fa30":{"version":"3.0.3","title":"Bokeh Application","defs":[],"roots":[{"type":"object","name":"Figure","id":"p1002","attributes":{"width":400,"height":400,"x_range":{"type":"object","name":"DataRange1d","id":"p1004"},"y_range":{"type":"object","name":"DataRange1d","id":"p1003"},"x_scale":{"type":"object","name":"LinearScale","id":"p1015"},"y_scale":{"type":"object","name":"LinearScale","id":"p1017"},"title":{"type":"object","name":"Title","id":"p1010","attributes":{"text_color":"#E0E0E0","text_font":"Helvetica","text_font_size":"1.15em"}},"outline_line_color":"#E0E0E0","outline_line_alpha":0.25,"renderers":[{"type":"object","name":"GraphRenderer","id":"p1048","attributes":{"layout_provider":{"type":"object","name":"StaticLayoutProvider","id":"p1086","attributes":{"graph_layout":{"type":"map","entries":[[1,{"type":"ndarray","array":{"type":"bytes","data":"2N60+f//7z9pX2pGQpZMPg=="},"shape":[2],"dtype":"float64","order":"little"}],[2,{"type":"ndarray","array":{"type":"bytes","data":"bGoOGg5v7j9vZeBJ78bTPw=="},"shape":[2],"dtype":"float64","order":"little"}],[3,{"type":"ndarray","array":{"type":"bytes","data":"R0kSm3fj6T9vLPICI8/iPw=="},"shape":[2],"dtype":"float64","order":"little"}],[4,{"type":"ndarray","array":{"type":"bytes","data":"Rwun/CLP4j9ual2hd+PpPw=="},"shape":[2],"dtype":"float64","order":"little"}],[5,{"type":"ndarray","array":{"type":"bytes","data":"KCNKHe/G0z+Ti1kgDm/uPw=="},"shape":[2],"dtype":"float64","order":"little"}],[6,{"type":"ndarray","array":{"type":"bytes","data":"xqmMUDadZr4AAAAAAADwPw=="},"shape":[2],"dtype":"float64","order":"little"}],[7,{"type":"ndarray","array":{"type":"bytes","data":"cGXgWe/G07+bi1kADm/uPw=="},"shape":[2],"dtype":"float64","order":"little"}],[8,{"type":"ndarray","array":{"type":"bytes","data":"dCzy+iLP4r9ual2hd+PpPw=="},"shape":[2],"dtype":"float64","order":"little"}],[9,{"type":"ndarray","array":{"type":"bytes","data":"c2pdmXfj6b9vLPICI8/iPw=="},"shape":[2],"dtype":"float64","order":"little"}],[10,{"type":"ndarray","array":{"type":"bytes","data":"n4tZ+A1v7r9oZeBp78bTPw=="},"shape":[2],"dtype":"float64","order":"little"}],[11,{"type":"ndarray","array":{"type":"bytes","data":"BAAA+P//779z+/Rx3eRzvg=="},"shape":[2],"dtype":"float64","order":"little"}],[12,{"type":"ndarray","array":{"type":"bytes","data":"mItZGA5v7r8wI0oN78bTvw=="},"shape":[2],"dtype":"float64","order":"little"}],[13,{"type":"ndarray","array":{"type":"bytes","data":"empdeXfj6b9FC6cUI8/ivw=="},"shape":[2],"dtype":"float64","order":"little"}],[14,{"type":"ndarray","array":{"type":"bytes","data":"iSzymiLP4r89SRLTd+Ppvw=="},"shape":[2],"dtype":"float64","order":"little"}],[15,{"type":"ndarray","array":{"type":"bytes","data":"W2Xgue/G0794ag7yDW/uvw=="},"shape":[2],"dtype":"float64","order":"little"}],[16,{"type":"ndarray","array":{"type":"bytes","data":"XlMeY4MFTT7d3rTx///vvw=="},"shape":[2],"dtype":"float64","order":"little"}],[17,{"type":"ndarray","array":{"type":"bytes","data":"BCNKve/G0z94ag7yDW/uvw=="},"shape":[2],"dtype":"float64","order":"little"}],[18,{"type":"ndarray","array":{"type":"bytes","data":"XQunnCLP4j89SRLTd+Ppvw=="},"shape":[2],"dtype":"float64","order":"little"}],[19,{"type":"ndarray","array":{"type":"bytes","data":"TkkSe3fj6T9FC6cUI8/ivw=="},"shape":[2],"dtype":"float64","order":"little"}],[20,{"type":"ndarray","array":{"type":"bytes","data":"bGoOGg5v7j83I0rt7sbTvw=="},"shape":[2],"dtype":"float64","order":"little"}]]}}},"node_renderer":{"type":"object","name":"GlyphRenderer","id":"p1055","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1052","attributes":{"selected":{"type":"object","name":"Selection","id":"p1054","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1053"},"data":{"type":"map","entries":[["degree",[0,2,0,0,2,0,3,3,0,4,2,3,0,3,1,1,6,3,5,6]],["index",[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]]]}}},"view":{"type":"object","name":"CDSView","id":"p1056","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1057"}}},"glyph":{"type":"object","name":"Circle","id":"p1087","attributes":{"size":{"type":"value","value":20},"fill_color":{"type":"value","value":"white"},"fill_alpha":{"type":"value","value":0.7}}},"selection_glyph":{"type":"object","name":"Circle","id":"p1103","attributes":{"size":{"type":"value","value":20},"line_width":{"type":"value","value":2},"fill_color":{"type":"value","value":"#fee08b"}}},"hover_glyph":{"type":"object","name":"Circle","id":"p1095","attributes":{"size":{"type":"value","value":20},"line_width":{"type":"value","value":2},"fill_color":{"type":"value","value":"#fee08b"}}}}},"edge_renderer":{"type":"object","name":"GlyphRenderer","id":"p1062","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1059","attributes":{"selected":{"type":"object","name":"Selection","id":"p1061","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1060"},"data":{"type":"map","entries":[["color",["magenta","cyan","magenta","cyan","cyan","cyan","magenta","magenta","cyan","magenta","cyan","magenta","magenta","cyan","cyan","magenta","magenta","magenta","cyan","magenta","magenta","magenta"]],["edge_color",["magenta","cyan","magenta","cyan","cyan","cyan","magenta","magenta","cyan","magenta","cyan","magenta","magenta","cyan","cyan","magenta","magenta","magenta","cyan","magenta","magenta","magenta"]],["edge_width",[5.920316388966454,5.488442685944776,6.116800896480544,5.442690989725223,5.5903888744457575,5.70947074794403,5.516302232582223,5.809277036237149,5.447770515254498,5.8297382846050425,5.8383384563669605,5.521496930523602,5.65346173315578,5.401491892324721,5.465450137837457,6.233593676225494,7.062353448240347,5.887273159642378,5.394463370405104,5.745005978062314,5.869163866519073,5.543328017945374]],["weight",[0.008323699421965317,-0.0030792339466766804,0.013085818624467437,-0.0027713475269798833,-0.003893936584461339,-0.005122367672168469,0.0032832369942196534,0.006445803118631215,-0.002803951615532588,0.006756756756756757,-0.006891891891891892,0.0033227443677657283,0.004502583060808569,-0.0025205301244003576,-0.002920452438346004,0.017123544874202028,0.11543923716778251,0.007713884992987377,-0.0024800667531985907,0.005559119093435963,0.007398843930635838,0.003494041170097508]],["start",[5,7,7,8,10,12,14,14,14,16,17,17,17,17,17,18,19,19,19,20,20,20]],["end",[10,8,12,18,20,19,10,11,18,2,2,7,11,19,20,8,12,15,20,5,10,17]]]}}},"view":{"type":"object","name":"CDSView","id":"p1063","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1064"}}},"glyph":{"type":"object","name":"MultiLine","id":"p1111","attributes":{"line_color":{"type":"field","field":"edge_color"},"line_alpha":{"type":"value","value":0.8},"line_width":{"type":"field","field":"edge_width"}}},"selection_glyph":{"type":"object","name":"MultiLine","id":"p1119","attributes":{"line_color":{"type":"value","value":"#fee08b"},"line_width":{"type":"field","field":"edge_width"}}},"hover_glyph":{"type":"object","name":"MultiLine","id":"p1127","attributes":{"line_color":{"type":"value","value":"#fee08b"},"line_width":{"type":"field","field":"edge_width"}}}}},"selection_policy":{"type":"object","name":"NodesAndLinkedEdges","id":"p1135"},"inspection_policy":{"type":"object","name":"NodesAndLinkedEdges","id":"p1137"}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1009","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1033"},{"type":"object","name":"BoxZoomTool","id":"p1034","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p1035","attributes":{"syncable":false,"level":"overlay","visible":false,"left_units":"canvas","right_units":"canvas","bottom_units":"canvas","top_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"WheelZoomTool","id":"p1036"},{"type":"object","name":"SaveTool","id":"p1037"},{"type":"object","name":"ResetTool","id":"p1038"},{"type":"object","name":"HoverTool","id":"p1040","attributes":{"renderers":"auto","tooltips":[["neuron","@index"],["degree","@degree"]]}}]}},"left":[{"type":"object","name":"LinearAxis","id":"p1026","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1027","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1029"},"axis_label_standoff":10,"axis_label_text_color":"#E0E0E0","axis_label_text_font":"Helvetica","axis_label_text_font_size":"1.25em","axis_label_text_font_style":"normal","major_label_policy":{"type":"object","name":"AllLabels","id":"p1028"},"major_label_text_color":null,"major_label_text_font":"Helvetica","major_label_text_font_size":"1.025em","axis_line_color":"#E0E0E0","axis_line_alpha":0,"major_tick_line_color":null,"major_tick_line_alpha":0,"minor_tick_line_color":null,"minor_tick_line_alpha":0}}],"below":[{"type":"object","name":"LinearAxis","id":"p1019","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1020","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1022"},"axis_label_standoff":10,"axis_label_text_color":"#E0E0E0","axis_label_text_font":"Helvetica","axis_label_text_font_size":"1.25em","axis_label_text_font_style":"normal","major_label_policy":{"type":"object","name":"AllLabels","id":"p1021"},"major_label_text_color":null,"major_label_text_font":"Helvetica","major_label_text_font_size":"1.025em","axis_line_color":"#E0E0E0","axis_line_alpha":0,"major_tick_line_color":null,"major_tick_line_alpha":0,"minor_tick_line_color":null,"minor_tick_line_alpha":0}}],"center":[{"type":"object","name":"Grid","id":"p1025","attributes":{"visible":false,"axis":{"id":"p1019"},"grid_line_color":"#E0E0E0","grid_line_alpha":0.25}},{"type":"object","name":"Grid","id":"p1032","attributes":{"visible":false,"dimension":1,"axis":{"id":"p1026"},"grid_line_color":"#E0E0E0","grid_line_alpha":0.25}}],"background_fill_color":"#20262B","border_fill_color":"#15191C"}}]}};
-  const render_items = [{"docid":"64d0465a-1659-4b5b-bd2b-40713596fa30","roots":{"p1002":"80b0227e-6c9e-479a-a104-0f155b017b6f"},"root_ids":["p1002"]}];
+  const docs_json = {"d03e36bd-f121-4edd-88ca-c2cb4c32c0ff":{"version":"3.0.3","title":"Bokeh Application","defs":[],"roots":[{"type":"object","name":"Figure","id":"p1002","attributes":{"width":400,"height":400,"x_range":{"type":"object","name":"DataRange1d","id":"p1003"},"y_range":{"type":"object","name":"DataRange1d","id":"p1004"},"x_scale":{"type":"object","name":"LinearScale","id":"p1015"},"y_scale":{"type":"object","name":"LinearScale","id":"p1017"},"title":{"type":"object","name":"Title","id":"p1006","attributes":{"text_color":"#E0E0E0","text_font":"Helvetica","text_font_size":"1.15em"}},"outline_line_color":"#E0E0E0","outline_line_alpha":0.25,"renderers":[{"type":"object","name":"GraphRenderer","id":"p1048","attributes":{"layout_provider":{"type":"object","name":"StaticLayoutProvider","id":"p1086","attributes":{"graph_layout":{"type":"map","entries":[[1,{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAA8D87ahGSJEkyPg=="},"shape":[2],"dtype":"float64","order":"little"}],[2,{"type":"ndarray","array":{"type":"bytes","data":"LVUEYA2U7j9fy1jkRN3SPw=="},"shape":[2],"dtype":"float64","order":"little"}],[3,{"type":"ndarray","array":{"type":"bytes","data":"JPIQQIxw6j+rNBLitwbiPw=="},"shape":[2],"dtype":"float64","order":"little"}],[4,{"type":"ndarray","array":{"type":"bytes","data":"/bck4KDz4z9L5fyBwwTpPw=="},"shape":[2],"dtype":"float64","order":"little"}],[5,{"type":"ndarray","array":{"type":"bytes","data":"68l7IL9h1z9KXO7Bt8ntPw=="},"shape":[2],"dtype":"float64","order":"little"}],[6,{"type":"ndarray","array":{"type":"bytes","data":"AuPRYoMhsz9K5OfhF+nvPw=="},"shape":[2],"dtype":"float64","order":"little"}],[7,{"type":"ndarray","array":{"type":"bytes","data":"tBkj/pB7zL9uEOoBnDLvPw=="},"shape":[2],"dtype":"float64","order":"little"}],[8,{"type":"ndarray","array":{"type":"bytes","data":"3LZtHwAA4L9Nr/TherbrPw=="},"shape":[2],"dtype":"float64","order":"little"}],[9,{"type":"ndarray","array":{"type":"bytes","data":"d/xWPyl1579RzwaC+cPlPw=="},"shape":[2],"dtype":"float64","order":"little"}],[10,{"type":"ndarray","array":{"type":"bytes","data":"PJxGn7zU7L9gqD2kwMTbPw=="},"shape":[2],"dtype":"float64","order":"little"}],[11,{"type":"ndarray","array":{"type":"bytes","data":"qgo+f4Ck779Ebuqo0RPDPw=="},"shape":[2],"dtype":"float64","order":"little"}],[12,{"type":"ndarray","array":{"type":"bytes","data":"qgo+f4Ck77+0SaEW0RPDvw=="},"shape":[2],"dtype":"float64","order":"little"}],[13,{"type":"ndarray","array":{"type":"bytes","data":"PJxGn7zU7L8XFhlbwMTbvw=="},"shape":[2],"dtype":"float64","order":"little"}],[14,{"type":"ndarray","array":{"type":"bytes","data":"d/xWHyl1578shnSd+cPlvw=="},"shape":[2],"dtype":"float64","order":"little"}],[15,{"type":"ndarray","array":{"type":"bytes","data":"uG3bnv//378oZmL9erbrvw=="},"shape":[2],"dtype":"float64","order":"little"}],[16,{"type":"ndarray","array":{"type":"bytes","data":"shkjfpF7zL9Kx1f9mzLvvw=="},"shape":[2],"dtype":"float64","order":"little"}],[17,{"type":"ndarray","array":{"type":"bytes","data":"+eLRYoYhsz8mm1XdF+nvvw=="},"shape":[2],"dtype":"float64","order":"little"}],[18,{"type":"ndarray","array":{"type":"bytes","data":"6sl7QL9h1z8mE1y9t8ntvw=="},"shape":[2],"dtype":"float64","order":"little"}],[19,{"type":"ndarray","array":{"type":"bytes","data":"/rckgKDz4z8mnGq9wwTpvw=="},"shape":[2],"dtype":"float64","order":"little"}],[20,{"type":"ndarray","array":{"type":"bytes","data":"I/IQYIxw6j+I63+dtwbivw=="},"shape":[2],"dtype":"float64","order":"little"}],[0,{"type":"ndarray","array":{"type":"bytes","data":"LVUEYA2U7j8UOTQ7Rd3Svw=="},"shape":[2],"dtype":"float64","order":"little"}]]}}},"node_renderer":{"type":"object","name":"GlyphRenderer","id":"p1053","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1050","attributes":{"selected":{"type":"object","name":"Selection","id":"p1051","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1052"},"data":{"type":"map","entries":[["degree",[1,0,0,2,0,3,2,0,4,4,3,1,4,1,4,11,3,7,9,0,1]],["index",[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,0]]]}}},"view":{"type":"object","name":"CDSView","id":"p1054","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1055"}}},"glyph":{"type":"object","name":"Circle","id":"p1087","attributes":{"size":{"type":"value","value":20},"fill_color":{"type":"value","value":"white"}}},"selection_glyph":{"type":"object","name":"Circle","id":"p1103","attributes":{"size":{"type":"value","value":20},"line_width":{"type":"value","value":2},"fill_color":{"type":"value","value":"#fee08b"}}},"hover_glyph":{"type":"object","name":"Circle","id":"p1095","attributes":{"size":{"type":"value","value":20},"line_width":{"type":"value","value":2},"fill_color":{"type":"value","value":"#fee08b"}}}}},"edge_renderer":{"type":"object","name":"GlyphRenderer","id":"p1060","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1057","attributes":{"selected":{"type":"object","name":"Selection","id":"p1058","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1059"},"data":{"type":"map","entries":[["color",["magenta","magenta","magenta","magenta","magenta","magenta","magenta","magenta","magenta","magenta","magenta","magenta","magenta","magenta","magenta","cyan","cyan","cyan","magenta","magenta","cyan","cyan","cyan","cyan","cyan","cyan","cyan","cyan","cyan","magenta"]],["edge_width",[6.0338582672609675,6.12417198585927,5.785172009350092,6.48525323845026,6.159198477881591,5.782315179518912,6.178261483931087,6.078858649042749,5.818752928121027,6.317965047237049,7.27944402022434,5.701491647367014,6.155510641910052,5.710977472511088,5.714046704238765,5.539948277293994,5.405866161245824,5.51191955369375,5.70920011181937,5.821904392010659,5.577730053237849,5.741158768624604,5.458314809035556,5.759344804699538,5.63712892642671,5.794831872722302,5.495413361214901,5.6551142040824125,5.728691572612038,5.7107910437947265]],["edge_color",["magenta","magenta","magenta","magenta","magenta","magenta","magenta","magenta","magenta","magenta","magenta","magenta","magenta","magenta","magenta","cyan","cyan","cyan","magenta","magenta","cyan","cyan","cyan","cyan","cyan","cyan","cyan","cyan","cyan","magenta"]],["weight",[0.010810810810810811,0.013309813983322642,0.006097783619965677,0.030567029665790463,0.014427745664739885,0.006057803468208093,0.015075144508670521,0.011991089625100716,0.0065879899521304325,0.02079529316291337,0.19030229255427064,0.005029115934356803,0.014305750350631136,0.005140169880791805,0.005176624986329335,-0.003466955579631636,-0.0025460455037919828,-0.0032502708559046588,0.0051191765980498375,0.006635969664138678,-0.003782074272113723,-0.005510090965407062,-0.0028728622923272894,-0.005745724584654579,-0.004336395912946852,-0.006234934173929167,-0.0031290561839421474,-0.004519747821249768,-0.0053541628036343405,0.005137963843958135]],["start",[1,4,6,7,9,9,9,10,10,11,11,13,14,15,15,16,16,16,16,16,17,17,18,18,18,19,19,19,19,0]],["end",[15,19,16,17,4,13,19,13,16,6,18,16,18,16,19,6,10,15,18,19,7,13,10,11,16,9,12,16,18,19]]]}}},"view":{"type":"object","name":"CDSView","id":"p1061","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1062"}}},"glyph":{"type":"object","name":"MultiLine","id":"p1111","attributes":{"line_color":{"type":"field","field":"edge_color"},"line_alpha":{"type":"value","value":0.8},"line_width":{"type":"field","field":"edge_width"}}},"selection_glyph":{"type":"object","name":"MultiLine","id":"p1119","attributes":{"line_color":{"type":"value","value":"#fee08b"},"line_width":{"type":"field","field":"edge_width"}}},"hover_glyph":{"type":"object","name":"MultiLine","id":"p1127","attributes":{"line_color":{"type":"value","value":"#fee08b"},"line_width":{"type":"field","field":"edge_width"}}}}},"selection_policy":{"type":"object","name":"NodesAndLinkedEdges","id":"p1135"},"inspection_policy":{"type":"object","name":"NodesAndLinkedEdges","id":"p1137"}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1010","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1033"},{"type":"object","name":"BoxZoomTool","id":"p1034","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p1035","attributes":{"syncable":false,"level":"overlay","visible":false,"left_units":"canvas","right_units":"canvas","bottom_units":"canvas","top_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"WheelZoomTool","id":"p1036"},{"type":"object","name":"SaveTool","id":"p1037"},{"type":"object","name":"ResetTool","id":"p1038"},{"type":"object","name":"HoverTool","id":"p1040","attributes":{"renderers":"auto","tooltips":[["neuron","@index"],["degree","@degree"]]}}]}},"left":[{"type":"object","name":"LinearAxis","id":"p1026","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1028","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1027"},"axis_label_standoff":10,"axis_label_text_color":"#E0E0E0","axis_label_text_font":"Helvetica","axis_label_text_font_size":"1.25em","axis_label_text_font_style":"normal","major_label_policy":{"type":"object","name":"AllLabels","id":"p1029"},"major_label_text_color":null,"major_label_text_font":"Helvetica","major_label_text_font_size":"1.025em","axis_line_color":"#E0E0E0","axis_line_alpha":0,"major_tick_line_color":null,"major_tick_line_alpha":0,"minor_tick_line_color":null,"minor_tick_line_alpha":0}}],"below":[{"type":"object","name":"LinearAxis","id":"p1019","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1021","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1020"},"axis_label_standoff":10,"axis_label_text_color":"#E0E0E0","axis_label_text_font":"Helvetica","axis_label_text_font_size":"1.25em","axis_label_text_font_style":"normal","major_label_policy":{"type":"object","name":"AllLabels","id":"p1022"},"major_label_text_color":null,"major_label_text_font":"Helvetica","major_label_text_font_size":"1.025em","axis_line_color":"#E0E0E0","axis_line_alpha":0,"major_tick_line_color":null,"major_tick_line_alpha":0,"minor_tick_line_color":null,"minor_tick_line_alpha":0}}],"center":[{"type":"object","name":"Grid","id":"p1025","attributes":{"visible":false,"axis":{"id":"p1019"},"grid_line_color":"#E0E0E0","grid_line_alpha":0.25}},{"type":"object","name":"Grid","id":"p1032","attributes":{"visible":false,"dimension":1,"axis":{"id":"p1026"},"grid_line_color":"#E0E0E0","grid_line_alpha":0.25}}],"background_fill_color":"#20262B","border_fill_color":"#15191C"}}]}};
+  const render_items = [{"docid":"d03e36bd-f121-4edd-88ca-c2cb4c32c0ff","roots":{"p1002":"782b3c3d-419b-4f1c-a9f8-7a7dd250dace"},"root_ids":["p1002"]}];
   root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
   }
   if (root.Bokeh !== undefined) {
@@ -1160,6 +1219,23 @@ if (force === true) {
     }, 10, root)
   }
 })(window);</script></div>
+</div>
+<hr class="docutils" />
+<div class="docutils container" id="id5">
+<dl class="citation">
+<dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id3">EME+17</a></span></dt>
+<dd><p>Daniel Fine English, Sam McKenzie, Talfan Evans, Kanghwan Kim, Euisik Yoon, and György Buzsáki. Pyramidal Cell-Interneuron Circuit Architecture and Dynamics in Hippocampal Networks. <em>Neuron</em>, 96(2):505–520.e7, 2017. <a class="reference external" href="https://doi.org/10.1016/j.neuron.2017.09.033">doi:10.1016/j.neuron.2017.09.033</a>.</p>
+</dd>
+<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id4">KKK+19</a></span></dt>
+<dd><p>Ryota Kobayashi, Shuhei Kurita, Anno Kurth, Katsunori Kitano, Kenji Mizuseki, Markus Diesmann, Barry J. Richmond, and Shigeru Shinomoto. Reconstructing neuronal circuitry from parallel spike trains. <em>Nature Communications</em>, 10(1):4468, dec 2019. <a class="reference external" href="https://doi.org/10.1038/s41467-019-12225-2">doi:10.1038/s41467-019-12225-2</a>.</p>
+</dd>
+<dt class="label" id="id11"><span class="brackets"><a class="fn-backref" href="#id2">SLS+22</a></span></dt>
+<dd><p>Lidor Spivak, Amir Levi, Hadas E. Sloin, Shirly Someck, and Eran Stark. Deconvolution improves the detection and quantification of spike transmission gain from spike trains. <em>Communications Biology</em>, 5(1):1–17, 2022. <a class="reference external" href="https://doi.org/10.1038/s42003-022-03450-5">doi:10.1038/s42003-022-03450-5</a>.</p>
+</dd>
+<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id1">SCKH04</a></span></dt>
+<dd><p>Olaf Sporns, Dante R Chialvo, Marcus Kaiser, and Claus C Hilgetag. Organization, development and function of complex brain networks. <em>Trends in cognitive sciences</em>, 8(9):418–425, 2004.</p>
+</dd>
+</dl>
 </div>
 </section>
 </section>
@@ -1195,13 +1271,13 @@ if (force === true) {
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">3. Burst Detection</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>Burst Detection</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="05_stimulus.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">5. PSTH</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>5. PSTH</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

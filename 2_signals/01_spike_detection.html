@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1. Spike Detection &#8212; MEA Book: Python Tutorial for Analyzing MEA Recording</title>
+    <title>1. 1. Spike Detection &#8212; MEA Book: Python Tutorial for Analyzing MEA Recording</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2. Spike Sorting" href="02_spike_sorting.html" />
-    <link rel="prev" title="5. PSTH" href="../1_spikes/05_stimulus.html" />
+    <link rel="next" title="2. 2. Spike Sorting" href="02_spike_sorting.html" />
+    <link rel="prev" title="5. 5. PSTH" href="../1_spikes/05_stimulus.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -124,17 +124,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../0_introduction/01_general.html">
-   1. General
+   1. 1. General
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../0_introduction/02_datasets.html">
-   2. Introducing Datasets
+   2. 2. Introducing Datasets
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../0_introduction/03_python.html">
-   3. Introducing Python
+   3. 3. Introducing Python
   </a>
  </li>
 </ul>
@@ -166,7 +166,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../1_spikes/05_stimulus.html">
-   5. PSTH
+   5. 5. PSTH
   </a>
  </li>
 </ul>
@@ -178,17 +178,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   1. Spike Detection
+   1. 1. Spike Detection
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="02_spike_sorting.html">
-   2. Spike Sorting
+   2. 2. Spike Sorting
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="03_simulation.html">
-   3. Simulation
+   3. 3. Simulation
   </a>
  </li>
 </ul>
@@ -417,12 +417,12 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   1.1. フィルタ処理
+   1.1. 1.1. フィルタ処理
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#peak-detection">
-   1.2. Peak Detection
+   1.2. 1.2. Peak Detection
   </a>
  </li>
 </ul>
@@ -446,12 +446,12 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   1.1. フィルタ処理
+   1.1. 1.1. フィルタ処理
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#peak-detection">
-   1.2. Peak Detection
+   1.2. 1.2. Peak Detection
   </a>
  </li>
 </ul>
@@ -465,9 +465,9 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="spike-detection">
-<h1>1. Spike Detection<a class="headerlink" href="#spike-detection" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">1. </span>1. Spike Detection<a class="headerlink" href="#spike-detection" title="Permalink to this headline">#</a></h1>
 <p>この章では，実際のHD-MEAで取得された信号の一部を用いて，spike検出の一例を示す．<br />
-使用するデータセットは，3×3の正方形状に隣接する9個の電極から取得された5分間の電位記録を圧縮したh5データである（サンプリング周波数 <span class="math notranslate nohighlight">\(f_s = 20 \mathrm{kHz}\)</span>）．電極の座標（<span class="math notranslate nohighlight">\(x, y\)</span>）[<span class="math notranslate nohighlight">\(\mathrm{\mu m}\)</span>]に関する情報は添付の<code class="docutils literal notranslate"><span class="pre">mapping.csv</span></code>に記録されている．</p>
+使用するデータセットは，3×3の正方形状に隣接する9個の電極から取得された5分間の電位記録を圧縮したh5データである（サンプリング周波数 <span class="math notranslate nohighlight">\(f_s = 20 \mathrm{kHz}\)</span>）．電極の座標（<span class="math notranslate nohighlight">\(x, y\)</span>）[<span class="math notranslate nohighlight">\(\mathrm{\mu m}\)</span>]に関する情報は<code class="docutils literal notranslate"><span class="pre">mapping</span></code>に記録した．</p>
 <p>h5データの取り扱いに関する詳細は，別の章で述べる．</p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
@@ -496,9 +496,10 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read signal</span>
 <span class="k">with</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">datadir</span> <span class="o">+</span> <span class="s1">&#39;data.raw.h5&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">sig</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;sig&#39;</span><span class="p">][()]</span>
+    <span class="n">mapping</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;mapping&#39;</span><span class="p">][()]</span>
     
 <span class="c1"># read electrode mapping</span>
-<span class="n">df_map</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">datadir</span> <span class="o">+</span> <span class="s1">&#39;mapping.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df_map</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span>
 
 <span class="n">n_channels</span><span class="p">,</span> <span class="n">n_frames</span> <span class="o">=</span> <span class="n">sig</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
@@ -533,7 +534,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="id1">
-<h2>1.1. フィルタ処理<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.1. </span>1.1. フィルタ処理<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <p>フィルタ前の生信号には，活動電位（spike）にとってあまり本質的ではない低周波，および高周波の成分が多く含まれている．<br />
 活動電位は大まかに1msのオーダーの現象であるため，一般には数百〜数千の帯域幅でバンドパスフィルタをかけることにより，spikeに関する情報を扱いやすくする前処理を施す．</p>
 <div class="cell docutils container">
@@ -676,8 +677,32 @@ title="Print to PDF"
 </div>
 </section>
 <section id="peak-detection">
-<h2>1.2. Peak Detection<a class="headerlink" href="#peak-detection" title="Permalink to this headline">#</a></h2>
-<p>spikeを検出する最たる手法は閾値による検出である．MEAは細胞外電位を計測するため，細胞内の電位が正に転じる活動電位は，細胞外の電極では負に反転して計測される．このため，一般には<strong>閾値を超えた負のピーク</strong>を検出する．</p>
+<h2><span class="section-number">1.2. </span>1.2. Peak Detection<a class="headerlink" href="#peak-detection" title="Permalink to this headline">#</a></h2>
+<p>MEAは細胞外電位を計測するため，細胞内の電位が正に転じる活動電位は，細胞外の電極では負に反転して計測される．ある閾値を超えた負のピークを活動電位とみなす手法が最も用いられる．<br />
+閾値は信号をみて肉眼で設定することも可能だが，スケール性を考えると自動化することが望まれる．電極によりSN比が異なるため，ノイズの大きさとの兼ね合いで最適な閾値を考える必要がある．</p>
+<p>絶対中央偏差（median absolute deviation; MAD）はデータのバラつきを評価する指標の一つであり，次のように定義される．</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{MAD} = \mathrm{median}(|X_i - \mathrm{median}(X)|)
+\]</div>
+<p>標準偏差と比較して，外れ値に対してロバストである．</p>
+<p>スパイク検出の閾値<span class="math notranslate nohighlight">\(\theta\)</span>は，<span class="math notranslate nohighlight">\(\mathrm{MAD}\)</span>の定数倍を用いる．定数は計測系のノイズレベルや，細胞の特性に応じて設定する．</p>
+<div class="math notranslate nohighlight">
+\[
+\theta = \lambda \cdot \mathrm{MAD}
+\]</div>
+<p>閾値法以外のspike検出手法として，神経細胞の活動電位波形が既知の場合（cf. spike-sorting）にテンプレートマッチングを用いて検出する手法 <span id="id2">[<a class="reference internal" href="#id14" title="Keven J. Laboy-Juárez, Seoiyoung Ahn, and Daniel E. Feldman. A normalized template matching method for improving spike detection in extracellular voltage recordings. Scientific Reports, 9(1):1–12, 2019. doi:10.1038/s41598-019-48456-y.">LJuarezAF19</a>]</span> や，機械学習モデルによりspikeとしてもっともらしい波形を評価する手法 <span id="id3">[<a class="reference internal" href="#id13" title="Jin Hyung Lee, Catalin Mitelut, Hooshmand Shokri, Ian Kinsella, Nishchal Dethe, Shenghao Wu, Kevin Li, Eduardo Blancas Reyes, Denis Turcu, Eleanor Batty, Young Joon Kim, Nora Brackbill, Alexandra Kling, Georges Goetz, E. J. Chichilnisky, David Carlson, and Liam Paninski. YASS: Yet another spike sorter applied to large-scale multi-electrode array recordings in primate retina. bioRxiv, pages 1–46, 2020. doi:10.1101/2020.03.18.997924.">LMS+20</a>]</span> がある．</p>
+<hr class="docutils" />
+<div class="docutils container" id="id4">
+<dl class="citation">
+<dt class="label" id="id14"><span class="brackets"><a class="fn-backref" href="#id2">LJuarezAF19</a></span></dt>
+<dd><p>Keven J. Laboy-Juárez, Seoiyoung Ahn, and Daniel E. Feldman. A normalized template matching method for improving spike detection in extracellular voltage recordings. <em>Scientific Reports</em>, 9(1):1–12, 2019. <a class="reference external" href="https://doi.org/10.1038/s41598-019-48456-y">doi:10.1038/s41598-019-48456-y</a>.</p>
+</dd>
+<dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id3">LMS+20</a></span></dt>
+<dd><p>Jin Hyung Lee, Catalin Mitelut, Hooshmand Shokri, Ian Kinsella, Nishchal Dethe, Shenghao Wu, Kevin Li, Eduardo Blancas Reyes, Denis Turcu, Eleanor Batty, Young Joon Kim, Nora Brackbill, Alexandra Kling, Georges Goetz, E. J. Chichilnisky, David Carlson, and Liam Paninski. YASS: Yet another spike sorter applied to large-scale multi-electrode array recordings in primate retina. <em>bioRxiv</em>, pages 1–46, 2020. <a class="reference external" href="https://doi.org/10.1101/2020.03.18.997924">doi:10.1101/2020.03.18.997924</a>.</p>
+</dd>
+</dl>
+</div>
 </section>
 </section>
 
@@ -712,13 +737,13 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">5. PSTH</p>
+            <p class="prev-next-title"><span class="section-number">5. </span>5. PSTH</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="02_spike_sorting.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">2. Spike Sorting</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>2. Spike Sorting</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

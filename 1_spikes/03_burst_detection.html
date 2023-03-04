@@ -124,17 +124,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../0_introduction/01_general.html">
-   1. General
+   1. 1. General
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../0_introduction/02_datasets.html">
-   2. Introducing Datasets
+   2. 2. Introducing Datasets
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../0_introduction/03_python.html">
-   3. Introducing Python
+   3. 3. Introducing Python
   </a>
  </li>
 </ul>
@@ -166,7 +166,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="05_stimulus.html">
-   5. PSTH
+   5. 5. PSTH
   </a>
  </li>
 </ul>
@@ -178,17 +178,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../2_signals/01_spike_detection.html">
-   1. Spike Detection
+   1. 1. Spike Detection
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../2_signals/02_spike_sorting.html">
-   2. Spike Sorting
+   2. 2. Spike Sorting
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../2_signals/03_simulation.html">
-   3. Simulation
+   3. 3. Simulation
   </a>
  </li>
 </ul>
@@ -434,7 +434,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>3. Burst Detection</h1>
+                <h1>Burst Detection</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -465,8 +465,8 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="burst-detection">
-<h1>3. Burst Detection<a class="headerlink" href="#burst-detection" title="Permalink to this headline">#</a></h1>
-<p>ラット中枢神経細胞の分散培養系による神経活動の特徴の一つは，同期バーストである．<br />
+<h1><span class="section-number">3. </span>Burst Detection<a class="headerlink" href="#burst-detection" title="Permalink to this headline">#</a></h1>
+<p>ラット中枢神経細胞の分散培養系による神経活動の特徴の一つは，同期バーストである <span id="id1">[<a class="reference internal" href="#id9" title="Daniel A. Wagenaar, Jerome Pine, and Steve M. Potter. An extremely rich repertoire of bursting patterns during the development of cortical cultures. BMC Neuroscience, 7:1–18, 2006. doi:10.1186/1471-2202-7-11.">WPP06</a>]</span>．<br />
 同期バースト（network burstまたは単にburst）は，spikeが高頻度に発火する現象が神経ネットワークの広範囲に伝達する現象を指す．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -555,9 +555,10 @@ title="Print to PDF"
 <img alt="../_images/03_burst_detection_5_0.png" src="../_images/03_burst_detection_5_0.png" />
 </div>
 </div>
+<p>バースト検知のさまざまな手法は <span id="id2">[<a class="reference internal" href="#id6" title="Ellese Cotterill and Stephen J Eglen. Burst detection methods. In Vitro Neuronal Networks: From Culturing Methods to Neuro-Technological Applications, pages 185–206, 2019.">CE19</a>]</span> でレビューされている．</p>
 <section id="thresholding-with-global-firing-rate">
-<h2>3.1. Thresholding with Global Firing Rate<a class="headerlink" href="#thresholding-with-global-firing-rate" title="Permalink to this headline">#</a></h2>
-<p>素朴な方法は，spikeの広域的な発火ヒストグラムについて，一定の閾値を超えた区間をburstとみなす方法である．<br />
+<h2><span class="section-number">3.1. </span>Thresholding with Global Firing Rate<a class="headerlink" href="#thresholding-with-global-firing-rate" title="Permalink to this headline">#</a></h2>
+<p>素朴な方法は，spikeの広域的な発火ヒストグラムについて，一定の閾値を超えた区間をburstとみなす方法である <span id="id3">[<a class="reference internal" href="#id8" title="Michela Chiappalone, A. Novellino, I. Vajda, A. Vato, S. Martinoia, and J. van Pelt. Burst detection algorithms for the analysis of spatio-temporal patterns in cortical networks of neurons. Neurocomputing, 65-66(SPEC. ISS.):653–662, 2005. doi:10.1016/j.neucom.2004.10.094.">CNV+05</a>]</span>．<br />
 サンプル間で発火率にバラつきがあるほか，同じサンプルでも広域的な発火頻度には時間的な変動があるため，閾値設定に注意を要する．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -601,7 +602,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03_burst_detection_10_0.png" src="../_images/03_burst_detection_10_0.png" />
+<img alt="../_images/03_burst_detection_11_0.png" src="../_images/03_burst_detection_11_0.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
@@ -625,18 +626,18 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03_burst_detection_11_0.png" src="../_images/03_burst_detection_11_0.png" />
+<img alt="../_images/03_burst_detection_12_0.png" src="../_images/03_burst_detection_12_0.png" />
 </div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Global Firing Rateにより検知されたburst区間は，上記のグラフのように細切れになることがある．<br />
-この際，<span class="math notranslate nohighlight">\(T_{interval}\)</span>以下の期間で連続して発生したburstは同一のburstとみなす，といった処理をはさむことが多い．</p>
+この際，<span class="math notranslate nohighlight">\(\theta_{interval}\)</span>以下の期間で連続して発生したburstは同一のburstとみなす，といった処理をはさむことが多い．</p>
 </div>
 </section>
 <section id="thresholding-with-isi">
-<h2>3.2. Thresholding with ISI<a class="headerlink" href="#thresholding-with-isi" title="Permalink to this headline">#</a></h2>
-<p>次に，ISI（inter-spike interval）を元にした代表的な手法として，ISInについて述べる．<br />
+<h2><span class="section-number">3.2. </span>Thresholding with ISI<a class="headerlink" href="#thresholding-with-isi" title="Permalink to this headline">#</a></h2>
+<p>次に，ISI（inter-spike interval）を元にした代表的な手法として，ISInについて述べる <span id="id4">[<a class="reference internal" href="#id7" title="Douglas J Bakkum, Milos Radivojevic, Urs Frey, Felix Franke, Andreas Hierlemann, and Hirokazu Takahashi. Parameters for burst detection. Frontiers in computational neuroscience, 7:193, 2014.">BRF+14</a>]</span>．<br />
 ISIを元にした手法の基本的な考えは，バースト中はISIが短くなり，バースト外ではISIが長くなるため，ISIのヒストグラムは多くの場合，二峰性（bi-modal）の分布を取るというものである．二峰性の分布における二つの山の間が，バースト内外を隔てるISIの閾値であると考える．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -730,7 +731,7 @@ ISIを元にした手法の基本的な考えは，バースト中はISIが短�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03_burst_detection_17_0.png" src="../_images/03_burst_detection_17_0.png" />
+<img alt="../_images/03_burst_detection_18_0.png" src="../_images/03_burst_detection_18_0.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
@@ -758,7 +759,7 @@ ISIを元にした手法の基本的な考えは，バースト中はISIが短�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03_burst_detection_18_0.png" src="../_images/03_burst_detection_18_0.png" />
+<img alt="../_images/03_burst_detection_19_0.png" src="../_images/03_burst_detection_19_0.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
@@ -786,8 +787,25 @@ ISIを元にした手法の基本的な考えは，バースト中はISIが短�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03_burst_detection_19_0.png" src="../_images/03_burst_detection_19_0.png" />
+<img alt="../_images/03_burst_detection_20_0.png" src="../_images/03_burst_detection_20_0.png" />
 </div>
+</div>
+<hr class="docutils" />
+<div class="docutils container" id="id5">
+<dl class="citation">
+<dt class="label" id="id7"><span class="brackets"><a class="fn-backref" href="#id4">BRF+14</a></span></dt>
+<dd><p>Douglas J Bakkum, Milos Radivojevic, Urs Frey, Felix Franke, Andreas Hierlemann, and Hirokazu Takahashi. Parameters for burst detection. <em>Frontiers in computational neuroscience</em>, 7:193, 2014.</p>
+</dd>
+<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id3">CNV+05</a></span></dt>
+<dd><p>Michela Chiappalone, A. Novellino, I. Vajda, A. Vato, S. Martinoia, and J. van Pelt. Burst detection algorithms for the analysis of spatio-temporal patterns in cortical networks of neurons. <em>Neurocomputing</em>, 65-66(SPEC. ISS.):653–662, 2005. <a class="reference external" href="https://doi.org/10.1016/j.neucom.2004.10.094">doi:10.1016/j.neucom.2004.10.094</a>.</p>
+</dd>
+<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id2">CE19</a></span></dt>
+<dd><p>Ellese Cotterill and Stephen J Eglen. Burst detection methods. <em>In Vitro Neuronal Networks: From Culturing Methods to Neuro-Technological Applications</em>, pages 185–206, 2019.</p>
+</dd>
+<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id1">WPP06</a></span></dt>
+<dd><p>Daniel A. Wagenaar, Jerome Pine, and Steve M. Potter. An extremely rich repertoire of bursting patterns during the development of cortical cultures. <em>BMC Neuroscience</em>, 7:1–18, 2006. <a class="reference external" href="https://doi.org/10.1186/1471-2202-7-11">doi:10.1186/1471-2202-7-11</a>.</p>
+</dd>
+</dl>
 </div>
 </section>
 </section>
@@ -823,13 +841,13 @@ ISIを元にした手法の基本的な考えは，バースト中はISIが短�
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">2. Interactive Visualization with Bokeh</p>
+            <p class="prev-next-title"><span class="section-number">2. </span>Interactive Visualization with Bokeh</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="04_cross_correlation.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">4. Correlation Analysis</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Correlation Analysis</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
