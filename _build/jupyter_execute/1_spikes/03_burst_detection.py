@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # 3. Burst Detection
+# # Burst Detection
 
-# ラット中枢神経細胞の分散培養系による神経活動の特徴の一つは，同期バーストである．  
-# 同期バースト（network burstまたは単にburst）は，spikeが高頻度に発火する現象が神経ネットワークの広範囲に伝達する現象を指す．  
+# ラット中枢神経細胞の分散培養系による神経活動の特徴の一つは，同期バーストである {cite}`Wagenaar2006`．同期バースト（network burstまたは単にburst）は，spikeが高頻度に発火する現象が神経ネットワークの広範囲に伝達する現象を指す．  
 
 # In[1]:
 
@@ -79,16 +78,18 @@ def rastergram(ax1: plt.Axes, ax2: plt.Axes, df: pd.DataFrame, start: float, end
 # In[4]:
 
 
-fig, (ax1, ax2) = plt.subplots(2, figsize=(16, 4), gridspec_kw={'height_ratios': [1, 3]})
+fig, (ax1, ax2) = plt.subplots(2, figsize=(12, 4), gridspec_kw={'height_ratios': [1, 3]})
 start, end = 10.0, 20.0
 rastergram(ax1=ax1, ax2=ax2, df=df_sp, start=start, end=end, bin_width=0.001)
 plt.subplots_adjust(hspace=0.2)
 plt.show()
 
 
-# ## 3.1. Thresholding with Global Firing Rate
+# バースト検知のさまざまな手法は {cite}`cotterill2019burst` でレビューされている．
 
-# 素朴な方法は，spikeの広域的な発火ヒストグラムについて，一定の閾値を超えた区間をburstとみなす方法である．  
+# ## Thresholding with Global Firing Rate
+
+# 素朴な方法は，spikeの広域的な発火頻度のヒストグラムを作成し，一定の閾値を超えた区間をburstとみなす方法である {cite}`Chiappalone2005`．  
 # サンプル間で発火率にバラつきがあるほか，同じサンプルでも広域的な発火頻度には時間的な変動があるため，閾値設定に注意を要する．
 
 # In[5]:
@@ -110,20 +111,19 @@ def detect_bursts(df: pd.DataFrame, start: float, end: float, bin_width: float, 
     return burst
 
 
-# バースト区間可視化の際は，例えばラスタープロットの上に，軸のないaxをもう一つ作って重ねると良い．
-
 # In[6]:
 
 
-fig, (ax1, ax2, ax3) = plt.subplots(3, figsize=(16, 4), gridspec_kw={'height_ratios': [1, 0.5, 3]})
+fig, (ax1, ax2, ax3) = plt.subplots(3, figsize=(12, 4), gridspec_kw={'height_ratios': [1, 0.5, 3]})
 
 start, end = 10.0, 20.0
 rastergram(ax1=ax1, ax2=ax3, df=df_sp, start=start, end=end, bin_width=0.001)
 
 thre = 10
 ax1.axhline(thre, color='r', linestyle='dashed')
-bursts = detect_bursts(df=df_sp, start=start, end=end, bin_width=0.001, thre=thre)
 
+# visualize burst
+bursts = detect_bursts(df=df_sp, start=start, end=end, bin_width=0.001, thre=thre)
 ax2.hlines(y=[0]*len(bursts), xmin=bursts[:, 0], xmax=bursts[:, 1], colors='r', linewidth=5.0)
 ax2.set_xlim(start, end)
 ax2.set_axis_off()
@@ -135,7 +135,7 @@ plt.show()
 # In[7]:
 
 
-fig, (ax1, ax2, ax3) = plt.subplots(3, figsize=(16, 4), gridspec_kw={'height_ratios': [1, 0.5, 3]})
+fig, (ax1, ax2, ax3) = plt.subplots(3, figsize=(12, 4), gridspec_kw={'height_ratios': [1, 0.5, 3]})
 
 start, end = 13.5, 14.5
 rastergram(ax1=ax1, ax2=ax3, df=df_sp, start=start, end=end, bin_width=0.001)
@@ -154,12 +154,12 @@ plt.show()
 
 # ```{note}
 # Global Firing Rateにより検知されたburst区間は，上記のグラフのように細切れになることがある．  
-# この際，$T_{interval}$以下の期間で連続して発生したburstは同一のburstとみなす，といった処理をはさむことが多い．
+# この際，$\theta_{interval}$以下の期間で連続して発生したburstは同一のburstとみなす，といった処理をはさむことが多い．
 # ```
 
-# ## 3.2. Thresholding with ISI
+# ## Thresholding with ISI
 
-# 次に，ISI（inter-spike interval）を元にした代表的な手法として，ISInについて述べる．  
+# 次に，ISI（inter-spike interval）を元にした代表的な手法として，ISInについて述べる {cite}`bakkum2014parameters`．  
 # ISIを元にした手法の基本的な考えは，バースト中はISIが短くなり，バースト外ではISIが長くなるため，ISIのヒストグラムは多くの場合，二峰性（bi-modal）の分布を取るというものである．二峰性の分布における二つの山の間が，バースト内外を隔てるISIの閾値であると考える．
 
 # In[8]:
@@ -254,7 +254,7 @@ plt.show()
 # In[11]:
 
 
-fig, (ax1, ax2, ax3) = plt.subplots(3, figsize=(16, 5), gridspec_kw={'height_ratios': [1, 0.5, 3]})
+fig, (ax1, ax2, ax3) = plt.subplots(3, figsize=(12, 5), gridspec_kw={'height_ratios': [1, 0.5, 3]})
 
 start, end = 10.0, 20.0
 detector = ISIn(df_sp.query(f'{start} <= spiketime <= {end}'))
@@ -278,7 +278,7 @@ plt.show()
 # In[12]:
 
 
-fig, (ax1, ax2, ax3) = plt.subplots(3, figsize=(16, 5), gridspec_kw={'height_ratios': [1, 0.5, 3]})
+fig, (ax1, ax2, ax3) = plt.subplots(3, figsize=(12, 5), gridspec_kw={'height_ratios': [1, 0.5, 3]})
 
 start, end = 13.0, 15.0
 detector = ISIn(df_sp.query(f'{start} <= spiketime <= {end}'))
@@ -299,8 +299,9 @@ plt.subplots_adjust(hspace=0.2)
 plt.show()
 
 
-# In[ ]:
+# ---
+# ```{bibliography}
+# :filter: docname in docnames
+# ```
 
-
-
-
+# 

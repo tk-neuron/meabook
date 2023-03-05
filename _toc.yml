@@ -6,11 +6,13 @@ root: intro
 
 parts:
   - caption: introduction
+    numbered: True
     chapters:
       - file: 0_introduction/01_general
       - file: 0_introduction/02_datasets
       - file: 0_introduction/03_python
   - caption: spikes
+    numbered: True
     chapters:
       - file: 1_spikes/01_visualization
       - file: 1_spikes/02_visualization_bokeh
@@ -18,7 +20,11 @@ parts:
       - file: 1_spikes/04_cross_correlation
       - file: 1_spikes/05_stimulus
   - caption: signals
+    numbered: True
     chapters:
       - file: 2_signals/01_spike_detection
       - file: 2_signals/02_spike_sorting
       - file: 2_signals/03_simulation
+  # - caption: appendix
+  #   chapters:
+  #     - file: references

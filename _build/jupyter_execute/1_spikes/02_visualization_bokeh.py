@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # 2. Interactive Visualization with Bokeh
+# # Interactive Visualization with Bokeh
 
 # {doc}`01_visualization`に述べたように，基本的にはmatplotlibで可視化するのが便利だが，グラフ上にマウスカーソルをかざしながら，インタラクティブ（対話式）に情報を確認したい場合もある．対話式の描画ツールとしてPlotly, Bokehなどがあるが，今回はBokehを用いた実装例を述べる．
 
@@ -33,7 +33,7 @@ from bokeh.transform import transform
 output_notebook()
 
 
-# ## 2.1. Raster Plot
+# ## Raster Plot
 
 # In[4]:
 
@@ -72,7 +72,7 @@ show(column(p1, p2))
 # 右側のツールバーにある虫眼鏡のマークから，ドラッグによりグラフの任意の部分を拡大することができる．
 # ```
 
-# ## 2.2. Electrode Mapping
+# ## Electrode Mapping
 
 # Bokehでは，マウスをホバーするとデータ点の属性を表示してくれるTooltipsという便利な機能がある．この機能を利用して，channel id等をインタラクティブに取得することができる．
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # 1. Visualization of Spike Data
+# # Visualization of Spike Data
 
 # 神経細胞はスパイクと呼ばれる活動電位によって互いに情報を交換する．神経細胞集団の電気活動を分析する上で中心となるのはスパイク時刻の情報である．多電極アレイでは，各電極についてスパイク時刻の列 (spike train) が取得される．
 # 
@@ -26,8 +26,6 @@ df_sp = pd.read_csv(datadir + 'spikes.csv', index_col=0)
 
 
 # `df_map`は各電極の情報（x, y座標）を格納し，`df_sp`は各スパイクの情報（検知された電極，検知された時刻）を格納する．  
-# 
-# `df_map` stores each electrode's information (x, y), and `df_sp` stores information on the electrode and time when each spike was detected.
 
 # In[3]:
 
@@ -36,11 +34,9 @@ display(df_map.head())
 display(df_sp.head())
 
 
-# ## 1.1. Raster Plot
+# ## Raster Plot
 
 # スパイク時系列 (spike train) は, スパイク時刻と発生電極を両軸に取ったグラフ（ラスタープロットと呼ばれる）により可視化できる.  
-#  
-# The spike train can be visualized as a figure with the spike time and the generating electrode on both axes, which is called a raster plot.
 
 # In[4]:
 
@@ -69,7 +65,7 @@ plt.locator_params(axis='x', nbins=4)
 plt.show()
 
 
-# ## 1.2. Global Firing Rate
+# ## Global Firing Rate
 
 # 電極全体での発火頻度（global firing rate）の時間的な推移を，ラスタープロットに重ねて表示したいので，発火時刻についてヒストグラムをとる．
 
@@ -142,7 +138,7 @@ plt.subplots_adjust(hspace=0.2)
 plt.show()
 
 
-# ## 1.3. Electrode Mapping
+# ## Electrode Mapping
 
 # 次に，MEA上の各電極について神経活動に関する統計量（発火率，平均振幅）を取得し，ヒートマップにより可視化する．
 
@@ -208,7 +204,7 @@ plt.locator_params(axis='y', nbins=4)
 plt.show() 
 
 
-# ## 1.4. Propagation
+# ## Propagation
 
 # matplotlib animationを用いて，spikeが電極上で伝播していく様子を可視化するコードの例を示す．  
 # 

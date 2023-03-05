@@ -1,9 +1,15 @@
-# 3. Introducing Python
+# Introducing Python
 
-## 3.1. About Python Language
+## About Python Language
 
-## 3.2. Environment Setup
+## Environment Setup
 
-## 3.3. Learning Resources
+### 仮想環境
 
-## 3.4. Practices
+## Tools
+
+### Git
+
+### Google Colaboratory
+
+## Practices

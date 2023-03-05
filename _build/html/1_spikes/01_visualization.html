@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="2. Interactive Visualization with Bokeh" href="02_visualization_bokeh.html" />
-    <link rel="prev" title="3. Introducing Python" href="../0_introduction/03_python.html" />
+    <link rel="prev" title="3. 3. Introducing Python" href="../0_introduction/03_python.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -122,17 +122,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../0_introduction/01_general.html">
-   1. General
+   1. 1. General
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../0_introduction/02_datasets.html">
-   2. Introducing Datasets
+   2. 2. Introducing Datasets
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../0_introduction/03_python.html">
-   3. Introducing Python
+   3. 3. Introducing Python
   </a>
  </li>
 </ul>
@@ -164,7 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="05_stimulus.html">
-   5. PSTH
+   5. 5. PSTH
   </a>
  </li>
 </ul>
@@ -176,17 +176,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../2_signals/01_spike_detection.html">
-   1. Spike Detection
+   1. 1. Spike Detection
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../2_signals/02_spike_sorting.html">
-   2. Spike Sorting
+   2. 2. Spike Sorting
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../2_signals/03_simulation.html">
-   3. Simulation
+   3. 3. Simulation
   </a>
  </li>
 </ul>
@@ -442,7 +442,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>1. Visualization of Spike Data</h1>
+                <h1>Visualization of Spike Data</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -483,7 +483,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="visualization-of-spike-data">
-<h1>1. Visualization of Spike Data<a class="headerlink" href="#visualization-of-spike-data" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">1. </span>Visualization of Spike Data<a class="headerlink" href="#visualization-of-spike-data" title="Permalink to this headline">#</a></h1>
 <p>神経細胞はスパイクと呼ばれる活動電位によって互いに情報を交換する．神経細胞集団の電気活動を分析する上で中心となるのはスパイク時刻の情報である．多電極アレイでは，各電極についてスパイク時刻の列 (spike train) が取得される．</p>
 <p>解析の手始めに，可視化によってなるべく生の現象に近い状態でデータを観察する．</p>
 <div class="cell docutils container">
@@ -507,7 +507,6 @@ title="Print to PDF"
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">df_map</span></code>は各電極の情報（x, y座標）を格納し，<code class="docutils literal notranslate"><span class="pre">df_sp</span></code>は各スパイクの情報（検知された電極，検知された時刻）を格納する．</p>
-<p><code class="docutils literal notranslate"><span class="pre">df_map</span></code> stores each electrode’s information (x, y), and <code class="docutils literal notranslate"><span class="pre">df_sp</span></code> stores information on the electrode and time when each spike was detected.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">df_map</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
@@ -631,9 +630,8 @@ title="Print to PDF"
 </div></div></div>
 </div>
 <section id="raster-plot">
-<h2>1.1. Raster Plot<a class="headerlink" href="#raster-plot" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.1. </span>Raster Plot<a class="headerlink" href="#raster-plot" title="Permalink to this headline">#</a></h2>
 <p>スパイク時系列 (spike train) は, スパイク時刻と発生電極を両軸に取ったグラフ（ラスタープロットと呼ばれる）により可視化できる.</p>
-<p>The spike train can be visualized as a figure with the spike time and the generating electrode on both axes, which is called a raster plot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
@@ -671,7 +669,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="global-firing-rate">
-<h2>1.2. Global Firing Rate<a class="headerlink" href="#global-firing-rate" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.2. </span>Global Firing Rate<a class="headerlink" href="#global-firing-rate" title="Permalink to this headline">#</a></h2>
 <p>電極全体での発火頻度（global firing rate）の時間的な推移を，ラスタープロットに重ねて表示したいので，発火時刻についてヒストグラムをとる．</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -749,7 +747,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="electrode-mapping">
-<h2>1.3. Electrode Mapping<a class="headerlink" href="#electrode-mapping" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.3. </span>Electrode Mapping<a class="headerlink" href="#electrode-mapping" title="Permalink to this headline">#</a></h2>
 <p>次に，MEA上の各電極について神経活動に関する統計量（発火率，平均振幅）を取得し，ヒートマップにより可視化する．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -895,7 +893,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="propagation">
-<h2>1.4. Propagation<a class="headerlink" href="#propagation" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.4. </span>Propagation<a class="headerlink" href="#propagation" title="Permalink to this headline">#</a></h2>
 <p>matplotlib animationを用いて，spikeが電極上で伝播していく様子を可視化するコードの例を示す．</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1147,42 +1145,42 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_imgab8b27f8c63f4cb281cbb428cf0847b9">
+  <img id="_anim_img00d606a2f9fc4c7e8fe6154b6fc00e19">
   <div class="anim-controls">
-    <input id="_anim_sliderab8b27f8c63f4cb281cbb428cf0847b9" type="range" class="anim-slider"
+    <input id="_anim_slider00d606a2f9fc4c7e8fe6154b6fc00e19" type="range" class="anim-slider"
            name="points" min="0" max="1" step="1" value="0"
-           oninput="animab8b27f8c63f4cb281cbb428cf0847b9.set_frame(parseInt(this.value));">
+           oninput="anim00d606a2f9fc4c7e8fe6154b6fc00e19.set_frame(parseInt(this.value));">
     <div class="anim-buttons">
-      <button title="Decrease speed" aria-label="Decrease speed" onclick="animab8b27f8c63f4cb281cbb428cf0847b9.slower()">
+      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim00d606a2f9fc4c7e8fe6154b6fc00e19.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" aria-label="First frame" onclick="animab8b27f8c63f4cb281cbb428cf0847b9.first_frame()">
+      <button title="First frame" aria-label="First frame" onclick="anim00d606a2f9fc4c7e8fe6154b6fc00e19.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" aria-label="Previous frame" onclick="animab8b27f8c63f4cb281cbb428cf0847b9.previous_frame()">
+      <button title="Previous frame" aria-label="Previous frame" onclick="anim00d606a2f9fc4c7e8fe6154b6fc00e19.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" aria-label="Play backwards" onclick="animab8b27f8c63f4cb281cbb428cf0847b9.reverse_animation()">
+      <button title="Play backwards" aria-label="Play backwards" onclick="anim00d606a2f9fc4c7e8fe6154b6fc00e19.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" aria-label="Pause" onclick="animab8b27f8c63f4cb281cbb428cf0847b9.pause_animation()">
+      <button title="Pause" aria-label="Pause" onclick="anim00d606a2f9fc4c7e8fe6154b6fc00e19.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" aria-label="Play" onclick="animab8b27f8c63f4cb281cbb428cf0847b9.play_animation()">
+      <button title="Play" aria-label="Play" onclick="anim00d606a2f9fc4c7e8fe6154b6fc00e19.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" aria-label="Next frame" onclick="animab8b27f8c63f4cb281cbb428cf0847b9.next_frame()">
+      <button title="Next frame" aria-label="Next frame" onclick="anim00d606a2f9fc4c7e8fe6154b6fc00e19.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" aria-label="Last frame" onclick="animab8b27f8c63f4cb281cbb428cf0847b9.last_frame()">
+      <button title="Last frame" aria-label="Last frame" onclick="anim00d606a2f9fc4c7e8fe6154b6fc00e19.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" aria-label="Increase speed" onclick="animab8b27f8c63f4cb281cbb428cf0847b9.faster()">
+      <button title="Increase speed" aria-label="Increase speed" onclick="anim00d606a2f9fc4c7e8fe6154b6fc00e19.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_selectab8b27f8c63f4cb281cbb428cf0847b9"
+    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select00d606a2f9fc4c7e8fe6154b6fc00e19"
           class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_ab8b27f8c63f4cb281cbb428cf0847b9"
+      <input type="radio" name="state" value="once" id="_anim_radio1_00d606a2f9fc4c7e8fe6154b6fc00e19"
              >
-      <label for="_anim_radio1_ab8b27f8c63f4cb281cbb428cf0847b9">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_ab8b27f8c63f4cb281cbb428cf0847b9"
+      <label for="_anim_radio1_00d606a2f9fc4c7e8fe6154b6fc00e19">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_00d606a2f9fc4c7e8fe6154b6fc00e19"
              checked>
-      <label for="_anim_radio2_ab8b27f8c63f4cb281cbb428cf0847b9">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_ab8b27f8c63f4cb281cbb428cf0847b9"
+      <label for="_anim_radio2_00d606a2f9fc4c7e8fe6154b6fc00e19">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_00d606a2f9fc4c7e8fe6154b6fc00e19"
              >
-      <label for="_anim_radio3_ab8b27f8c63f4cb281cbb428cf0847b9">Reflect</label>
+      <label for="_anim_radio3_00d606a2f9fc4c7e8fe6154b6fc00e19">Reflect</label>
     </form>
   </div>
 </div>
@@ -1192,9 +1190,9 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_imgab8b27f8c63f4cb281cbb428cf0847b9";
-    var slider_id = "_anim_sliderab8b27f8c63f4cb281cbb428cf0847b9";
-    var loop_select_id = "_anim_loop_selectab8b27f8c63f4cb281cbb428cf0847b9";
+    var img_id = "_anim_img00d606a2f9fc4c7e8fe6154b6fc00e19";
+    var slider_id = "_anim_slider00d606a2f9fc4c7e8fe6154b6fc00e19";
+    var loop_select_id = "_anim_loop_select00d606a2f9fc4c7e8fe6154b6fc00e19";
     var frames = new Array(100);
 
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABGAAAAK8CAYAAACgIsnHAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
@@ -44899,7 +44897,7 @@ MAAAAACJCTAAAAAAif1/gYrpVunHUooAAAAASUVORK5CYII=\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        animab8b27f8c63f4cb281cbb428cf0847b9 = new Animation(frames, img_id, slider_id, 65.0,
+        anim00d606a2f9fc4c7e8fe6154b6fc00e19 = new Animation(frames, img_id, slider_id, 65.0,
                                  loop_select_id);
     }, 0);
   })()
@@ -44940,13 +44938,13 @@ MAAAAACJCTAAAAAAif1/gYrpVunHUooAAAAASUVORK5CYII=\
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">3. Introducing Python</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>3. Introducing Python</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="02_visualization_bokeh.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">2. Interactive Visualization with Bokeh</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Interactive Visualization with Bokeh</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

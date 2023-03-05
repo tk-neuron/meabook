@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="../_static/icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -127,12 +129,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../0_introduction/02_datasets.html">
-   2. Datasets
+   2. Introducing Datasets
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../0_introduction/03_python.html">
-   3. Python
+   3. Introducing Python
   </a>
  </li>
 </ul>
@@ -159,12 +161,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../1_spikes/04_cross_correlation.html">
-   4. Cross-Correlation
+   4. Correlation Analysis
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../1_spikes/05_stimulus.html">
-   5. Stimulus
+   5. PSTH
   </a>
  </li>
 </ul>
@@ -391,23 +393,80 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#waveform-extraction">
+   2.1. Waveform Extraction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-extraction">
+   2.2. Feature Extraction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#template-matching">
+   2.3. Template Matching
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>2. Spike Sorting</h1>
+                <h1>Spike Sorting</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#waveform-extraction">
+   2.1. Waveform Extraction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-extraction">
+   2.2. Feature Extraction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#template-matching">
+   2.3. Template Matching
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -416,7 +475,376 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="spike-sorting">
-<h1>2. Spike Sorting<a class="headerlink" href="#spike-sorting" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">2. </span>Spike Sorting<a class="headerlink" href="#spike-sorting" title="Permalink to this headline">#</a></h1>
+<p>HD-MEAの各電極で観測される信号には，複数の細胞からの信号が混在している．また，<a class="reference internal" href="01_spike_detection.html"><span class="doc">Spike Detection</span></a>でみたように，単一の神経細胞の信号が複数の電極にまたがって観測される．単一の神経細胞の発火時刻に関する情報を得るには，複数細胞の活動電位が混在した信号を，統計処理により個々の細胞の信号に分離する操作が必要である．これをspike sortingと呼ぶ．</p>
+<p>以下の画像は，HD-MEA上に培養された神経細胞を，神経突起のマーカーであるMAP2により免疫染色し，電気活動と重ね合わせた図である．<span id="id1">[<a class="reference internal" href="#id13" title="Jan Müller, Marco Ballini, Paolo Livi, Yihui Chen, Milos Radivojevic, Amir Shadmani, Vijay Viswam, Ian L Jones, Michele Fiscella, Roland Diggelmann, and others. High-resolution cmos mea platform to study neurons at subcellular, cellular, and network levels. Lab on a Chip, 15(13):2767–2780, 2015.">MullerBL+15</a>]</span>より引用した．</p>
+<img src="https://pubs.rsc.org/image/article/2015/lc/c5lc00133a/c5lc00133a-f4_hi-res.gif" width=600 title="Electrical activity superimposed to a MAP2 staining of the neurons."><p>図上には神経細胞が3つ存在する．電極3を例にとると，3つの神経細胞の信号が混在しているものの，各神経細胞の空間的な分布が異なるために，spike波形の形状や振幅が異なることがわかる．<strong>神経細胞により各電極で観測されるspike波形の形状が異なる</strong>という前提に立ち，spike波形を統計的にクラスタリングすることにより，各細胞（<strong>unit</strong>と呼ばれる）の信号を推定することが可能である．</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">h5py</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">butter</span><span class="p">,</span> <span class="n">filtfilt</span><span class="p">,</span> <span class="n">find_peaks</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1.anchored_artists</span> <span class="kn">import</span> <span class="n">AnchoredSizeBar</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">200</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">butter_bandpass</span><span class="p">(</span><span class="n">lowcut</span><span class="p">,</span> <span class="n">highcut</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+    <span class="n">nyq</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">fs</span>
+    <span class="n">low</span> <span class="o">=</span> <span class="n">lowcut</span> <span class="o">/</span> <span class="n">nyq</span>
+    <span class="n">high</span> <span class="o">=</span> <span class="n">highcut</span> <span class="o">/</span> <span class="n">nyq</span>
+    <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">butter</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="p">[</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">],</span> <span class="n">btype</span><span class="o">=</span><span class="s1">&#39;band&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+
+<span class="k">def</span> <span class="nf">bandpass_filter</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">lowcut</span><span class="p">,</span> <span class="n">highcut</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>    
+    <span class="k">if</span> <span class="n">sig</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">sig</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+        
+    <span class="n">sig</span> <span class="o">=</span> <span class="p">(</span><span class="n">sig</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># offset with average</span>
+    <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">butter_bandpass</span><span class="p">(</span><span class="n">lowcut</span><span class="p">,</span> <span class="n">highcut</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">filtfilt</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>  <span class="c1"># zero-phase filter</span>
+
+<span class="k">def</span> <span class="nf">peak_detection</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">thr</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+    <span class="n">peaks</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">find_peaks</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">sig</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">thr</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="n">distance</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">peaks</span>
+
+<span class="k">def</span> <span class="nf">thr_mad</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">7</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">stats</span><span class="o">.</span><span class="n">median_abs_deviation</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span> <span class="o">*</span> <span class="n">n</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datadir</span> <span class="o">=</span> <span class="s1">&#39;../datasets/04/&#39;</span>
+<span class="n">fs</span> <span class="o">=</span> <span class="mi">20000</span>
+
+<span class="c1"># read signal</span>
+<span class="k">with</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">datadir</span> <span class="o">+</span> <span class="s1">&#39;data.raw.h5&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">sig</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;sig&#39;</span><span class="p">][()]</span>
+    <span class="n">mapping</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;mapping&#39;</span><span class="p">][()]</span>
+    
+<span class="c1"># read electrode mapping</span>
+<span class="n">df_map</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span>
+
+<span class="n">n_channels</span><span class="p">,</span> <span class="n">n_frames</span> <span class="o">=</span> <span class="n">sig</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="c1"># filter signal</span>
+<span class="n">sig</span> <span class="o">=</span> <span class="n">bandpass_filter</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">lowcut</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">highcut</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">amps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># amplitude range for each channel</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="waveform-extraction">
+<h2><span class="section-number">2.1. </span>Waveform Extraction<a class="headerlink" href="#waveform-extraction" title="Permalink to this headline">#</a></h2>
+<p>まず，単一の電極についてピーク検出し，spikeの波形を抽出する．ピーク時刻（spike時刻）を<span class="math notranslate nohighlight">\(t_s\)</span> [ms]とし，次の区間で信号の波形を取り出す．</p>
+<div class="math notranslate nohighlight">
+\[
+[t_s - t_{pre}, \ t_s + t_{post}]
+\]</div>
+<p>本ノートブックでは，<span class="math notranslate nohighlight">\(t_{pre}=1, t_{post}=2\)</span> [ms]とする．
+サンプリング周波数<span class="math notranslate nohighlight">\(f_s=20 \mathrm{kHz}\)</span>とすると，抽出される信号の次元は<span class="math notranslate nohighlight">\((t_{pre} + t_{post}) \cdot f_s\)</span>である．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">extract_waveforms</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">peaks</span><span class="p">,</span> <span class="n">n_pre</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">n_post</span><span class="o">=</span><span class="mi">40</span><span class="p">):</span>
+    <span class="n">sig</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+    <span class="n">n_channels</span><span class="p">,</span> <span class="n">n_frames</span> <span class="o">=</span> <span class="n">sig</span><span class="o">.</span><span class="n">shape</span>
+
+    <span class="n">peaks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">peaks</span><span class="p">)</span>
+    <span class="n">peaks_</span> <span class="o">=</span> <span class="n">peaks</span><span class="p">[(</span><span class="n">n_pre</span> <span class="o">&lt;=</span> <span class="n">peaks</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">peaks</span> <span class="o">&lt;=</span> <span class="n">n_frames</span> <span class="o">-</span> <span class="n">n_post</span><span class="p">)]</span>  <span class="c1"># waveforms must be within data range</span>
+    <span class="n">waveforms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">sig</span><span class="p">[:,</span> <span class="n">peak</span> <span class="o">-</span> <span class="n">n_pre</span><span class="p">:</span> <span class="n">peak</span> <span class="o">+</span> <span class="n">n_post</span><span class="p">]</span> <span class="k">for</span> <span class="n">peak</span> <span class="ow">in</span> <span class="n">peaks_</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">peaks_</span><span class="p">,</span> <span class="n">waveforms</span>
+
+
+<span class="k">def</span> <span class="nf">concat_waveforms</span><span class="p">(</span><span class="n">waveforms</span><span class="p">):</span>
+    <span class="n">waveforms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_3d</span><span class="p">(</span><span class="n">waveforms</span><span class="p">)</span>
+    <span class="n">n_peaks</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">,</span> <span class="n">n_frames</span> <span class="o">=</span> <span class="n">waveforms</span><span class="o">.</span><span class="n">shape</span>
+    <span class="k">return</span> <span class="n">waveforms</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_channels</span> <span class="o">*</span> <span class="n">n_frames</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>最大振幅をもつ電極でspike検出し，spike周辺の波形を抽出する．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># spike detection at the channel with maximum amplitude range</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">sig</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">amps</span><span class="p">)]</span>
+<span class="n">peaks</span> <span class="o">=</span> <span class="n">peak_detection</span><span class="p">(</span><span class="n">sig</span><span class="o">=</span><span class="n">s</span><span class="p">,</span> <span class="n">thr</span><span class="o">=</span><span class="n">thr_mad</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="n">distance</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_pre</span><span class="p">,</span> <span class="n">t_post</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>  <span class="c1"># ms</span>
+<span class="n">n_pre</span><span class="p">,</span> <span class="n">n_post</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_pre</span> <span class="o">*</span> <span class="n">fs</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_post</span> <span class="o">*</span> <span class="n">fs</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">t_pre</span><span class="p">,</span> <span class="n">t_post</span><span class="p">,</span> <span class="mi">1000</span> <span class="o">/</span> <span class="n">fs</span><span class="p">)</span>
+
+<span class="n">peaks</span><span class="p">,</span> <span class="n">waveforms</span> <span class="o">=</span> <span class="n">extract_waveforms</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">peaks</span><span class="p">,</span> <span class="n">n_pre</span><span class="p">,</span> <span class="n">n_post</span><span class="p">)</span>
+<span class="n">waveforms</span> <span class="o">=</span> <span class="n">concat_waveforms</span><span class="p">(</span><span class="n">waveforms</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>抽出された波形をプロットすると次のようになる．振幅の異なるさまざまなspike波形が混在することがわかる．また，<span class="math notranslate nohighlight">\(t=0\)</span>だけではなく，<span class="math notranslate nohighlight">\(t&gt;1\)</span>の領域において別のspikeが重なった波形が存在することがわかる．</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># randomly sample n_samples waveforms</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">waveform</span> <span class="ow">in</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">waveforms</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">waveform</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;#C0C0C0&#39;</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time [ms]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;amplitude [$\mathrm{\mu V}$]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">locator_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">nbins</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02_spike_sorting_15_0.png" src="../_images/02_spike_sorting_15_0.png" />
+</div>
+</div>
+</section>
+<section id="feature-extraction">
+<h2><span class="section-number">2.2. </span>Feature Extraction<a class="headerlink" href="#feature-extraction" title="Permalink to this headline">#</a></h2>
+<p>次のステップでは，抽出された波形（<strong>snippets</strong>と呼ぶ）について，何らかの特徴量を抽出し，クラスタを推定する．<br />
+解釈性の高い特徴量としては，振幅（amplitude）やpeak-to-valley widthなどが挙げられる．一方で特徴抽出を統計的に行う場合，PCA（主成分分析）やt-SNE, UMAP等の次元圧縮手法を用いる．本ノートではPCAを例にした解析を述べる．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">DBSCAN</span><span class="p">,</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">sklearn.mixture</span> <span class="kn">import</span> <span class="n">GaussianMixture</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">waveforms</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">waveforms_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">components_</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>抽出された<span class="math notranslate nohighlight">\((t_{pre} + t_{post}) \cdot f_s = 60\)</span>次元の各波形を，PCAにより2次元に圧縮した結果が次の通りである．今回の例を肉眼で観察した場合，2クラスタが最適であると考えられる．</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">waveforms_pca</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">waveforms_pca</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;PCA 1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;PCA 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">locator_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">nbins</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02_spike_sorting_21_0.png" src="../_images/02_spike_sorting_21_0.png" />
+</div>
+</div>
+<p>PCAの結果に基づき，以下で3種類のクラスタリング手法 —— k-means，GMM（Gaussian Mixture Model; 混合ガウスモデル），DBSCAN（density-based clustering; 密度ベースクラスタリング）を試行し，クラスタリング結果を比較する．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_clusters</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">waveforms</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">labels</span> <span class="o">==</span> <span class="n">i</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">waveforms</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">][</span><span class="n">idx</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">waveforms</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">][</span><span class="n">idx</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">km</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">waveforms_pca</span><span class="p">)</span>
+<span class="n">plot_clusters</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">waveforms</span><span class="o">=</span><span class="n">waveforms_pca</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+
+<span class="n">gm</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">waveforms_pca</span><span class="p">)</span>
+<span class="n">plot_clusters</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">waveforms</span><span class="o">=</span><span class="n">waveforms_pca</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">gm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">waveforms_pca</span><span class="p">))</span>
+
+<span class="n">dc</span> <span class="o">=</span> <span class="n">DBSCAN</span><span class="p">(</span><span class="n">eps</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">min_samples</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">waveforms_pca</span><span class="p">)</span>
+<span class="n">plot_clusters</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">waveforms</span><span class="o">=</span><span class="n">waveforms_pca</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">dc</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+
+<span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;k-means&#39;</span><span class="p">,</span> <span class="s1">&#39;Gaussian Mixture&#39;</span><span class="p">,</span> <span class="s1">&#39;DBSCAN&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">titles</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02_spike_sorting_24_0.png" src="../_images/02_spike_sorting_24_0.png" />
+</div>
+</div>
+<p>k-meansは各クラスタの分散が異なるケースに不向きであるため，左のクラスタがうまく分離できていない．一方で，GMMとDBSCANの結果は，今回のケースでは人間の直感と一致する（ただしパラメタのチューニングが適切になされているという前提がある）．</p>
+<p>その他のクラスタリング手法を含めた各手法の比較や特徴については，scikit-learnのウェブサイトが参考になる．<br />
+<a class="reference external" href="https://scikit-learn.org/stable/modules/clustering.html">https://scikit-learn.org/stable/modules/clustering.html</a></p>
+<p>spike-sortingを自動化する場合，クラスタ数などのパラメタをどのように決定するかという課題がある．k-means, GMMではクラスタ数を自動で決める必要があり，情報量基準やエルボー法といったプラクティスがある．k-meansの場合，BICを用いて拡張された手法であるx-meansを用いるという手もある．</p>
+<p>DBSCANは，<code class="docutils literal notranslate"><span class="pre">eps</span></code>, <code class="docutils literal notranslate"><span class="pre">min_samples</span></code>の二つのパラメタを決めれば，クラスタ数が自動で決定される上，外れ値を除去できるという性質を持つ．本ノートではDBSCANを例に解析を進める．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># clustering</span>
+<span class="n">dc</span> <span class="o">=</span> <span class="n">DBSCAN</span><span class="p">(</span><span class="n">eps</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">min_samples</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">waveforms_pca</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">labels_</span>
+<span class="n">n_clusters</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="c1"># plotting for each unit</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_clusters</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">n_clusters</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_clusters</span><span class="p">):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;unit </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">labels</span> <span class="o">==</span> <span class="n">i</span><span class="p">)</span>
+    
+    <span class="c1"># plot each waveform</span>
+    <span class="k">for</span> <span class="n">waveform</span> <span class="ow">in</span> <span class="n">waveforms</span><span class="p">[</span><span class="n">idx</span><span class="p">]:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">waveform</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;#C0C0C0&#39;</span><span class="p">)</span>
+        
+    <span class="c1"># plot averaged waveform</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">waveforms</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;C</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time [ms]&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time [ms]&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;amplitude [$\mathrm{\mu V}$]&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">locator_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">nbins</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02_spike_sorting_26_0.png" src="../_images/02_spike_sorting_26_0.png" />
+</div>
+</div>
+<p>クラスタリング結果に基づき，各クラスタに属する波形，および加算平均波形をプロットした．クラスタリング結果が正しいと仮定した場合，加算平均波形は単一細胞の波形を忠実に表しているため，<strong>テンプレート</strong> (template)と呼ぶ．</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>unit 0は振幅が大きく，unit 1は振幅が小さい．振幅の小さなunit 1は，SN比が相対的に低いため，特徴空間上でばらつきが大きい．unit 0の信頼性はunit 1と比較して高いが，unit 1については電極から離れたいくつかの細胞の信号が分離しきれていない可能性もある．実践的には，振幅の大きなunit 0のみを抽出し，unit 1は解析対象としない，などの判断をしても良いだろう．</p>
+</div>
+<p>以上では，単一の電極の信号のみを用いてspike-sortingしたが，以下では隣接する9つの全電極を用いて同様の解析を行う．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">peaks</span><span class="p">,</span> <span class="n">waveforms</span> <span class="o">=</span> <span class="n">extract_waveforms</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">peaks</span><span class="p">,</span> <span class="n">n_pre</span><span class="p">,</span> <span class="n">n_post</span><span class="p">)</span>
+<span class="n">waveforms_concat</span> <span class="o">=</span> <span class="n">concat_waveforms</span><span class="p">(</span><span class="n">waveforms</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">waveforms</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">waveforms_concat</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2595, 9, 60)
+(2595, 540)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">waveforms_concat</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">waveforms_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">components_</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc</span> <span class="o">=</span> <span class="n">DBSCAN</span><span class="p">(</span><span class="n">eps</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">min_samples</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">waveforms_pca</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">labels_</span>
+<span class="n">n_clusters</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># units</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_clusters</span><span class="p">):</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">labels</span> <span class="o">==</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">waveforms_pca</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">][</span><span class="n">idx</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">waveforms_pca</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">][</span><span class="n">idx</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;unit </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># outliers are labeled as -1</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">labels</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">waveforms_pca</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">][</span><span class="n">idx</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">waveforms_pca</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">][</span><span class="n">idx</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;noise&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;PCA 1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;PCA 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.01</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02_spike_sorting_31_0.png" src="../_images/02_spike_sorting_31_0.png" />
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">n_clusters</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_clusters</span><span class="p">):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;unit </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    
+    <span class="n">idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">labels</span> <span class="o">==</span> <span class="n">i</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">waveform</span> <span class="ow">in</span> <span class="n">waveforms_concat</span><span class="p">[</span><span class="n">idx</span><span class="p">]:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">waveform</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;#C0C0C0&#39;</span><span class="p">)</span>
+        
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">waveforms_concat</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;C</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    
+    <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">9</span><span class="o">*</span><span class="mi">60</span><span class="p">,</span> <span class="mi">60</span><span class="p">),</span> <span class="n">ymin</span><span class="o">=</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="n">ymax</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02_spike_sorting_32_0.png" src="../_images/02_spike_sorting_32_0.png" />
+</div>
+</div>
+<p>templateを9つの電極における信号を横に連結した形で表示した．各点線は電極の切り替わりを示す．先ほど単一の電極でspike-sortingした際に用いた電極は，左から4番目の電極である．<br />
+先ほどのsortingでは，unit 1とunit 2が同一のクラスタとして推定されたが，左から3番目の電極において振幅が大きなneuronであるunit 1を取りこぼしていたことになる．</p>
+<p>このように，単一電極におけるspike波形ではなく，複数の電極にまたがったspike波形の空間的な分布の違いを活用すると，sortingの精度が向上することがわかる．</p>
+</section>
+<section id="template-matching">
+<h2><span class="section-number">2.3. </span>Template Matching<a class="headerlink" href="#template-matching" title="Permalink to this headline">#</a></h2>
+<p>上記のspike-sortingで抽出したテンプレートを用いて，spike検出をneuronごとにやり直す例を述べる．</p>
+<p>この方法が有効なケースは，例えば次の通りである．長期にわたる計測で全データにおけるクラスタリングが困難な場合，一部の計測のみを用いてテンプレートを作成し，残りは計算量の少ないテンプレートマッチングでneuronのspike時刻を割り当てれば，同じneuronを長期にわたって追跡することが可能である．</p>
+<p>まず，spike-sorting同様にspike検出を行い，波形を抽出する．その後，テンプレートと抽出された各波形のコサイン類似度を取り，類似度の閾値を決め，閾値以上の類似度を持つ波形を該当ニューロンに割り当てる．</p>
+<hr class="docutils" />
+<div class="docutils container" id="id2">
+<dl class="citation">
+<dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id1">MullerBL+15</a></span></dt>
+<dd><p>Jan Müller, Marco Ballini, Paolo Livi, Yihui Chen, Milos Radivojevic, Amir Shadmani, Vijay Viswam, Ian L Jones, Michele Fiscella, Roland Diggelmann, and others. High-resolution cmos mea platform to study neurons at subcellular, cellular, and network levels. <em>Lab on a Chip</em>, 15(13):2767–2780, 2015.</p>
+</dd>
+</dl>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -450,13 +878,13 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">1. Spike Detection</p>
+            <p class="prev-next-title"><span class="section-number">1. </span>Spike Detection</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="03_simulation.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">3. Simulation</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Simulation</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
