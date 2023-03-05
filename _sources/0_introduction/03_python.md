@@ -11,5 +11,3 @@
 ### Git
 
 ### Google Colaboratory
-
-## Practices
