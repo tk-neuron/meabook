@@ -478,8 +478,8 @@ title="Print to PDF"
 <h1><span class="section-number">2. </span>Spike Sorting<a class="headerlink" href="#spike-sorting" title="Permalink to this headline">#</a></h1>
 <p>HD-MEAの各電極で観測される信号には，複数の細胞からの信号が混在している．また，<a class="reference internal" href="01_spike_detection.html"><span class="doc">Spike Detection</span></a>でみたように，単一の神経細胞の信号が複数の電極にまたがって観測される．単一の神経細胞の発火時刻に関する情報を得るには，複数細胞の活動電位が混在した信号を，統計処理により個々の細胞の信号に分離する操作が必要である．これをspike sortingと呼ぶ．</p>
 <p>以下の画像は，HD-MEA上に培養された神経細胞を，神経突起のマーカーであるMAP2により免疫染色し，電気活動と重ね合わせた図である．<span id="id1">[<a class="reference internal" href="#id13" title="Jan Müller, Marco Ballini, Paolo Livi, Yihui Chen, Milos Radivojevic, Amir Shadmani, Vijay Viswam, Ian L Jones, Michele Fiscella, Roland Diggelmann, and others. High-resolution cmos mea platform to study neurons at subcellular, cellular, and network levels. Lab on a Chip, 15(13):2767–2780, 2015.">MullerBL+15</a>]</span>より引用した．</p>
-<p>図上には神経細胞が3つ存在する．電極3を例にとると，3つの神経細胞の信号が混在しているものの，各神経細胞の空間的な分布が異なるために，spike波形の形状や振幅が異なることがわかる．<strong>神経細胞により各電極で観測されるspike波形の形状が異なる</strong>という前提に立ち，spike波形を統計的にクラスタリングすることにより，各細胞（<strong>unit</strong>と呼ばれる）の信号を推定することが可能である．</p>
-<img src="https://pubs.rsc.org/image/article/2015/lc/c5lc00133a/c5lc00133a-f4_hi-res.gif" width=600 title="Electrical activity superimposed to a MAP2 staining of the neurons."><div class="cell tag_hide-cell docutils container">
+<img src="https://pubs.rsc.org/image/article/2015/lc/c5lc00133a/c5lc00133a-f4_hi-res.gif" width=600 title="Electrical activity superimposed to a MAP2 staining of the neurons."><p>図上には神経細胞が3つ存在する．電極3を例にとると，3つの神経細胞の信号が混在しているものの，各神経細胞の空間的な分布が異なるために，spike波形の形状や振幅が異なることがわかる．<strong>神経細胞により各電極で観測されるspike波形の形状が異なる</strong>という前提に立ち，spike波形を統計的にクラスタリングすることにより，各細胞（<strong>unit</strong>と呼ばれる）の信号を推定することが可能である．</p>
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">h5py</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -618,13 +618,13 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02_spike_sorting_14_0.png" src="../_images/02_spike_sorting_14_0.png" />
+<img alt="../_images/02_spike_sorting_15_0.png" src="../_images/02_spike_sorting_15_0.png" />
 </div>
 </div>
 </section>
 <section id="feature-extraction">
 <h2><span class="section-number">2.2. </span>Feature Extraction<a class="headerlink" href="#feature-extraction" title="Permalink to this headline">#</a></h2>
-<p>次のステップでは，抽出された波形（snippetsと呼ぶ）について，何らかの特徴量を抽出し，クラスタを推定する．<br />
+<p>次のステップでは，抽出された波形（<strong>snippets</strong>と呼ぶ）について，何らかの特徴量を抽出し，クラスタを推定する．<br />
 解釈性の高い特徴量としては，振幅（amplitude）やpeak-to-valley widthなどが挙げられる．一方で特徴抽出を統計的に行う場合，PCA（主成分分析）やt-SNE, UMAP等の次元圧縮手法を用いる．本ノートではPCAを例にした解析を述べる．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -657,7 +657,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02_spike_sorting_20_0.png" src="../_images/02_spike_sorting_20_0.png" />
+<img alt="../_images/02_spike_sorting_21_0.png" src="../_images/02_spike_sorting_21_0.png" />
 </div>
 </div>
 <p>PCAの結果に基づき，以下で3種類のクラスタリング手法 —— k-means，GMM（Gaussian Mixture Model; 混合ガウスモデル），DBSCAN（density-based clustering; 密度ベースクラスタリング）を試行し，クラスタリング結果を比較する．</p>
@@ -696,7 +696,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02_spike_sorting_23_0.png" src="../_images/02_spike_sorting_23_0.png" />
+<img alt="../_images/02_spike_sorting_24_0.png" src="../_images/02_spike_sorting_24_0.png" />
 </div>
 </div>
 <p>k-meansは各クラスタの分散が異なるケースに不向きであるため，左のクラスタがうまく分離できていない．一方で，GMMとDBSCANの結果は，今回のケースでは人間の直感と一致する（ただしパラメタのチューニングが適切になされているという前提がある）．</p>
@@ -737,7 +737,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02_spike_sorting_25_0.png" src="../_images/02_spike_sorting_25_0.png" />
+<img alt="../_images/02_spike_sorting_26_0.png" src="../_images/02_spike_sorting_26_0.png" />
 </div>
 </div>
 <p>クラスタリング結果に基づき，各クラスタに属する波形，および加算平均波形をプロットした．クラスタリング結果が正しいと仮定した場合，加算平均波形は単一細胞の波形を忠実に表しているため，<strong>テンプレート</strong> (template)と呼ぶ．</p>
@@ -797,7 +797,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02_spike_sorting_30_0.png" src="../_images/02_spike_sorting_30_0.png" />
+<img alt="../_images/02_spike_sorting_31_0.png" src="../_images/02_spike_sorting_31_0.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
@@ -824,7 +824,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02_spike_sorting_31_0.png" src="../_images/02_spike_sorting_31_0.png" />
+<img alt="../_images/02_spike_sorting_32_0.png" src="../_images/02_spike_sorting_32_0.png" />
 </div>
 </div>
 <p>templateを9つの電極における信号を横に連結した形で表示した．各点線は電極の切り替わりを示す．先ほど単一の電極でspike-sortingした際に用いた電極は，左から4番目の電極である．<br />
@@ -834,7 +834,8 @@ title="Print to PDF"
 <section id="template-matching">
 <h2><span class="section-number">2.3. </span>Template Matching<a class="headerlink" href="#template-matching" title="Permalink to this headline">#</a></h2>
 <p>上記のspike-sortingで抽出したテンプレートを用いて，spike検出をneuronごとにやり直す例を述べる．</p>
-<p>この方法が有効なケースは例えば次の通りである．長期にわたる計測で全データにおけるクラスタリングが困難な場合，一部の計測のみを用いてテンプレートを作成し，残りは計算量の少ないテンプレートマッチングでneuronのspike時刻を割り当てれば，同じneuronを長期にわたって追跡することが可能である．</p>
+<p>この方法が有効なケースは，例えば次の通りである．長期にわたる計測で全データにおけるクラスタリングが困難な場合，一部の計測のみを用いてテンプレートを作成し，残りは計算量の少ないテンプレートマッチングでneuronのspike時刻を割り当てれば，同じneuronを長期にわたって追跡することが可能である．</p>
+<p>まず，spike-sorting同様にspike検出を行い，波形を抽出する．その後，テンプレートと抽出された各波形のコサイン類似度を取り，類似度の閾値を決め，閾値以上の類似度を持つ波形を該当ニューロンに割り当てる．</p>
 <hr class="docutils" />
 <div class="docutils container" id="id2">
 <dl class="citation">
