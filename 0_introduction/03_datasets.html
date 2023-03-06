@@ -5,14 +5,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<meta property="og:title" content="1. General" />
+<meta property="og:title" content="3. Datasets" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://tk-neuron.github.io/meabook/0_introduction/01_general.html" />
+<meta property="og:url" content="https://tk-neuron.github.io/meabook/0_introduction/03_datasets.html" />
 <meta property="og:site_name" content="Python" />
+<meta property="og:description" content="本ノートブックで使用するデータはGithubからダウンロードできるが，以下にPythonにより自動でダウンロードする方法を示す（推奨）． 以下はダウンロードするファイルの一覧である． デフォルトでは，このコードを実行する親ディレクトリ直下に datasets/ ディレクトリを作り，その配下にサブディレクトリ 01~ 04 を作り，ファイル一覧をダウンロードする設定になっている． datase..." />
 <meta property="og:image" content="https://tk-neuron.github.io/meabook/_static/icon.png" />
 <meta property="og:image:alt" content="Python" />
+<meta name="description" content="本ノートブックで使用するデータはGithubからダウンロードできるが，以下にPythonにより自動でダウンロードする方法を示す（推奨）． 以下はダウンロードするファイルの一覧である． デフォルトでは，このコードを実行する親ディレクトリ直下に datasets/ ディレクトリを作り，その配下にサブディレクトリ 01~ 04 を作り，ファイル一覧をダウンロードする設定になっている． datase..." />
 
-    <title>1. General &#8212; MEA Book: Python Tutorial for Analyzing MEA Recording</title>
+    <title>3. Datasets &#8212; MEA Book: Python Tutorial for Analyzing MEA Recording</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -56,12 +58,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://tk-neuron.github.io/meabook/0_introduction/01_general.html" />
+    <link rel="canonical" href="https://tk-neuron.github.io/meabook/0_introduction/03_datasets.html" />
     <link rel="shortcut icon" href="../_static/icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2. Python" href="02_python.html" />
-    <link rel="prev" title="Welcome to MEA Book" href="../index.html" />
+    <link rel="next" title="1. Visualization of Spike Data" href="../1_spikes/01_visualization.html" />
+    <link rel="prev" title="2. Python" href="02_python.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -127,8 +129,8 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_general.html">
    1. General
   </a>
  </li>
@@ -137,8 +139,8 @@ const thebe_selector_output = ".output, .cell_output"
    2. Python
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03_datasets.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    3. Datasets
   </a>
  </li>
@@ -247,6 +249,53 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/tk-neuron/meabook/main?urlpath=tree/docs/0_introduction/03_datasets.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/tk-neuron/meabook/blob/main/docs/0_introduction/03_datasets.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -286,7 +335,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/tk-neuron/meabook/issues/new?title=Issue%20on%20page%20%2F0_introduction/01_general.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/tk-neuron/meabook/issues/new?title=Issue%20on%20page%20%2F0_introduction/03_datasets.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -314,7 +363,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/0_introduction/01_general.md"
+        <a href="../_sources/0_introduction/03_datasets.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -325,7 +374,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -363,7 +412,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>General</h1>
+                <h1>Datasets</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -375,8 +424,60 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="general">
-<h1><span class="section-number">1. </span>General<a class="headerlink" href="#general" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="datasets">
+<h1><span class="section-number">3. </span>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">#</a></h1>
+<p>本ノートブックで使用するデータはGithubからダウンロードできるが，以下にPythonにより自動でダウンロードする方法を示す（推奨）．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">urllib.request</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>以下はダウンロードするファイルの一覧である．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">baseurl</span> <span class="o">=</span> <span class="s1">&#39;https://tk-neuron.github.io/meabook&#39;</span>
+
+<span class="c1"># sub-directory: files</span>
+<span class="n">files</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;01&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mapping.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;spikes.csv&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;02&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;spikes_unit.csv&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;03&#39;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">&#39;04&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;data.raw.h5&#39;</span><span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>デフォルトでは，このコードを実行する親ディレクトリ直下に<code class="docutils literal notranslate"><span class="pre">datasets/</span></code>ディレクトリを作り，その配下にサブディレクトリ <code class="docutils literal notranslate"><span class="pre">01</span></code>~<code class="docutils literal notranslate"><span class="pre">04</span></code>を作り，ファイル一覧をダウンロードする設定になっている．<code class="docutils literal notranslate"><span class="pre">datasets/</span></code>ディレクトリのパスは適宜変更可能．</p>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create dataset directory (if already exists, pass)</span>
+<span class="n">datadir</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="s1">&#39;datasets&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;root for dataset: &#39;</span><span class="p">,</span> <span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">Path</span><span class="p">(</span><span class="n">datadir</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># create sub-directories and download each file</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">files</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">subdir</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">datadir</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sub-directory: &#39;</span><span class="p">,</span> <span class="n">subdir</span><span class="p">)</span>
+    <span class="n">Path</span><span class="p">(</span><span class="n">subdir</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">baseurl</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">])</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">datadir</span><span class="p">),</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">])</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;downloading file: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1"> from </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;file saved in: &#39;</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -406,17 +507,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../index.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="02_python.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Welcome to MEA Book</p>
+            <p class="prev-next-title"><span class="section-number">2. </span>Python</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="02_python.html" title="next page">
+    <a class='right-next' id="next-link" href="../1_spikes/01_visualization.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>Python</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Visualization of Spike Data</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
