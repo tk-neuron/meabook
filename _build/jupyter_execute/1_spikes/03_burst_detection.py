@@ -154,7 +154,7 @@ plt.show()
 
 # ```{note}
 # Global Firing Rateにより検知されたburst区間は，上記のグラフのように細切れになることがある．  
-# この際，$\theta_{interval}$以下の期間で連続して発生したburstは同一のburstとみなす，といった処理をはさむことが多い．
+# この際，$T_\theta$以下の期間で連続して発生したburstは同一のburstとみなす，といった処理をはさむことが多い．
 # ```
 
 # ## Thresholding with ISI

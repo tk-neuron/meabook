@@ -2,15 +2,15 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: intro
+root: index
 
 parts:
   - caption: introduction
     numbered: True
     chapters:
       - file: 0_introduction/01_general
-      - file: 0_introduction/02_datasets
-      - file: 0_introduction/03_python
+      - file: 0_introduction/02_python
+      - file: 0_introduction/03_datasets
   - caption: spikes
     numbered: True
     chapters:

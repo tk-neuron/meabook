@@ -154,3 +154,136 @@ year = {2019}
   year={2015},
   publisher={Royal Society of Chemistry}
 }
+
+@misc{Rey2015,
+abstract = {Spike sorting is a crucial step to extract information from extracellular recordings. With new recording opportunities provided by the development of new electrodes that allow monitoring hundreds of neurons simultaneously, the scenario for the new generation of algorithms is both exciting and challenging. However, this will require a new approach to the problem and the development of a common reference framework to quickly assess the performance of new algorithms. In this work, we review the basic concepts of spike sorting, including the requirements for different applications, together with the problems faced by presently available algorithms. We conclude by proposing a roadmap stressing the crucial points to be addressed to support the neuroscientific research of the near future.},
+author = {Rey, Hernan Gonzalo and Pedreira, Carlos and {Quian Quiroga}, Rodrigo},
+booktitle = {Brain Research Bulletin},
+doi = {10.1016/j.brainresbull.2015.04.007},
+file = {:Users/TAKUMA/Documents/Mendeley Desktop/Rey, Pedreira, Quian Quiroga - 2015 - Past, present and future of spike sorting techniques.pdf:pdf},
+issn = {18732747},
+keywords = {Extracellular recordings,Modeling,Multielectrode recordings,On-chip applications,Spike sorting},
+mendeley-groups = {Spike Train Analysis/Spike Sorting},
+month = {oct},
+pages = {106--117},
+publisher = {Elsevier Inc.},
+title = {{Past, present and future of spike sorting techniques}},
+volume = {119},
+year = {2015}
+}
+
+@misc{Carlson2019,
+abstract = {Engineering efforts are currently attempting to build devices capable of collecting neural activity from one million neurons in the brain. Part of this effort focuses on developing dense multiple-electrode arrays, which require post-processing via ‘spike sorting' to extract neural spike trains from the raw signal. Gathering information at this scale will facilitate fascinating science, but these dreams are only realizable if the spike sorting procedure and data pipeline are computationally scalable, at or superior to hand processing, and scientifically reproducible. These challenges are all being amplified as the data scale continues to increase. In this review, recent efforts to attack these challenges are discussed, which have primarily focused on increasing accuracy and reliability while being computationally scalable. These goals are addressed by adding additional stages to the data processing pipeline and using divide-and-conquer algorithmic approaches. These recent developments should prove useful to most research groups regardless of data scale, not just for cutting-edge devices.},
+author = {Carlson, David and Carin, Lawrence},
+booktitle = {Current Opinion in Neurobiology},
+doi = {10.1016/j.conb.2019.02.007},
+file = {:Users/TAKUMA/Documents/Mendeley Desktop/Carlson, Carin - 2019 - Continuing progress of spike sorting in the era of big data.pdf:pdf},
+issn = {18736882},
+mendeley-groups = {Spike Train Analysis/Spike Sorting},
+month = {apr},
+pages = {90--96},
+publisher = {Elsevier Ltd},
+title = {{Continuing progress of spike sorting in the era of big data}},
+volume = {55},
+year = {2019}
+}
+
+@article{Buccino2022,
+author = {Buccino, Alessio P and Garcia, Samuel and Yger, Pierre},
+file = {:Users/TAKUMA/Documents/Mendeley Desktop/Buccino, Garcia, Yger - 2022 - Spike sorting new trends and challenges of the era of high-density probes Progress in Biomedical Enginee.pdf:pdf},
+journal = {Progress in Biomedical Engineering},
+mendeley-groups = {Spike Train Analysis/Spike Sorting},
+pages = {0--15},
+title = {{Spike sorting : new trends and challenges of the era of high-density probes}},
+year = {2022}
+}
+
+@article{Takekawa2010,
+abstract = {Simultaneous recordings with multi-channel electrodes are widely used for studying how multiple neurons are recruited for information processing. The recorded signals contain the spike events of a number of adjacent or distant neurons and must be sorted correctly into spike trains of individual neurons. Several mathematical methods have been proposed for spike sorting but the process is difficult in practice, as extracellularly recorded signals are corrupted by biological noise. Moreover, spike sorting is often time-consuming, as it usually requires corrections by human operators. Methods are needed to obtain reliable spike clusters without heavy manual operation. Here, we introduce several methods of spike sorting and compare the accuracy and robustness of their performance by using publicized data of simultaneous extracellular and intracellular recordings of neuronal activity. The best and excellent performance was obtained when a newly proposed filter for spike detection was combined with the wavelet transform and variational Bayes for a finite mixture of Student's t-distributions, namely, robust variational Bayes. Wavelet transform extracts features that are characteristic of the detected spike waveforms and the robust variational Bayes categorizes the extracted features into clusters corresponding to spikes of the individual neurons. The use of Student's t-distributions makes this categorization robust against noisy data points. Some other new methods also exhibited reasonably good performance. We implemented all of the proposed methods in a C++ code named 'EToS' (Efficient Technology of Spike sorting), which is freely available on the Internet. {\textcopyright} 2010 Federation of European Neuroscience Societies and Blackwell Publishing Ltd.},
+annote = {おそらくetosの元論文。etosを使う場合には理解しておいた方が良い。というかフィルタの原理を知っておくには重要である。},
+author = {Takekawa, Takashi and Isomura, Yoshikazu and Fukai, Tomoki},
+doi = {10.1111/j.1460-9568.2009.07068.x},
+file = {:Users/TAKUMA/Documents/Mendeley Desktop/Takekawa, Isomura, Fukai - 2010 - Accurate spike sorting for multi-unit recordings(2).pdf:pdf},
+issn = {0953816X},
+journal = {European Journal of Neuroscience},
+keywords = {Cell assembly,Clustering,Efficient Technology of Spike sorting open-source,Robust variational Bayes,Wavelet transform},
+mendeley-groups = {Spike Train Analysis/Spike Sorting},
+number = {2},
+pages = {263--272},
+pmid = {20074217},
+title = {{Accurate spike sorting for multi-unit recordings}},
+volume = {31},
+year = {2010}
+}
+
+@article{Chung2017,
+abstract = {Understanding the detailed dynamics of neuronal networks will require the simultaneous measurement of spike trains from hundreds of neurons (or more). Currently, approaches to extracting spike times and labels from raw data are time consuming, lack standardization, and involve manual intervention, making it difficult to maintain data provenance and assess the quality of scientific results. Here, we describe an automated clustering approach and associated software package that addresses these problems and provides novel cluster quality metrics. We show that our approach has accuracy comparable to or exceeding that achieved using manual or semi-manual techniques with desktop central processing unit (CPU) runtimes faster than acquisition time for up to hundreds of electrodes. Moreover, a single choice of parameters in the algorithm is effective for a variety of electrode geometries and across multiple brain regions. This algorithm has the potential to enable reproducible and automated spike sorting of larger scale recordings than is currently possible. Chung, Magland, et al. present MountainSort, a new fully automatic spike sorting package with a powerful GUI. MountainSort has accuracy comparable to current methods and runtimes faster than real time, enabling automatic and reproducible spike sorting for high-density extracellular recordings.},
+author = {Chung, Jason E. and Magland, Jeremy F. and Barnett, Alex H. and Tolosa, Vanessa M. and Tooker, Angela C. and Lee, Kye Y. and Shah, Kedar G. and Felix, Sarah H. and Frank, Loren M. and Greengard, Leslie F.},
+doi = {10.1016/j.neuron.2017.08.030},
+file = {:Users/TAKUMA/Documents/Mendeley Desktop/Chung et al. - 2017 - A Fully Automated Approach to Spike Sorting.pdf:pdf},
+issn = {10974199},
+journal = {Neuron},
+keywords = {automated,cluster metrics,clustering,cortex,hippocampus,reproducibility,spike sorting},
+mendeley-groups = {Spike Train Analysis/Spike Sorting},
+month = {sep},
+number = {6},
+pages = {1381--1394.e6},
+publisher = {Cell Press},
+title = {{A Fully Automated Approach to Spike Sorting}},
+volume = {95},
+year = {2017}
+}
+
+@article{Kleinfeld2018,
+abstract = {In recent years, multielectrode arrays and large silicon probes have been developed to record simultaneously between hundreds and thousands of electrodes packed with a high density. However, they require novel methods to extract the spiking activity of large ensembles of neurons. Here, we developed a new toolbox to sort spikes from these large-scale extracellular data. To validate our method, we performed simultaneous extracellular and loose patch recordings in rodents to obtain 'ground truth' data, where the solution to this sorting problem is known for one cell. The performance of our algorithm was always close to the best expected performance, over a broad range of signal-to-noise ratios, in vitro and in vivo. The algorithm is entirely parallelized and has been successfully tested on recordings with up to 4225 electrodes. Our toolbox thus offers a generic solution to sort accurately spikes for up to thousands of electrodes.},
+annote = {spyking-circusの論文},
+author = {Kleinfeld, David and Yger, Pierre and Spampinato, Giulia LB and Esposito, Elric and Lefebvre, Baptiste and phane Deny, St{\'{e}} and Gardella, Christophe and Stimberg, Marcel and Jetter, Florian and Zeck, Guenther and Picaud, Serge and Duebel, Jens and Marre, Olivier},
+doi = {10.7554/eLife.34518.001},
+file = {:Users/TAKUMA/Documents/Mendeley Desktop/Kleinfeld et al. - 2018 - A spike sorting toolbox for up to thousands of electrodes validated with ground truth recordings in vitro and.pdf:pdf},
+journal = {eLife},
+mendeley-groups = {Spike Train Analysis/Spike Sorting},
+title = {{A spike sorting toolbox for up to thousands of electrodes validated with ground truth recordings in vitro and in vivo}},
+url = {https://doi.org/10.7554/eLife.34518.001},
+year = {2018}
+}
+
+@article{Buccino2020,
+abstract = {Much development has been directed toward improving the performance and automation of spike sorting. This continuous development, while essential, has contributed to an over-saturation of new, incompatible tools that hinders rigorous benchmarking and complicates reproducible analysis. To address these limitations, we developed SpikeInterface, a Python framework designed to unify preexisting spike sorting technologies into a single codebase and to facilitate straightforward comparison and adoption of different approaches. With a few lines of code, researchers can reproducibly run, compare, and benchmark most modern spike sorting algorithms; pre-process, post-process, and visualize extracellular datasets; validate, curate, and export sorting outputs; and more. In this paper, we provide an overview of SpikeInterface and, with applications to real and simulated datasets, demonstrate how it can be utilized to reduce the burden of manual curation and to more comprehensively benchmark automated spike sorters.},
+author = {Buccino, Alessio P. and Hurwitz, Cole L. and Garcia, Samuel and Magland, Jeremy and Siegle, Joshua H. and Hurwitz, Roger and Hennig, Matthias H.},
+doi = {10.7554/eLife.61834},
+file = {:Users/TAKUMA/Documents/Mendeley Desktop/Buccino et al. - 2020 - Spikeinterface, a unified framework for spike sorting.pdf:pdf},
+issn = {2050084X},
+journal = {eLife},
+mendeley-groups = {Spike Train Analysis/Spike Sorting,Physiology/Toolbox},
+pages = {1--24},
+pmid = {33170122},
+title = {{Spikeinterface, a unified framework for spike sorting}},
+volume = {9},
+year = {2020}
+}
+
+@article{Hilgen2017,
+abstract = {We present a method for automated spike sorting for recordings with high-density, large-scale multielectrode arrays. Exploiting the dense sampling of single neurons by multiple electrodes, an efficient, low-dimensional representation of detected spikes consisting of estimated spatial spike locations and dominant spike shape features is exploited for fast and reliable clustering into single units. Millions of events can be sorted in minutes, and the method is parallelized and scales better than quadratically with the number of detected spikes. Performance is demonstrated using recordings with a 4,096-channel array and validated using anatomical imaging, optogenetic stimulation, and model-based quality control. A comparison with semi-automated, shape-based spike sorting exposes significant limitations of conventional methods. Our approach demonstrates that it is feasible to reliably isolate the activity of up to thousands of neurons and that dense, multi-channel probes substantially aid reliable spike sorting.},
+author = {Hilgen, Gerrit and Sorbaro, Martino and Pirmoradian, Sahar and Muthmann, Jens Oliver and Kepiro, Ibolya Edit and Ullo, Simona and Ramirez, Cesar Juarez and {Puente Encinas}, Albert and Maccione, Alessandro and Berdondini, Luca and Murino, Vittorio and Sona, Diego and {Cella Zanacchi}, Francesca and Sernagor, Evelyne and Hennig, Matthias Helge},
+doi = {10.1016/j.celrep.2017.02.038},
+file = {:Users/TAKUMA/Documents/Mendeley Desktop/Hilgen et al. - 2017 - Unsupervised Spike Sorting for Large-Scale, High-Density Multielectrode Arrays.pdf:pdf},
+issn = {22111247},
+journal = {Cell Reports},
+keywords = {electrophysiology,high-density multielectrode array,neural cultures,retina,spike sorting},
+mendeley-groups = {Spike Train Analysis/Spike Sorting},
+pmid = {28273464},
+title = {{Unsupervised Spike Sorting for Large-Scale, High-Density Multielectrode Arrays}},
+year = {2017}
+}
+
+@inproceedings{kilosort,
+ author = {Pachitariu, Marius and Steinmetz, Nicholas A and Kadir, Shabnam N and Carandini, Matteo and Harris, Kenneth D},
+ booktitle = {Advances in Neural Information Processing Systems},
+ editor = {D. Lee and M. Sugiyama and U. Luxburg and I. Guyon and R. Garnett},
+ pages = {},
+ publisher = {Curran Associates, Inc.},
+ title = {Fast and accurate spike sorting of high-channel count probes with KiloSort},
+ url = {https://proceedings.neurips.cc/paper/2016/file/1145a30ff80745b56fb0cecf65305017-Paper.pdf},
+ volume = {29},
+ year = {2016}
+}

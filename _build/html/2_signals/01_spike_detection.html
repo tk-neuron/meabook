@@ -5,6 +5,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta property="og:title" content="1. Spike Detection" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://tk-neuron.github.io/meabook/2_signals/01_spike_detection.html" />
+<meta property="og:site_name" content="Python" />
+<meta property="og:description" content="この章では，実際のHD-MEAで取得された信号の一部を用いて，spike検出の一例を示す． 使用するデータセットは，3×3の正方形状に隣接する9個の電極から取得された5分間の電位記録を圧縮したh5データである．サンプリング周波数は f_s = 20 \mathrm{kHz} である．電極の座標（ x, y ）[\mathrm{\mu m}]に関する情報は mapping に記録した． h5デ..." />
+<meta property="og:image" content="https://tk-neuron.github.io/meabook/_static/icon.png" />
+<meta property="og:image:alt" content="Python" />
+<meta name="description" content="この章では，実際のHD-MEAで取得された信号の一部を用いて，spike検出の一例を示す． 使用するデータセットは，3×3の正方形状に隣接する9個の電極から取得された5分間の電位記録を圧縮したh5データである．サンプリング周波数は f_s = 20 \mathrm{kHz} である．電極の座標（ x, y ）[\mathrm{\mu m}]に関する情報は mapping に記録した． h5デ..." />
 
     <title>1. Spike Detection &#8212; MEA Book: Python Tutorial for Analyzing MEA Recording</title>
     
@@ -52,6 +60,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://tk-neuron.github.io/meabook/2_signals/01_spike_detection.html" />
     <link rel="shortcut icon" href="../_static/icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -76,7 +85,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="visually-hidden">Toggle in-page Table of Contents</div>
 </label>
 <!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
+<div class="announcement header-item noprint">MEABookは執筆途中です.</div>
 <div class="header header-item noprint"></div>
 
     
@@ -111,7 +120,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../intro.html">
+                <a class="reference internal" href="../index.html">
                     Welcome to MEA Book
                 </a>
             </li>
@@ -124,17 +133,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../0_introduction/01_general.html">
-   1. General
+   1. Preface
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../0_introduction/02_datasets.html">
-   2. Introducing Datasets
+  <a class="reference internal" href="../0_introduction/02_python.html">
+   2. Python
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../0_introduction/03_python.html">
-   3. Introducing Python
+  <a class="reference internal" href="../0_introduction/03_datasets.html">
+   3. Datasets
   </a>
  </li>
 </ul>
@@ -250,7 +259,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/tk-neuron/meabook/main?urlpath=tree/docs/2_signals/01_spike_detection.ipynb"
+        <a href="https://mybinder.org/v2/gh/tk-neuron/meabook/main?urlpath=lab/tree/2_signals/01_spike_detection.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -268,7 +277,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://colab.research.google.com/github/tk-neuron/meabook/blob/main/docs/2_signals/01_spike_detection.ipynb"
+        <a href="https://colab.research.google.com/github/tk-neuron/meabook/blob/main/2_signals/01_spike_detection.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -692,7 +701,7 @@ title="Print to PDF"
 \[
 \theta = \lambda \cdot \mathrm{MAD}
 \]</div>
-<p>閾値法以外のspike検出手法として，神経細胞の活動電位波形が既知の場合（cf. spike-sorting）にテンプレートマッチングを用いて検出する手法 <span id="id1">[<a class="reference internal" href="#id13" title="Keven J. Laboy-Juárez, Seoiyoung Ahn, and Daniel E. Feldman. A normalized template matching method for improving spike detection in extracellular voltage recordings. Scientific Reports, 9(1):1–12, 2019. doi:10.1038/s41598-019-48456-y.">LJuarezAF19</a>]</span> や，機械学習モデルによりspikeとしてもっともらしい波形を評価する手法 <span id="id2">[<a class="reference internal" href="#id12" title="Jin Hyung Lee, Catalin Mitelut, Hooshmand Shokri, Ian Kinsella, Nishchal Dethe, Shenghao Wu, Kevin Li, Eduardo Blancas Reyes, Denis Turcu, Eleanor Batty, Young Joon Kim, Nora Brackbill, Alexandra Kling, Georges Goetz, E. J. Chichilnisky, David Carlson, and Liam Paninski. YASS: Yet another spike sorter applied to large-scale multi-electrode array recordings in primate retina. bioRxiv, pages 1–46, 2020. doi:10.1101/2020.03.18.997924.">LMS+20</a>]</span> がある．</p>
+<p>閾値法以外のspike検出手法として，神経細胞の活動電位波形が既知の場合（cf. spike-sorting）にテンプレートマッチングを用いて検出する手法 <span id="id1">[<a class="reference internal" href="#id13" title="Keven J. Laboy-Juárez, Seoiyoung Ahn, and Daniel E. Feldman. A normalized template matching method for improving spike detection in extracellular voltage recordings. Scientific Reports, 9(1):1–12, 2019. doi:10.1038/s41598-019-48456-y.">LJuarezAF19</a>]</span> や，機械学習モデルによりspikeとしてもっともらしい波形を評価する手法 <span id="id2">[<a class="reference internal" href="02_spike_sorting.html#id21" title="Jin Hyung Lee, Catalin Mitelut, Hooshmand Shokri, Ian Kinsella, Nishchal Dethe, Shenghao Wu, Kevin Li, Eduardo Blancas Reyes, Denis Turcu, Eleanor Batty, Young Joon Kim, Nora Brackbill, Alexandra Kling, Georges Goetz, E. J. Chichilnisky, David Carlson, and Liam Paninski. YASS: Yet another spike sorter applied to large-scale multi-electrode array recordings in primate retina. bioRxiv, pages 1–46, 2020. doi:10.1101/2020.03.18.997924.">LMS+20</a>]</span> がある．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>

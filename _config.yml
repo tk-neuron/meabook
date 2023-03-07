@@ -22,7 +22,6 @@ bibtex_bibfiles:
 # Information about where the book exists on the web
 repository:
   url: https://github.com/tk-neuron/meabook # Online location of your book
-  path_to_book: docs # Optional path to your book, relative to the repository root
   branch: main # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
@@ -32,6 +31,8 @@ html:
   use_issues_button: true
   use_repository_button: true
   use_multitoc_numbering: false
+  baseurl: "https://tk-neuron.github.io/meabook/"
+  announcement: "*MEA Bookは執筆途中です."
 
 exclude_patterns:
   - venv/*
@@ -41,5 +42,14 @@ launch_buttons:
   binderhub_url: "https://mybinder.org" # The URL for your BinderHub (e.g., https://mybinder.org)
 
 sphinx:
+  extra_extensions:
+    - sphinxext.opengraph
   config:
     html_extra_path: ["datasets"]
+    ogp_site_url: "https://tk-neuron.github.io/meabook/"
+    ogp_image: "https://tk-neuron.github.io/meabook/_static/icon.png"
+    ogp_description_length: 200
+
+launch_buttons:
+  notebook_interface        : "jupyterlab" # The interface interactive links will activate ["classic", "jupyterlab"]
+  colab_url                 : "https://colab.research.google.com" # The URL of Google Colab (https://colab.research.google.com)

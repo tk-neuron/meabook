@@ -5,6 +5,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta property="og:title" content="3. Burst Detection" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://tk-neuron.github.io/meabook/1_spikes/03_burst_detection.html" />
+<meta property="og:site_name" content="Python" />
+<meta property="og:description" content="ラット中枢神経細胞の分散培養系による神経活動の特徴の一つは，同期バーストである[ WPP06] ．同期バースト（network burstまたは単にburst）は，spikeが高頻度に発火する現象が神経ネットワークの広範囲に伝達する現象を指す． バースト検知のさまざまな手法は[ CE19] でレビューされている． Thresholding with Global Firing Rate: 素..." />
+<meta property="og:image" content="https://tk-neuron.github.io/meabook/_static/icon.png" />
+<meta property="og:image:alt" content="Python" />
+<meta name="description" content="ラット中枢神経細胞の分散培養系による神経活動の特徴の一つは，同期バーストである[ WPP06] ．同期バースト（network burstまたは単にburst）は，spikeが高頻度に発火する現象が神経ネットワークの広範囲に伝達する現象を指す． バースト検知のさまざまな手法は[ CE19] でレビューされている． Thresholding with Global Firing Rate: 素..." />
 
     <title>3. Burst Detection &#8212; MEA Book: Python Tutorial for Analyzing MEA Recording</title>
     
@@ -52,6 +60,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://tk-neuron.github.io/meabook/1_spikes/03_burst_detection.html" />
     <link rel="shortcut icon" href="../_static/icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -76,7 +85,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="visually-hidden">Toggle in-page Table of Contents</div>
 </label>
 <!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
+<div class="announcement header-item noprint">MEABookは執筆途中です.</div>
 <div class="header header-item noprint"></div>
 
     
@@ -111,7 +120,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../intro.html">
+                <a class="reference internal" href="../index.html">
                     Welcome to MEA Book
                 </a>
             </li>
@@ -124,17 +133,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../0_introduction/01_general.html">
-   1. General
+   1. Preface
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../0_introduction/02_datasets.html">
-   2. Introducing Datasets
+  <a class="reference internal" href="../0_introduction/02_python.html">
+   2. Python
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../0_introduction/03_python.html">
-   3. Introducing Python
+  <a class="reference internal" href="../0_introduction/03_datasets.html">
+   3. Datasets
   </a>
  </li>
 </ul>
@@ -250,7 +259,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/tk-neuron/meabook/main?urlpath=tree/docs/1_spikes/03_burst_detection.ipynb"
+        <a href="https://mybinder.org/v2/gh/tk-neuron/meabook/main?urlpath=lab/tree/1_spikes/03_burst_detection.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -268,7 +277,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://colab.research.google.com/github/tk-neuron/meabook/blob/main/docs/1_spikes/03_burst_detection.ipynb"
+        <a href="https://colab.research.google.com/github/tk-neuron/meabook/blob/main/1_spikes/03_burst_detection.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -631,7 +640,7 @@ title="Print to PDF"
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Global Firing Rateにより検知されたburst区間は，上記のグラフのように細切れになることがある．<br />
-この際，<span class="math notranslate nohighlight">\(\theta_{interval}\)</span>以下の期間で連続して発生したburstは同一のburstとみなす，といった処理をはさむことが多い．</p>
+この際，<span class="math notranslate nohighlight">\(T_\theta\)</span>以下の期間で連続して発生したburstは同一のburstとみなす，といった処理をはさむことが多い．</p>
 </div>
 </section>
 <section id="thresholding-with-isi">

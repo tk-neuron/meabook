@@ -3,11 +3,13 @@
 
 # # Spike Sorting
 
-# HD-MEAの各電極で観測される信号には，複数の細胞からの信号が混在している．また，{doc}`01_spike_detection`でみたように，単一の神経細胞の信号が複数の電極にまたがって観測される．単一の神経細胞の発火時刻に関する情報を得るには，複数細胞の活動電位が混在した信号を，統計処理により個々の細胞の信号に分離する操作が必要である．これをspike sortingと呼ぶ．
+# HD-MEAの各電極で観測される信号には，複数の細胞からの信号が混在している．また，{doc}`01_spike_detection`でみたように，単一の神経細胞の信号が複数の電極にまたがって観測される．単一の神経細胞の発火時刻に関する情報を得るには，複数細胞の活動電位が混在した信号を，統計処理により個々の細胞の信号に分離する操作が必要である．これを**spike sorting**と呼ぶ．
 
 # 以下の画像は，HD-MEA上に培養された神経細胞を，神経突起のマーカーであるMAP2により免疫染色し，電気活動と重ね合わせた図である．{cite}`muller2015high`より引用した．
 
 # <img src="https://pubs.rsc.org/image/article/2015/lc/c5lc00133a/c5lc00133a-f4_hi-res.gif" width=600 title="Electrical activity superimposed to a MAP2 staining of the neurons.">
+
+# ---
 
 # 図上には神経細胞が3つ存在する．電極3を例にとると，3つの神経細胞の信号が混在しているものの，各神経細胞の空間的な分布が異なるために，spike波形の形状や振幅が異なることがわかる．**神経細胞により各電極で観測されるspike波形の形状が異なる**という前提に立ち，spike波形を統計的にクラスタリングすることにより，各細胞（**unit**と呼ばれる）の信号を推定することが可能である．
 
@@ -83,7 +85,7 @@ amps = np.max(sig, axis=1) - np.min(sig, axis=1)  # amplitude range for each cha
 # [t_s - t_{pre}, \ t_s + t_{post}]
 # $$
 # 
-# 本ノートブックでは，$t_{pre}=1, t_{post}=2$ [ms]とする．
+# 本ノートでは，$t_{pre}=1, t_{post}=2$ [ms]とする．
 # サンプリング周波数$f_s=20 \mathrm{kHz}$とすると，抽出される信号の次元は$(t_{pre} + t_{post}) \cdot f_s$である．
 
 # In[4]:
@@ -175,8 +177,8 @@ waveforms_pca = pca.components_.T
 
 plt.figure(figsize=(3, 3))
 plt.scatter(waveforms_pca[:, 0], waveforms_pca[:, 1], s=10)
-plt.xlabel('PCA 1')
-plt.ylabel('PCA 2')
+plt.xlabel('PC 1')
+plt.ylabel('PC 2')
 plt.locator_params(axis='both', nbins=2)
 plt.show()
 
@@ -189,7 +191,7 @@ plt.show()
 def plot_clusters(ax, waveforms, labels):
     for i in set(labels):
         idx = (labels == i)
-        ax.scatter(x=waveforms[:, 0][idx], y=waveforms[:, 1][idx], s=10)
+        ax.scatter(x=waveforms[:, 0][idx], y=waveforms[:, 1][idx], s=10, label=f'unit {i}')
 
 
 # In[12]:
@@ -213,6 +215,7 @@ for ax, title in zip(axes, titles):
     ax.set_yticks([])
     ax.set_title(title)
 
+axes[1].legend(bbox_to_anchor=(0.5, -0.30), loc='lower center', borderaxespad=1, fontsize=12, ncols=2)
 plt.show()
 
 
@@ -260,7 +263,7 @@ plt.show()
 # クラスタリング結果に基づき，各クラスタに属する波形，および加算平均波形をプロットした．クラスタリング結果が正しいと仮定した場合，加算平均波形は単一細胞の波形を忠実に表しているため，**テンプレート** (template)と呼ぶ．
 # 
 # ```{tip}
-# unit 0は振幅が大きく，unit 1は振幅が小さい．振幅の小さなunit 1は，SN比が相対的に低いため，特徴空間上でばらつきが大きい．unit 0の信頼性はunit 1と比較して高いが，unit 1については電極から離れたいくつかの細胞の信号が分離しきれていない可能性もある．実践的には，振幅の大きなunit 0のみを抽出し，unit 1は解析対象としない，などの判断をしても良いだろう．
+# unit 0は振幅が大きく，unit 1は振幅が小さい．振幅の小さなunit 1は，SN比が相対的に低いため，特徴空間上でばらつきが大きい．unit 0の信頼性はunit 1と比較して高いが，unit 1については電極から離れたいくつかの細胞の信号が分離しきれていない可能性もある．実践的には，振幅の大きなunit 0のみを抽出し，unit 1は解析対象から外す，といった判断を取ることも考えたい．
 # ```
 
 # 以上では，単一の電極の信号のみを用いてspike-sortingしたが，以下では隣接する9つの全電極を用いて同様の解析を行う．
@@ -301,8 +304,8 @@ for i in range(n_clusters):
 idx = (labels == -1)
 plt.scatter(x=waveforms_pca[:, 0][idx], y=waveforms_pca[:, 1][idx], s=10, c='k', label='noise')
 
-plt.xlabel('PCA 1')
-plt.ylabel('PCA 2')
+plt.xlabel('PC 1')
+plt.ylabel('PC 2')
 plt.legend(bbox_to_anchor=(1.01, 1), loc='upper left', borderaxespad=1, fontsize=12)
 plt.show()
 
@@ -330,10 +333,9 @@ for i in range(n_clusters):
 plt.show()
 
 
-# templateを9つの電極における信号を横に連結した形で表示した．各点線は電極の切り替わりを示す．先ほど単一の電極でspike-sortingした際に用いた電極は，左から4番目の電極である．  
-# 先ほどのsortingでは，unit 1とunit 2が同一のクラスタとして推定されたが，左から3番目の電極において振幅が大きなneuronであるunit 1を取りこぼしていたことになる．  
+# 9つの電極における信号を横に連結した形でtemplateを表示した．各点線は電極の切り替わりを示す．先ほどのsortingでは左から4番目の電極を用いた．今回のsortingでは，先ほど同一のクラスタとして推定されたunit 1およびunit 2が分離できていることがわかる．
 # 
-# このように，単一電極におけるspike波形ではなく，複数の電極にまたがったspike波形の空間的な分布の違いを活用すると，sortingの精度が向上することがわかる．
+# このように，単一電極におけるspike波形ではなく，複数の電極にまたがったspike波形の空間的な分布の違いを活用すると，sortingの精度が向上することが多い．
 
 # ## Template Matching
 
@@ -342,6 +344,126 @@ plt.show()
 # この方法が有効なケースは，例えば次の通りである．長期にわたる計測で全データにおけるクラスタリングが困難な場合，一部の計測のみを用いてテンプレートを作成し，残りは計算量の少ないテンプレートマッチングでneuronのspike時刻を割り当てれば，同じneuronを長期にわたって追跡することが可能である．
 # 
 # まず，spike-sorting同様にspike検出を行い，波形を抽出する．その後，テンプレートと抽出された各波形のコサイン類似度を取り，類似度の閾値を決め，閾値以上の類似度を持つ波形を該当ニューロンに割り当てる．
+
+# In[18]:
+
+
+from sklearn.metrics.pairwise import cosine_similarity
+
+
+# In[19]:
+
+
+def extract_template(waveforms):
+    return np.mean(waveforms, axis=0)
+
+
+# In[20]:
+
+
+# extract template for unit (unit_id)
+unit_id = 0
+template = extract_template(waveforms[labels == unit_id])
+template_concat = template.flatten()
+
+# calculate cosine similarity between the template and all the waveforms of peaks detected
+dist = cosine_similarity(np.atleast_2d(template_concat), waveforms_concat).flatten()
+
+
+# In[21]:
+
+
+plt.figure(figsize=(6, 2))
+plt.title('histogram of cosine similarity values')
+hist, edges, _ = plt.hist(dist, bins=np.linspace(0.0, 1.0, 100), color='#C0C0C0')
+plt.xlabel('similarity')
+plt.ylabel('count')
+plt.show()
+
+
+# コサイン類似度のヒストグラムを取り，類似度が1.0に近い領域でピークが立っている場合，ピークに属する部分がtemplateと同一の細胞によるspikeであると考えられる．  
+# 
+# ヒストグラムが与えられた際の閾値設計については，特に画像の2値化の文脈でさまざまな手法が提案されている．大津法やk-means, GMMなどクラスタリング手法を利用した手法，KL情報量最大化などの手法があるため，解析に応じて選ぶとよい．
+# 
+# 次の記事が参考になる．  
+# https://qiita.com/yuji0001/items/29c02b4fa1506edbdf19
+# 
+# 以下は，GMMを利用して2クラスタの境界を類似度の閾値とする例である．ヒストグラム（分布）は必ずしも2クラスタの正規分布に従うわけではないため，信頼性の高い推定を行うには境界が類似度0.8以上の場合のみ解析対象とする，などの判断が必要であろう．
+
+# In[22]:
+
+
+# obtain the histogram of similarity values
+plt.figure(figsize=(6, 3))
+hist, edges, _ = plt.hist(dist, bins=100, density=True, color='#C0C0C0')
+
+# decide threshold by GMM fitting
+gm = GaussianMixture(n_components=2, random_state=0, covariance_type='full')
+gm.fit(dist.reshape(-1, 1))
+p = gm.predict(edges.reshape(-1, 1))  # class labels
+thr = edges[np.where(p == gm.means_.argmax())[0].min()]  # the boundary of two clusters
+print(f'similarity threshold: {thr:.3}')
+
+# order clusters by their mean in descending order
+names = ['unit', 'others']
+colors = ['C1', 'C0']
+clusters = list(gm.means_[:, 0].argsort()[::-1])
+
+for i in range(2):
+    j = clusters.index(i)
+    plt.plot(edges, stats.norm.pdf(edges, gm.means_[j][0], np.sqrt(gm.covariances_[j][0])), linewidth=2.0, label=names[i], c=colors[i])
+    plt.axvline(x=thr, c='k', linestyle='dashed')
+    
+plt.xlabel('similarity')
+plt.legend(fontsize=15)
+plt.show()
+
+
+# 上のヒストグラムで決定された類似度の閾値をもとに，spike波形をテンプレートマッチングにより再割り当てした結果を次に示す．
+# 
+# assignedで示された波形群を加算平均した形状（青線）は，templateに一致する．一方で，not-assignedで示された波形群の加算平均はtemplateに一致しないものの，いくつかunit 0に属すると考えられるspike波形の取りこぼし（false-negative）があることもわかる．左から3番目の電極においてspike波形のばらつきが大きく，この電極の信号が類似度の低下に寄与していると考えられる．
+# 
+# 実践的な対策としては，まずばらつきの小さなunit 1からspikeを割り当てていき，割り当て成功後は元の信号からマッチングされたtemplateを差し引いていくことで，spikeの重なり（overlap）を処理するという操作をはさむことが考えられる．
+
+# In[23]:
+
+
+idx = (dist > thr)
+
+fig, axes = plt.subplots(2, 1, figsize=(10, 3))
+
+ax = axes[0]
+ax.set_title('assigned')
+for waveform in waveforms_concat[idx]:
+    ax.plot(waveform, color ='#C0C0C0', alpha=0.8)
+ax.plot(np.mean(waveforms_concat[idx], axis=0), color='C0', linewidth=1.0, label='average')
+ax.plot(template_concat, color='C1', linewidth=1.0, label='template')
+
+ax = axes[1]
+ax.set_title('not-assigned')
+for waveform in waveforms_concat[np.logical_not(idx)]:
+    ax.plot(waveform, color ='#C0C0C0', alpha=0.8)
+ax.plot(np.mean(waveforms_concat[np.logical_not(idx)], axis=0), color='C0', linewidth=1.0, label='average')
+ax.plot(template_concat, color='C1', linewidth=1.0, label='template')
+ax.legend(bbox_to_anchor=(0.5, -0.60), loc='lower center', borderaxespad=1, fontsize=12, ncols=2)
+
+for ax in axes:
+    ymin, ymax = ax.get_ylim()
+    ax.vlines(np.arange(60, 9*60, 60), ymin=ymin, ymax=ymax, colors='k', linestyle='dashed', linewidth=1.0, alpha=0.8)
+    ax.set_axis_off()
+    
+plt.show()
+
+
+# ## Spike-Sorting Toolboxes
+
+# spike-sortingの手法としてこれまでに数々の手法が提案されている．過程がブラックボックスになるというデメリットはあるものの，既存のツールボックスを使って解析を効率化するという手もある．
+# 
+# spike-sortingに関するレビュー論文としては，{cite}`Rey2015`, {cite}`Carlson2019`, {cite}`Buccino2022`あたりが参考になる．
+# 
+# ツールボックスとして代表的なものは，**EToS** {cite}`Takekawa2010`，**Kilosort** {cite}`kilosort`, **MountainSort** {cite}`Chung2017`，**SPyKing-Circus** {cite}`Kleinfeld2018`，**YASS** {cite}`Lee2020`など．また，近年ではPythonから様々なspike-sorterを一貫したメソッドで呼び出し，sorter同士の結果を比較することができる**Spike-Interface** {cite}`Buccino2020`もリリースされている．
+# 
+# MEA上でsortingされた各細胞の解析事例としては{cite}`Hilgen2017`が参考になる．
 
 # ---
 # ```{bibliography}

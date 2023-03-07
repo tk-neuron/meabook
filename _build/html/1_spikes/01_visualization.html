@@ -5,6 +5,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta property="og:title" content="1. Visualization of Spike Data" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://tk-neuron.github.io/meabook/1_spikes/01_visualization.html" />
+<meta property="og:site_name" content="Python" />
+<meta property="og:description" content="神経細胞はスパイクと呼ばれる活動電位によって互いに情報を交換する．神経細胞集団の電気活動を分析する上で中心となるのはスパイク時刻の情報である．多電極アレイでは，各電極についてスパイク時刻の列 (spike train) が取得される． 解析の手始めに，可視化によってなるべく生の現象に近い状態でデータを観察する． df_map は各電極の情報（x, y座標）を格納し， df_sp は各スパイク..." />
+<meta property="og:image" content="https://tk-neuron.github.io/meabook/_static/icon.png" />
+<meta property="og:image:alt" content="Python" />
+<meta name="description" content="神経細胞はスパイクと呼ばれる活動電位によって互いに情報を交換する．神経細胞集団の電気活動を分析する上で中心となるのはスパイク時刻の情報である．多電極アレイでは，各電極についてスパイク時刻の列 (spike train) が取得される． 解析の手始めに，可視化によってなるべく生の現象に近い状態でデータを観察する． df_map は各電極の情報（x, y座標）を格納し， df_sp は各スパイク..." />
 
     <title>1. Visualization of Spike Data &#8212; MEA Book: Python Tutorial for Analyzing MEA Recording</title>
     
@@ -50,11 +58,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://tk-neuron.github.io/meabook/1_spikes/01_visualization.html" />
     <link rel="shortcut icon" href="../_static/icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="2. Interactive Visualization with Bokeh" href="02_visualization_bokeh.html" />
-    <link rel="prev" title="3. 3. Introducing Python" href="../0_introduction/03_python.html" />
+    <link rel="prev" title="3. Datasets" href="../0_introduction/03_datasets.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -74,7 +83,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="visually-hidden">Toggle in-page Table of Contents</div>
 </label>
 <!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
+<div class="announcement header-item noprint">MEABookは執筆途中です.</div>
 <div class="header header-item noprint"></div>
 
     
@@ -109,7 +118,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../intro.html">
+                <a class="reference internal" href="../index.html">
                     Welcome to MEA Book
                 </a>
             </li>
@@ -122,17 +131,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../0_introduction/01_general.html">
-   1. 1. General
+   1. Preface
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../0_introduction/02_datasets.html">
-   2. 2. Introducing Datasets
+  <a class="reference internal" href="../0_introduction/02_python.html">
+   2. Python
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../0_introduction/03_python.html">
-   3. 3. Introducing Python
+  <a class="reference internal" href="../0_introduction/03_datasets.html">
+   3. Datasets
   </a>
  </li>
 </ul>
@@ -164,7 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="05_stimulus.html">
-   5. 5. PSTH
+   5. PSTH
   </a>
  </li>
 </ul>
@@ -176,17 +185,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../2_signals/01_spike_detection.html">
-   1. 1. Spike Detection
+   1. Spike Detection
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../2_signals/02_spike_sorting.html">
-   2. 2. Spike Sorting
+   2. Spike Sorting
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../2_signals/03_simulation.html">
-   3. 3. Simulation
+   3. Simulation
   </a>
  </li>
 </ul>
@@ -248,7 +257,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/tk-neuron/meabook/main?urlpath=tree/docs/1_spikes/01_visualization.ipynb"
+        <a href="https://mybinder.org/v2/gh/tk-neuron/meabook/main?urlpath=lab/tree/1_spikes/01_visualization.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -266,7 +275,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://colab.research.google.com/github/tk-neuron/meabook/blob/main/docs/1_spikes/01_visualization.ipynb"
+        <a href="https://colab.research.google.com/github/tk-neuron/meabook/blob/main/1_spikes/01_visualization.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -1145,42 +1154,42 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_img00d606a2f9fc4c7e8fe6154b6fc00e19">
+  <img id="_anim_img7c5bb502b4fd40d99da9cbf829fa70ef">
   <div class="anim-controls">
-    <input id="_anim_slider00d606a2f9fc4c7e8fe6154b6fc00e19" type="range" class="anim-slider"
+    <input id="_anim_slider7c5bb502b4fd40d99da9cbf829fa70ef" type="range" class="anim-slider"
            name="points" min="0" max="1" step="1" value="0"
-           oninput="anim00d606a2f9fc4c7e8fe6154b6fc00e19.set_frame(parseInt(this.value));">
+           oninput="anim7c5bb502b4fd40d99da9cbf829fa70ef.set_frame(parseInt(this.value));">
     <div class="anim-buttons">
-      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim00d606a2f9fc4c7e8fe6154b6fc00e19.slower()">
+      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim7c5bb502b4fd40d99da9cbf829fa70ef.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" aria-label="First frame" onclick="anim00d606a2f9fc4c7e8fe6154b6fc00e19.first_frame()">
+      <button title="First frame" aria-label="First frame" onclick="anim7c5bb502b4fd40d99da9cbf829fa70ef.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" aria-label="Previous frame" onclick="anim00d606a2f9fc4c7e8fe6154b6fc00e19.previous_frame()">
+      <button title="Previous frame" aria-label="Previous frame" onclick="anim7c5bb502b4fd40d99da9cbf829fa70ef.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" aria-label="Play backwards" onclick="anim00d606a2f9fc4c7e8fe6154b6fc00e19.reverse_animation()">
+      <button title="Play backwards" aria-label="Play backwards" onclick="anim7c5bb502b4fd40d99da9cbf829fa70ef.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" aria-label="Pause" onclick="anim00d606a2f9fc4c7e8fe6154b6fc00e19.pause_animation()">
+      <button title="Pause" aria-label="Pause" onclick="anim7c5bb502b4fd40d99da9cbf829fa70ef.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" aria-label="Play" onclick="anim00d606a2f9fc4c7e8fe6154b6fc00e19.play_animation()">
+      <button title="Play" aria-label="Play" onclick="anim7c5bb502b4fd40d99da9cbf829fa70ef.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" aria-label="Next frame" onclick="anim00d606a2f9fc4c7e8fe6154b6fc00e19.next_frame()">
+      <button title="Next frame" aria-label="Next frame" onclick="anim7c5bb502b4fd40d99da9cbf829fa70ef.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" aria-label="Last frame" onclick="anim00d606a2f9fc4c7e8fe6154b6fc00e19.last_frame()">
+      <button title="Last frame" aria-label="Last frame" onclick="anim7c5bb502b4fd40d99da9cbf829fa70ef.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" aria-label="Increase speed" onclick="anim00d606a2f9fc4c7e8fe6154b6fc00e19.faster()">
+      <button title="Increase speed" aria-label="Increase speed" onclick="anim7c5bb502b4fd40d99da9cbf829fa70ef.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select00d606a2f9fc4c7e8fe6154b6fc00e19"
+    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select7c5bb502b4fd40d99da9cbf829fa70ef"
           class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_00d606a2f9fc4c7e8fe6154b6fc00e19"
+      <input type="radio" name="state" value="once" id="_anim_radio1_7c5bb502b4fd40d99da9cbf829fa70ef"
              >
-      <label for="_anim_radio1_00d606a2f9fc4c7e8fe6154b6fc00e19">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_00d606a2f9fc4c7e8fe6154b6fc00e19"
+      <label for="_anim_radio1_7c5bb502b4fd40d99da9cbf829fa70ef">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_7c5bb502b4fd40d99da9cbf829fa70ef"
              checked>
-      <label for="_anim_radio2_00d606a2f9fc4c7e8fe6154b6fc00e19">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_00d606a2f9fc4c7e8fe6154b6fc00e19"
+      <label for="_anim_radio2_7c5bb502b4fd40d99da9cbf829fa70ef">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_7c5bb502b4fd40d99da9cbf829fa70ef"
              >
-      <label for="_anim_radio3_00d606a2f9fc4c7e8fe6154b6fc00e19">Reflect</label>
+      <label for="_anim_radio3_7c5bb502b4fd40d99da9cbf829fa70ef">Reflect</label>
     </form>
   </div>
 </div>
@@ -1190,9 +1199,9 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_img00d606a2f9fc4c7e8fe6154b6fc00e19";
-    var slider_id = "_anim_slider00d606a2f9fc4c7e8fe6154b6fc00e19";
-    var loop_select_id = "_anim_loop_select00d606a2f9fc4c7e8fe6154b6fc00e19";
+    var img_id = "_anim_img7c5bb502b4fd40d99da9cbf829fa70ef";
+    var slider_id = "_anim_slider7c5bb502b4fd40d99da9cbf829fa70ef";
+    var loop_select_id = "_anim_loop_select7c5bb502b4fd40d99da9cbf829fa70ef";
     var frames = new Array(100);
 
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABGAAAAK8CAYAAACgIsnHAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
@@ -44897,7 +44906,7 @@ MAAAAACJCTAAAAAAif1/gYrpVunHUooAAAAASUVORK5CYII=\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        anim00d606a2f9fc4c7e8fe6154b6fc00e19 = new Animation(frames, img_id, slider_id, 65.0,
+        anim7c5bb502b4fd40d99da9cbf829fa70ef = new Animation(frames, img_id, slider_id, 65.0,
                                  loop_select_id);
     }, 0);
   })()
@@ -44934,11 +44943,11 @@ MAAAAACJCTAAAAAAif1/gYrpVunHUooAAAAASUVORK5CYII=\
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../0_introduction/03_python.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../0_introduction/03_datasets.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">3. </span>3. Introducing Python</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>Datasets</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="02_visualization_bokeh.html" title="next page">
