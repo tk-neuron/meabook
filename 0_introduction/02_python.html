@@ -9,10 +9,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://tk-neuron.github.io/meabook/0_introduction/02_python.html" />
 <meta property="og:site_name" content="Python" />
-<meta property="og:description" content="About Python Language: Environment Setup: 仮想環境: Tools: Git: Google Colaboratory:" />
+<meta property="og:description" content="About Python Language: ここでは神経科学における解析に話を限定します．神経科学で取得される主なデータは電気信号ということもあり，信号処理に適した代表的な言語として MATLAB がよく使われている印象です．しかし，最近ではデータセットの質と精度の向上に伴う機械学習・統計処理分野の発展もあり， Python も増えてきている印象です（2023 年 執筆現在）． 私の狭い知..." />
 <meta property="og:image" content="https://tk-neuron.github.io/meabook/_static/icon.png" />
 <meta property="og:image:alt" content="Python" />
-<meta name="description" content="About Python Language: Environment Setup: 仮想環境: Tools: Git: Google Colaboratory:" />
+<meta name="description" content="About Python Language: ここでは神経科学における解析に話を限定します．神経科学で取得される主なデータは電気信号ということもあり，信号処理に適した代表的な言語として MATLAB がよく使われている印象です．しかし，最近ではデータセットの質と精度の向上に伴う機械学習・統計処理分野の発展もあり， Python も増えてきている印象です（2023 年 執筆現在）． 私の狭い知..." />
 
     <title>2. Python &#8212; MEA Book: Python Tutorial for Analyzing MEA Recording</title>
     
@@ -63,7 +63,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="3. Datasets" href="03_datasets.html" />
-    <link rel="prev" title="1. General" href="01_general.html" />
+    <link rel="prev" title="1. Preface" href="01_general.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -83,7 +83,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="visually-hidden">Toggle in-page Table of Contents</div>
 </label>
 <!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
+<div class="announcement header-item noprint">MEABookは執筆途中です.</div>
 <div class="header header-item noprint"></div>
 
     
@@ -131,7 +131,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01_general.html">
-   1. General
+   1. Preface
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -403,8 +403,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#google-colaboratory">
-     2.3.2. Google Colaboratory
+    <a class="reference internal nav-link" href="#google-colaboratory-colab">
+     2.3.2. Google Colaboratory (Colab)
     </a>
    </li>
   </ul>
@@ -456,8 +456,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#google-colaboratory">
-     2.3.2. Google Colaboratory
+    <a class="reference internal nav-link" href="#google-colaboratory-colab">
+     2.3.2. Google Colaboratory (Colab)
     </a>
    </li>
   </ul>
@@ -476,20 +476,122 @@ title="Print to PDF"
 <h1><span class="section-number">2. </span>Python<a class="headerlink" href="#python" title="Permalink to this headline">#</a></h1>
 <section id="about-python-language">
 <h2><span class="section-number">2.1. </span>About Python Language<a class="headerlink" href="#about-python-language" title="Permalink to this headline">#</a></h2>
+<p>ここでは神経科学における解析に話を限定します．神経科学で取得される主なデータは電気信号ということもあり，信号処理に適した代表的な言語として<strong>MATLAB</strong>がよく使われている印象です．しかし，最近ではデータセットの質と精度の向上に伴う機械学習・統計処理分野の発展もあり，<strong>Python</strong>も増えてきている印象です（2023 年 執筆現在）．</p>
+<p>私の狭い知識では心許ないので，ChatGPT に訊いてみました．</p>
+<div class="admonition-chatgpt admonition">
+<p class="admonition-title">ChatGPT</p>
+<blockquote>
+<div><p><strong>MATLAB vs Python for neuroscience?</strong></p>
+</div></blockquote>
+<p>MATLAB と Python はどちらも神経科学研究で広く使われており、どちらにも利点と欠点があります。MATLAB は、ユーザーフレンドリーな GUI と豊富なツールボックスを備え、神経データ解析のための標準的なツールです。一方、Python は、その柔軟性、利用可能なライブラリの多さ、オープンソースの性質から、ますます人気が高まっています。Python は神経科学者やデータサイエンティストのコミュニティが拡大しており、それ以外でも、特に産業界や機械学習で広く利用されています。最終的に、MATLAB と Python のどちらを選ぶかは、あなたの研究ニーズや好みによります。</p>
+</div>
+<p>とはいえ真理はきっと最後の一文なのでしょう．好みに応じて決めるのが私もよいと思います．</p>
 </section>
 <section id="environment-setup">
 <h2><span class="section-number">2.2. </span>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <section id="id1">
 <h3><span class="section-number">2.2.1. </span>仮想環境<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>Python では様々なライブラリをインストールし，import して使うことになるため，仮想環境によりライブラリ空間をプロジェクトごとに分離することが望ましいです．</p>
+<p>以下は Python 標準の venv を用いて仮想環境を管理する例．</p>
+<ol>
+<li><p>プロジェクトの仮想環境作成:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mkdir<span class="w"> </span><span class="o">[</span>PROJECT<span class="w"> </span>DIRECTORY<span class="o">]</span>
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span><span class="o">[</span>PROJECT<span class="w"> </span>DIRECTORY<span class="o">]</span>
+$<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span><span class="o">[</span>NEW<span class="w"> </span>ENV<span class="w"> </span>NAME<span class="o">]</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>[NEW ENV NAME]はプロジェクトに関係なく一貫して<code class="docutils literal notranslate"><span class="pre">venv</span></code>に統一するのがオススメ．すなわち <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">venv</span> <span class="pre">venv</span></code>で統一する．以降のコードは，これにしたがうとする．</p>
+</div>
+</li>
+<li><p>仮想環境のアクティベーション:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>.<span class="w"> </span>venv/bin/activate
+
+<span class="o">(</span>venv<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>which<span class="w"> </span>python
+~/<span class="o">[</span>PROJECT<span class="w"> </span>DIRECTORY<span class="o">]</span>/venv/bin/python
+</pre></div>
+</div>
+</li>
+<li><p>ライブラリのインストール:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>venv<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="o">[</span>package<span class="w"> </span>name<span class="o">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>スクリプトの実行など:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>venv<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>python3<span class="w"> </span>script.py
+</pre></div>
+</div>
+</li>
+</ol>
 </section>
 </section>
 <section id="tools">
 <h2><span class="section-number">2.3. </span>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">#</a></h2>
 <section id="git">
 <h3><span class="section-number">2.3.1. </span>Git<a class="headerlink" href="#git" title="Permalink to this headline">#</a></h3>
+<p>Git は，ファイルの変更履歴を記録するバージョン管理ツール．これにより，プロジェクトのファイル群（レポジトリ）を複数のユーザーが別々に編集した上で，のちに差分を統合することができる．チームによるソフトウェア開発では必ずといっていいほど使われる．</p>
+<p>Git において最低限押さえておくと良い概念をいくつか述べます．</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p><strong>local / remote（ローカル / リモート）</strong></p>
+<ul>
+<li><p>手元の PC 内にある環境がローカル．ローカルにあるレポジトリを他のユーザーとかがアクセスできるようにサーバー上に置いている場所がリモート．リモートレポジトリをホストする代表的なサービスとして <strong>Github</strong> がある．</p></li>
+</ul>
+</li>
+<li><p><strong>commit（コミット）</strong></p>
+<ul>
+<li><p>ファイルに加えた変更（差分）のスナップショットを取ること．多くの場合，「機能 A を加えた」「〇〇のバグを修正した」等のファイルに対する変更が何らかの意味をもつような粒度で，変更を記録していくイメージ．</p></li>
+</ul>
+</li>
+<li><p><strong>branch（ブランチ）</strong></p>
+<ul>
+<li><p>元のレポジトリのコピーを並列に保持したまま，新しい機能を追加してテストしたり，A さん・B さんで別々にブランチを切って後でメインのブランチに統合する等，共同編集・チーム開発に特化したバックアップシステムのようなもの．</p></li>
+</ul>
+</li>
+<li><p><strong>clone（クローン）</strong></p>
+<ul>
+<li><p>リモートレポジトリを，ローカルにコピーしてくることです．</p></li>
+</ul>
+</li>
+<li><p><strong>push / fetch（プッシュ / フェッチ）</strong></p>
+<ul>
+<li><p>ここでは非常にラフな説明にとどめますが，プッシュはローカルの変更をリモートに反映すること（自分から他ユーザーへの共有に繋がる），フェッチはリモートの変更を ローカルに取ってくること（他ユーザーから自分への共有）です．</p></li>
+</ul>
+</li>
+<li><p><strong>merge / pull（マージ / プル）</strong></p>
+<ul>
+<li><p>マージは，他のブランチを現在のブランチに統合することです（つまり他のブランチに加えられたファイルの変更が現在のブランチに適応される）．プルは，fetch + mergeのことで，リモートブランチの変更をローカルに取ってきた上で，現在のブランチに統合することです．</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>MEA Book のノートブック一覧を丸ごとローカルにコピーして走らせたい方は，次のように Github からクローンしてください．CLI や Git が苦手な方は，Github から Download ZIP もできます．</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/tk-neuron/meabook.git
+</pre></div>
+</div>
+<p>また，<strong>Contribution</strong>（寄稿）してくださる方を積極的に募集しています．基本的にはプルリクエストを通じて行ってくださると助かりますが，小さな提案の場合は Github の機能である Issue を通じて送ってくださるのも歓迎です．</p>
+<p>以下にプルリクエスト作成までの大まかな流れを紹介します．まず，上記の手順でレポジトリをクローンした後，次のように新しいブランチを切ってください．ブランチ名には追加したい機能の名前を含めることが多いです．</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>-M<span class="w"> </span><span class="o">[</span>feature/XXX<span class="o">]</span>
+</pre></div>
+</div>
+<p>新しいノートブックを追加したり，既存のファイルを変更したりして編集が済んだら，コミットしてください．</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>-p<span class="w"> </span><span class="o">[</span>file<span class="w"> </span>name<span class="o">]</span>
+$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="o">[</span>commit<span class="w"> </span>message<span class="o">]</span>
+</pre></div>
+</div>
+<p>コミットが蓄積してブランチが仕上がったら，次のようにブランチの先頭をプッシュしてください．</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>HEAD
+</pre></div>
+</div>
+<p>すると，Github 上で先ほどプッシュしたブランチに紐づくプルリクエストが編集できるようになります．プルリクエストとは，変更の内容をまとめて，ブランチを統合するためのリクエストを送っていただくものです．プロジェクトのオーナーはプルリクエストをレビューし，内容が問題ない場合はメインのブランチに統合され，今回の場合は Web ページに提案された変更内容が反映されます．</p>
 </section>
-<section id="google-colaboratory">
-<h3><span class="section-number">2.3.2. </span>Google Colaboratory<a class="headerlink" href="#google-colaboratory" title="Permalink to this headline">#</a></h3>
+<section id="google-colaboratory-colab">
+<h3><span class="section-number">2.3.2. </span>Google Colaboratory (Colab)<a class="headerlink" href="#google-colaboratory-colab" title="Permalink to this headline">#</a></h3>
+<p>Google のサーバー上に構築された Jupyter 環境に無料でアクセスできるツールで，Python による解析が環境構築不要で行えます．定番のライブラリ群はすでにインストールされているため（本ノートブックのライブラリは全て網羅されていると思われます），Python・環境構築に慣れていない方はまずこちらから始めてみるのも良さそうです．</p>
+<p>各ノートブックの右上に，Open Colaboratory というボタンがありますので，それをクリックしていただくと，Colab のページ が開き，すぐに解析を始めることができます．</p>
+<p>データのやり取りは，Google Drive を通じて行います．本ノートブックでもサンプルデータを用いて解析を行うため，詳しくは次章 <a class="reference internal" href="03_datasets.html"><span class="doc">Datasets</span></a>を参照してください．</p>
 </section>
 </section>
 </section>
@@ -525,7 +627,7 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1. </span>General</p>
+            <p class="prev-next-title"><span class="section-number">1. </span>Preface</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="03_datasets.html" title="next page">

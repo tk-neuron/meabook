@@ -85,7 +85,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="visually-hidden">Toggle in-page Table of Contents</div>
 </label>
 <!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
+<div class="announcement header-item noprint">MEABookは執筆途中です.</div>
 <div class="header header-item noprint"></div>
 
     
@@ -133,7 +133,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../0_introduction/01_general.html">
-   1. General
+   1. Preface
   </a>
  </li>
  <li class="toctree-l1">
@@ -259,7 +259,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/tk-neuron/meabook/main?urlpath=tree/docs/2_signals/02_spike_sorting.ipynb"
+        <a href="https://mybinder.org/v2/gh/tk-neuron/meabook/main?urlpath=lab/tree/2_signals/02_spike_sorting.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -277,7 +277,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://colab.research.google.com/github/tk-neuron/meabook/blob/main/docs/2_signals/02_spike_sorting.ipynb"
+        <a href="https://colab.research.google.com/github/tk-neuron/meabook/blob/main/2_signals/02_spike_sorting.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -496,7 +496,7 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="spike-sorting">
 <h1><span class="section-number">2. </span>Spike Sorting<a class="headerlink" href="#spike-sorting" title="Permalink to this headline">#</a></h1>
 <p>HD-MEAの各電極で観測される信号には，複数の細胞からの信号が混在している．また，<a class="reference internal" href="01_spike_detection.html"><span class="doc">Spike Detection</span></a>でみたように，単一の神経細胞の信号が複数の電極にまたがって観測される．単一の神経細胞の発火時刻に関する情報を得るには，複数細胞の活動電位が混在した信号を，統計処理により個々の細胞の信号に分離する操作が必要である．これを<strong>spike sorting</strong>と呼ぶ．</p>
-<p>以下の画像は，HD-MEA上に培養された神経細胞を，神経突起のマーカーであるMAP2により免疫染色し，電気活動と重ね合わせた図である．<span id="id1">[<a class="reference internal" href="#id22" title="Jan Müller, Marco Ballini, Paolo Livi, Yihui Chen, Milos Radivojevic, Amir Shadmani, Vijay Viswam, Ian L Jones, Michele Fiscella, Roland Diggelmann, and others. High-resolution cmos mea platform to study neurons at subcellular, cellular, and network levels. Lab on a Chip, 15(13):2767–2780, 2015.">MullerBL+15</a>]</span>より引用した．</p>
+<p>以下の画像は，HD-MEA上に培養された神経細胞を，神経突起のマーカーであるMAP2により免疫染色し，電気活動と重ね合わせた図である．<span id="id1">[<a class="reference internal" href="#id23" title="Jan Müller, Marco Ballini, Paolo Livi, Yihui Chen, Milos Radivojevic, Amir Shadmani, Vijay Viswam, Ian L Jones, Michele Fiscella, Roland Diggelmann, and others. High-resolution cmos mea platform to study neurons at subcellular, cellular, and network levels. Lab on a Chip, 15(13):2767–2780, 2015.">MullerBL+15</a>]</span>より引用した．</p>
 <img src="https://pubs.rsc.org/image/article/2015/lc/c5lc00133a/c5lc00133a-f4_hi-res.gif" width=600 title="Electrical activity superimposed to a MAP2 staining of the neurons."><hr class="docutils" />
 <p>図上には神経細胞が3つ存在する．電極3を例にとると，3つの神経細胞の信号が混在しているものの，各神経細胞の空間的な分布が異なるために，spike波形の形状や振幅が異なることがわかる．<strong>神経細胞により各電極で観測されるspike波形の形状が異なる</strong>という前提に立ち，spike波形を統計的にクラスタリングすることにより，各細胞（<strong>unit</strong>と呼ばれる）の信号を推定することが可能である．</p>
 <div class="cell tag_hide-cell docutils container">
@@ -810,8 +810,8 @@ title="Print to PDF"
 <span class="n">idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">labels</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">waveforms_pca</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">][</span><span class="n">idx</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">waveforms_pca</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">][</span><span class="n">idx</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;noise&#39;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;PCA 1&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;PCA 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;PC 1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;PC 2&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.01</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -981,40 +981,43 @@ title="Print to PDF"
 <section id="spike-sorting-toolboxes">
 <h2><span class="section-number">2.4. </span>Spike-Sorting Toolboxes<a class="headerlink" href="#spike-sorting-toolboxes" title="Permalink to this headline">#</a></h2>
 <p>spike-sortingの手法としてこれまでに数々の手法が提案されている．過程がブラックボックスになるというデメリットはあるものの，既存のツールボックスを使って解析を効率化するという手もある．</p>
-<p>spike-sortingに関するレビュー論文としては，<span id="id2">[<a class="reference internal" href="#id23" title="Hernan Gonzalo Rey, Carlos Pedreira, and Rodrigo Quian Quiroga. Past, present and future of spike sorting techniques. oct 2015. doi:10.1016/j.brainresbull.2015.04.007.">RPQuianQuiroga15</a>]</span>, <span id="id3">[<a class="reference internal" href="#id24" title="David Carlson and Lawrence Carin. Continuing progress of spike sorting in the era of big data. apr 2019. doi:10.1016/j.conb.2019.02.007.">CC19</a>]</span>, <span id="id4">[<a class="reference internal" href="#id25" title="Alessio P Buccino, Samuel Garcia, and Pierre Yger. Spike sorting : new trends and challenges of the era of high-density probes. Progress in Biomedical Engineering, pages 0–15, 2022.">BGY22</a>]</span>あたりが参考になる．</p>
-<p>ツールボックスとして代表的なものは，<strong>EToS</strong> <span id="id5">[<a class="reference internal" href="#id26" title="Takashi Takekawa, Yoshikazu Isomura, and Tomoki Fukai. Accurate spike sorting for multi-unit recordings. European Journal of Neuroscience, 31(2):263–272, 2010. doi:10.1111/j.1460-9568.2009.07068.x.">TIF10</a>]</span>，<strong>MountainSort</strong> <span id="id6">[<a class="reference internal" href="#id27" title="Jason E. Chung, Jeremy F. Magland, Alex H. Barnett, Vanessa M. Tolosa, Angela C. Tooker, Kye Y. Lee, Kedar G. Shah, Sarah H. Felix, Loren M. Frank, and Leslie F. Greengard. A Fully Automated Approach to Spike Sorting. Neuron, 95(6):1381–1394.e6, sep 2017. doi:10.1016/j.neuron.2017.08.030.">CMB+17</a>]</span>，<strong>SPyking-Circus</strong> <span id="id7">[<a class="reference internal" href="#id28" title="David Kleinfeld, Pierre Yger, Giulia LB Spampinato, Elric Esposito, Baptiste Lefebvre, Sté phane Deny, Christophe Gardella, Marcel Stimberg, Florian Jetter, Guenther Zeck, Serge Picaud, Jens Duebel, and Olivier Marre. A spike sorting toolbox for up to thousands of electrodes validated with ground truth recordings in vitro and in vivo. eLife, 2018. URL: https://doi.org/10.7554/eLife.34518.001, doi:10.7554/eLife.34518.001.">KYS+18</a>]</span>，<strong>YASS</strong> <span id="id8">[<a class="reference internal" href="#id20" title="Jin Hyung Lee, Catalin Mitelut, Hooshmand Shokri, Ian Kinsella, Nishchal Dethe, Shenghao Wu, Kevin Li, Eduardo Blancas Reyes, Denis Turcu, Eleanor Batty, Young Joon Kim, Nora Brackbill, Alexandra Kling, Georges Goetz, E. J. Chichilnisky, David Carlson, and Liam Paninski. YASS: Yet another spike sorter applied to large-scale multi-electrode array recordings in primate retina. bioRxiv, pages 1–46, 2020. doi:10.1101/2020.03.18.997924.">LMS+20</a>]</span>．また，近年ではPythonから様々なspike-sorterを一貫したメソッドで呼び出し，sorter同士の結果を比較することができる<strong>Spike-Interface</strong> <span id="id9">[<a class="reference internal" href="#id29" title="Alessio P. Buccino, Cole L. Hurwitz, Samuel Garcia, Jeremy Magland, Joshua H. Siegle, Roger Hurwitz, and Matthias H. Hennig. Spikeinterface, a unified framework for spike sorting. eLife, 9:1–24, 2020. doi:10.7554/eLife.61834.">BHG+20</a>]</span>もリリースされている．</p>
-<p>MEA上でsortingされた各細胞の解析事例としては<span id="id10">[<a class="reference internal" href="#id30" title="Gerrit Hilgen, Martino Sorbaro, Sahar Pirmoradian, Jens Oliver Muthmann, Ibolya Edit Kepiro, Simona Ullo, Cesar Juarez Ramirez, Albert Puente Encinas, Alessandro Maccione, Luca Berdondini, Vittorio Murino, Diego Sona, Francesca Cella Zanacchi, Evelyne Sernagor, and Matthias Helge Hennig. Unsupervised Spike Sorting for Large-Scale, High-Density Multielectrode Arrays. Cell Reports, 2017. doi:10.1016/j.celrep.2017.02.038.">HSP+17</a>]</span>が参考になる．</p>
+<p>spike-sortingに関するレビュー論文としては，<span id="id2">[<a class="reference internal" href="#id24" title="Hernan Gonzalo Rey, Carlos Pedreira, and Rodrigo Quian Quiroga. Past, present and future of spike sorting techniques. oct 2015. doi:10.1016/j.brainresbull.2015.04.007.">RPQuianQuiroga15</a>]</span>, <span id="id3">[<a class="reference internal" href="#id25" title="David Carlson and Lawrence Carin. Continuing progress of spike sorting in the era of big data. apr 2019. doi:10.1016/j.conb.2019.02.007.">CC19</a>]</span>, <span id="id4">[<a class="reference internal" href="#id26" title="Alessio P Buccino, Samuel Garcia, and Pierre Yger. Spike sorting : new trends and challenges of the era of high-density probes. Progress in Biomedical Engineering, pages 0–15, 2022.">BGY22</a>]</span>あたりが参考になる．</p>
+<p>ツールボックスとして代表的なものは，<strong>EToS</strong> <span id="id5">[<a class="reference internal" href="#id27" title="Takashi Takekawa, Yoshikazu Isomura, and Tomoki Fukai. Accurate spike sorting for multi-unit recordings. European Journal of Neuroscience, 31(2):263–272, 2010. doi:10.1111/j.1460-9568.2009.07068.x.">TIF10</a>]</span>，<strong>Kilosort</strong> <span id="id6">[<a class="reference internal" href="#id32" title="Marius Pachitariu, Nicholas A Steinmetz, Shabnam N Kadir, Matteo Carandini, and Kenneth D Harris. Fast and accurate spike sorting of high-channel count probes with kilosort. In D. Lee, M. Sugiyama, U. Luxburg, I. Guyon, and R. Garnett, editors, Advances in Neural Information Processing Systems, volume 29. Curran Associates, Inc., 2016. URL: https://proceedings.neurips.cc/paper/2016/file/1145a30ff80745b56fb0cecf65305017-Paper.pdf.">PSK+16</a>]</span>, <strong>MountainSort</strong> <span id="id7">[<a class="reference internal" href="#id28" title="Jason E. Chung, Jeremy F. Magland, Alex H. Barnett, Vanessa M. Tolosa, Angela C. Tooker, Kye Y. Lee, Kedar G. Shah, Sarah H. Felix, Loren M. Frank, and Leslie F. Greengard. A Fully Automated Approach to Spike Sorting. Neuron, 95(6):1381–1394.e6, sep 2017. doi:10.1016/j.neuron.2017.08.030.">CMB+17</a>]</span>，<strong>SPyKing-Circus</strong> <span id="id8">[<a class="reference internal" href="#id29" title="David Kleinfeld, Pierre Yger, Giulia LB Spampinato, Elric Esposito, Baptiste Lefebvre, Sté phane Deny, Christophe Gardella, Marcel Stimberg, Florian Jetter, Guenther Zeck, Serge Picaud, Jens Duebel, and Olivier Marre. A spike sorting toolbox for up to thousands of electrodes validated with ground truth recordings in vitro and in vivo. eLife, 2018. URL: https://doi.org/10.7554/eLife.34518.001, doi:10.7554/eLife.34518.001.">KYS+18</a>]</span>，<strong>YASS</strong> <span id="id9">[<a class="reference internal" href="#id21" title="Jin Hyung Lee, Catalin Mitelut, Hooshmand Shokri, Ian Kinsella, Nishchal Dethe, Shenghao Wu, Kevin Li, Eduardo Blancas Reyes, Denis Turcu, Eleanor Batty, Young Joon Kim, Nora Brackbill, Alexandra Kling, Georges Goetz, E. J. Chichilnisky, David Carlson, and Liam Paninski. YASS: Yet another spike sorter applied to large-scale multi-electrode array recordings in primate retina. bioRxiv, pages 1–46, 2020. doi:10.1101/2020.03.18.997924.">LMS+20</a>]</span>など．また，近年ではPythonから様々なspike-sorterを一貫したメソッドで呼び出し，sorter同士の結果を比較することができる<strong>Spike-Interface</strong> <span id="id10">[<a class="reference internal" href="#id30" title="Alessio P. Buccino, Cole L. Hurwitz, Samuel Garcia, Jeremy Magland, Joshua H. Siegle, Roger Hurwitz, and Matthias H. Hennig. Spikeinterface, a unified framework for spike sorting. eLife, 9:1–24, 2020. doi:10.7554/eLife.61834.">BHG+20</a>]</span>もリリースされている．</p>
+<p>MEA上でsortingされた各細胞の解析事例としては<span id="id11">[<a class="reference internal" href="#id31" title="Gerrit Hilgen, Martino Sorbaro, Sahar Pirmoradian, Jens Oliver Muthmann, Ibolya Edit Kepiro, Simona Ullo, Cesar Juarez Ramirez, Albert Puente Encinas, Alessandro Maccione, Luca Berdondini, Vittorio Murino, Diego Sona, Francesca Cella Zanacchi, Evelyne Sernagor, and Matthias Helge Hennig. Unsupervised Spike Sorting for Large-Scale, High-Density Multielectrode Arrays. Cell Reports, 2017. doi:10.1016/j.celrep.2017.02.038.">HSP+17</a>]</span>が参考になる．</p>
 <hr class="docutils" />
-<div class="docutils container" id="id11">
+<div class="docutils container" id="id12">
 <dl class="citation">
-<dt class="label" id="id25"><span class="brackets"><a class="fn-backref" href="#id4">BGY22</a></span></dt>
+<dt class="label" id="id26"><span class="brackets"><a class="fn-backref" href="#id4">BGY22</a></span></dt>
 <dd><p>Alessio P Buccino, Samuel Garcia, and Pierre Yger. Spike sorting : new trends and challenges of the era of high-density probes. <em>Progress in Biomedical Engineering</em>, pages 0–15, 2022.</p>
 </dd>
-<dt class="label" id="id29"><span class="brackets"><a class="fn-backref" href="#id9">BHG+20</a></span></dt>
+<dt class="label" id="id30"><span class="brackets"><a class="fn-backref" href="#id10">BHG+20</a></span></dt>
 <dd><p>Alessio P. Buccino, Cole L. Hurwitz, Samuel Garcia, Jeremy Magland, Joshua H. Siegle, Roger Hurwitz, and Matthias H. Hennig. Spikeinterface, a unified framework for spike sorting. <em>eLife</em>, 9:1–24, 2020. <a class="reference external" href="https://doi.org/10.7554/eLife.61834">doi:10.7554/eLife.61834</a>.</p>
 </dd>
-<dt class="label" id="id24"><span class="brackets"><a class="fn-backref" href="#id3">CC19</a></span></dt>
+<dt class="label" id="id25"><span class="brackets"><a class="fn-backref" href="#id3">CC19</a></span></dt>
 <dd><p>David Carlson and Lawrence Carin. Continuing progress of spike sorting in the era of big data. apr 2019. <a class="reference external" href="https://doi.org/10.1016/j.conb.2019.02.007">doi:10.1016/j.conb.2019.02.007</a>.</p>
 </dd>
-<dt class="label" id="id27"><span class="brackets"><a class="fn-backref" href="#id6">CMB+17</a></span></dt>
+<dt class="label" id="id28"><span class="brackets"><a class="fn-backref" href="#id7">CMB+17</a></span></dt>
 <dd><p>Jason E. Chung, Jeremy F. Magland, Alex H. Barnett, Vanessa M. Tolosa, Angela C. Tooker, Kye Y. Lee, Kedar G. Shah, Sarah H. Felix, Loren M. Frank, and Leslie F. Greengard. A Fully Automated Approach to Spike Sorting. <em>Neuron</em>, 95(6):1381–1394.e6, sep 2017. <a class="reference external" href="https://doi.org/10.1016/j.neuron.2017.08.030">doi:10.1016/j.neuron.2017.08.030</a>.</p>
 </dd>
-<dt class="label" id="id30"><span class="brackets"><a class="fn-backref" href="#id10">HSP+17</a></span></dt>
+<dt class="label" id="id31"><span class="brackets"><a class="fn-backref" href="#id11">HSP+17</a></span></dt>
 <dd><p>Gerrit Hilgen, Martino Sorbaro, Sahar Pirmoradian, Jens Oliver Muthmann, Ibolya Edit Kepiro, Simona Ullo, Cesar Juarez Ramirez, Albert Puente Encinas, Alessandro Maccione, Luca Berdondini, Vittorio Murino, Diego Sona, Francesca Cella Zanacchi, Evelyne Sernagor, and Matthias Helge Hennig. Unsupervised Spike Sorting for Large-Scale, High-Density Multielectrode Arrays. <em>Cell Reports</em>, 2017. <a class="reference external" href="https://doi.org/10.1016/j.celrep.2017.02.038">doi:10.1016/j.celrep.2017.02.038</a>.</p>
 </dd>
-<dt class="label" id="id28"><span class="brackets"><a class="fn-backref" href="#id7">KYS+18</a></span></dt>
+<dt class="label" id="id29"><span class="brackets"><a class="fn-backref" href="#id8">KYS+18</a></span></dt>
 <dd><p>David Kleinfeld, Pierre Yger, Giulia LB Spampinato, Elric Esposito, Baptiste Lefebvre, Sté phane Deny, Christophe Gardella, Marcel Stimberg, Florian Jetter, Guenther Zeck, Serge Picaud, Jens Duebel, and Olivier Marre. A spike sorting toolbox for up to thousands of electrodes validated with ground truth recordings in vitro and in vivo. <em>eLife</em>, 2018. URL: <a class="reference external" href="https://doi.org/10.7554/eLife.34518.001">https://doi.org/10.7554/eLife.34518.001</a>, <a class="reference external" href="https://doi.org/10.7554/eLife.34518.001">doi:10.7554/eLife.34518.001</a>.</p>
 </dd>
-<dt class="label" id="id20"><span class="brackets"><a class="fn-backref" href="#id8">LMS+20</a></span></dt>
+<dt class="label" id="id21"><span class="brackets"><a class="fn-backref" href="#id9">LMS+20</a></span></dt>
 <dd><p>Jin Hyung Lee, Catalin Mitelut, Hooshmand Shokri, Ian Kinsella, Nishchal Dethe, Shenghao Wu, Kevin Li, Eduardo Blancas Reyes, Denis Turcu, Eleanor Batty, Young Joon Kim, Nora Brackbill, Alexandra Kling, Georges Goetz, E. J. Chichilnisky, David Carlson, and Liam Paninski. YASS: Yet another spike sorter applied to large-scale multi-electrode array recordings in primate retina. <em>bioRxiv</em>, pages 1–46, 2020. <a class="reference external" href="https://doi.org/10.1101/2020.03.18.997924">doi:10.1101/2020.03.18.997924</a>.</p>
 </dd>
-<dt class="label" id="id22"><span class="brackets"><a class="fn-backref" href="#id1">MullerBL+15</a></span></dt>
+<dt class="label" id="id23"><span class="brackets"><a class="fn-backref" href="#id1">MullerBL+15</a></span></dt>
 <dd><p>Jan Müller, Marco Ballini, Paolo Livi, Yihui Chen, Milos Radivojevic, Amir Shadmani, Vijay Viswam, Ian L Jones, Michele Fiscella, Roland Diggelmann, and others. High-resolution cmos mea platform to study neurons at subcellular, cellular, and network levels. <em>Lab on a Chip</em>, 15(13):2767–2780, 2015.</p>
 </dd>
-<dt class="label" id="id23"><span class="brackets"><a class="fn-backref" href="#id2">RPQuianQuiroga15</a></span></dt>
+<dt class="label" id="id32"><span class="brackets"><a class="fn-backref" href="#id6">PSK+16</a></span></dt>
+<dd><p>Marius Pachitariu, Nicholas A Steinmetz, Shabnam N Kadir, Matteo Carandini, and Kenneth D Harris. Fast and accurate spike sorting of high-channel count probes with kilosort. In D. Lee, M. Sugiyama, U. Luxburg, I. Guyon, and R. Garnett, editors, <em>Advances in Neural Information Processing Systems</em>, volume 29. Curran Associates, Inc., 2016. URL: <a class="reference external" href="https://proceedings.neurips.cc/paper/2016/file/1145a30ff80745b56fb0cecf65305017-Paper.pdf">https://proceedings.neurips.cc/paper/2016/file/1145a30ff80745b56fb0cecf65305017-Paper.pdf</a>.</p>
+</dd>
+<dt class="label" id="id24"><span class="brackets"><a class="fn-backref" href="#id2">RPQuianQuiroga15</a></span></dt>
 <dd><p>Hernan Gonzalo Rey, Carlos Pedreira, and Rodrigo Quian Quiroga. Past, present and future of spike sorting techniques. oct 2015. <a class="reference external" href="https://doi.org/10.1016/j.brainresbull.2015.04.007">doi:10.1016/j.brainresbull.2015.04.007</a>.</p>
 </dd>
-<dt class="label" id="id26"><span class="brackets"><a class="fn-backref" href="#id5">TIF10</a></span></dt>
+<dt class="label" id="id27"><span class="brackets"><a class="fn-backref" href="#id5">TIF10</a></span></dt>
 <dd><p>Takashi Takekawa, Yoshikazu Isomura, and Tomoki Fukai. Accurate spike sorting for multi-unit recordings. <em>European Journal of Neuroscience</em>, 31(2):263–272, 2010. <a class="reference external" href="https://doi.org/10.1111/j.1460-9568.2009.07068.x">doi:10.1111/j.1460-9568.2009.07068.x</a>.</p>
 </dd>
 </dl>
