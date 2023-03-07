@@ -5,14 +5,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<meta property="og:title" content="5. PSTH" />
+<meta property="og:title" content="5. Peri-Stimulus Time Histogram" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://tk-neuron.github.io/meabook/1_spikes/05_stimulus.html" />
 <meta property="og:site_name" content="Python" />
+<meta property="og:description" content="MEAでは自発活動を計測するだけでなく，電気刺激（electrical stimulation）により特定の神経活動を誘発することも可能である．本ノートではこのような刺激イベントデータの解析で典型的に用いられるperi-stimulus time histogram（PSTH）について述べる．" />
 <meta property="og:image" content="https://tk-neuron.github.io/meabook/_static/icon.png" />
 <meta property="og:image:alt" content="Python" />
+<meta name="description" content="MEAでは自発活動を計測するだけでなく，電気刺激（electrical stimulation）により特定の神経活動を誘発することも可能である．本ノートではこのような刺激イベントデータの解析で典型的に用いられるperi-stimulus time histogram（PSTH）について述べる．" />
 
-    <title>5. PSTH &#8212; MEA Book: Python Tutorial for Analyzing MEA Recording</title>
+    <title>5. Peri-Stimulus Time Histogram &#8212; MEA Book: Python Tutorial for Analyzing MEA Recording</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -81,7 +83,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="visually-hidden">Toggle in-page Table of Contents</div>
 </label>
 <!-- Headers at the top -->
-<div class="announcement header-item noprint">*MEA Bookは執筆途中です.</div>
+<div class="announcement header-item noprint">MEA Bookは執筆途中です.</div>
 <div class="header header-item noprint"></div>
 
     
@@ -129,17 +131,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../0_introduction/01_general.html">
-   1. Preface
+   Preface
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../0_introduction/02_python.html">
-   2. Python
+   Python
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../0_introduction/03_datasets.html">
-   3. Datasets
+   Datasets
   </a>
  </li>
 </ul>
@@ -171,7 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   5. PSTH
+   5. Peri-Stimulus Time Histogram
   </a>
  </li>
 </ul>
@@ -410,7 +412,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>PSTH</h1>
+                <h1>Peri-Stimulus Time Histogram</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -422,8 +424,9 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="psth">
-<h1><span class="section-number">5. </span>PSTH<a class="headerlink" href="#psth" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="peri-stimulus-time-histogram">
+<h1><span class="section-number">5. </span>Peri-Stimulus Time Histogram<a class="headerlink" href="#peri-stimulus-time-histogram" title="Permalink to this headline">#</a></h1>
+<p>MEAでは自発活動を計測するだけでなく，電気刺激（electrical stimulation）により特定の神経活動を誘発することも可能である．本ノートではこのような刺激イベントデータの解析で典型的に用いられるperi-stimulus time histogram（PSTH）について述べる．</p>
 </section>
 
     <script type="text/x-thebe-config">
