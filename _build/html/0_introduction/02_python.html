@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<meta property="og:title" content="2. Python" />
+<meta property="og:title" content="Python" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://tk-neuron.github.io/meabook/0_introduction/02_python.html" />
 <meta property="og:site_name" content="Python" />
@@ -14,7 +14,7 @@
 <meta property="og:image:alt" content="Python" />
 <meta name="description" content="About Python Language: ここでは神経科学における解析に話を限定します．神経科学で取得される主なデータは電気信号ということもあり，信号処理に適した代表的な言語として MATLAB がよく使われている印象です．しかし，最近ではデータセットの質と精度の向上に伴う機械学習・統計処理分野の発展もあり， Python も増えてきている印象です（2023 年 執筆現在）． 私の狭い知..." />
 
-    <title>2. Python &#8212; MEA Book: Python Tutorial for Analyzing MEA Recording</title>
+    <title>Python &#8212; MEA Book: Python Tutorial for Analyzing MEA Recording</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -62,8 +62,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3. Datasets" href="03_datasets.html" />
-    <link rel="prev" title="1. Preface" href="01_general.html" />
+    <link rel="next" title="Datasets" href="03_datasets.html" />
+    <link rel="prev" title="Preface" href="01_general.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -83,7 +83,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="visually-hidden">Toggle in-page Table of Contents</div>
 </label>
 <!-- Headers at the top -->
-<div class="announcement header-item noprint">MEABookは執筆途中です.</div>
+<div class="announcement header-item noprint">MEA Bookは執筆途中です.</div>
 <div class="header header-item noprint"></div>
 
     
@@ -131,17 +131,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01_general.html">
-   1. Preface
+   Preface
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   2. Python
+   Python
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="03_datasets.html">
-   3. Datasets
+   Datasets
   </a>
  </li>
 </ul>
@@ -173,7 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../1_spikes/05_stimulus.html">
-   5. PSTH
+   5. Peri-Stimulus Time Histogram
   </a>
  </li>
 </ul>
@@ -377,34 +377,39 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#about-python-language">
-   2.1. About Python Language
+   About Python Language
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#environment-setup">
-   2.2. Environment Setup
+   Environment Setup
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     2.2.1. 仮想環境
+    <a class="reference internal nav-link" href="#python-environment">
+     Python Environment
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tools">
-   2.3. Tools
-  </a>
-  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#git">
-     2.3.1. Git
+     Git
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-to-clone-this-repository">
+       How to Clone This Repository
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-to-contribute-to-mea-book">
+       How to Contribute to MEA Book
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#google-colaboratory-colab">
-     2.3.2. Google Colaboratory (Colab)
+     Google Colaboratory (Colab)
     </a>
    </li>
   </ul>
@@ -430,34 +435,39 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#about-python-language">
-   2.1. About Python Language
+   About Python Language
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#environment-setup">
-   2.2. Environment Setup
+   Environment Setup
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     2.2.1. 仮想環境
+    <a class="reference internal nav-link" href="#python-environment">
+     Python Environment
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tools">
-   2.3. Tools
-  </a>
-  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#git">
-     2.3.1. Git
+     Git
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-to-clone-this-repository">
+       How to Clone This Repository
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-to-contribute-to-mea-book">
+       How to Contribute to MEA Book
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#google-colaboratory-colab">
-     2.3.2. Google Colaboratory (Colab)
+     Google Colaboratory (Colab)
     </a>
    </li>
   </ul>
@@ -473,9 +483,9 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="python">
-<h1><span class="section-number">2. </span>Python<a class="headerlink" href="#python" title="Permalink to this headline">#</a></h1>
+<h1>Python<a class="headerlink" href="#python" title="Permalink to this headline">#</a></h1>
 <section id="about-python-language">
-<h2><span class="section-number">2.1. </span>About Python Language<a class="headerlink" href="#about-python-language" title="Permalink to this headline">#</a></h2>
+<h2>About Python Language<a class="headerlink" href="#about-python-language" title="Permalink to this headline">#</a></h2>
 <p>ここでは神経科学における解析に話を限定します．神経科学で取得される主なデータは電気信号ということもあり，信号処理に適した代表的な言語として<strong>MATLAB</strong>がよく使われている印象です．しかし，最近ではデータセットの質と精度の向上に伴う機械学習・統計処理分野の発展もあり，<strong>Python</strong>も増えてきている印象です（2023 年 執筆現在）．</p>
 <p>私の狭い知識では心許ないので，ChatGPT に訊いてみました．</p>
 <div class="admonition-chatgpt admonition">
@@ -488,11 +498,12 @@ title="Print to PDF"
 <p>とはいえ真理はきっと最後の一文なのでしょう．好みに応じて決めるのが私もよいと思います．</p>
 </section>
 <section id="environment-setup">
-<h2><span class="section-number">2.2. </span>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
-<section id="id1">
-<h3><span class="section-number">2.2.1. </span>仮想環境<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
+<p>このノートブックにあるコードは，一つ一つコピーしながら自分の環境で実行していく以外に，同じノートブックを実行環境下に複製して使うこともできます．<strong>ローカルにレポジトリを丸ごとコピーする場合は Git，クラウド上で実行する場合は Google Colaboratory の使用がオススメです．</strong></p>
+<section id="python-environment">
+<h3>Python Environment<a class="headerlink" href="#python-environment" title="Permalink to this headline">#</a></h3>
 <p>Python では様々なライブラリをインストールし，import して使うことになるため，仮想環境によりライブラリ空間をプロジェクトごとに分離することが望ましいです．</p>
-<p>以下は Python 標準の venv を用いて仮想環境を管理する例．</p>
+<p>以下は Python 標準の venv を用いて仮想環境を管理する例です．</p>
 <ol>
 <li><p>プロジェクトの仮想環境作成:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mkdir<span class="w"> </span><span class="o">[</span>PROJECT<span class="w"> </span>DIRECTORY<span class="o">]</span>
@@ -525,55 +536,44 @@ $<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </spa
 </li>
 </ol>
 </section>
-</section>
-<section id="tools">
-<h2><span class="section-number">2.3. </span>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">#</a></h2>
 <section id="git">
-<h3><span class="section-number">2.3.1. </span>Git<a class="headerlink" href="#git" title="Permalink to this headline">#</a></h3>
-<p>Git は，ファイルの変更履歴を記録するバージョン管理ツール．これにより，プロジェクトのファイル群（レポジトリ）を複数のユーザーが別々に編集した上で，のちに差分を統合することができる．チームによるソフトウェア開発では必ずといっていいほど使われる．</p>
-<p>Git において最低限押さえておくと良い概念をいくつか述べます．</p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<ul class="simple">
-<li><p><strong>local / remote（ローカル / リモート）</strong></p>
-<ul>
-<li><p>手元の PC 内にある環境がローカル．ローカルにあるレポジトリを他のユーザーとかがアクセスできるようにサーバー上に置いている場所がリモート．リモートレポジトリをホストする代表的なサービスとして <strong>Github</strong> がある．</p></li>
-</ul>
-</li>
-<li><p><strong>commit（コミット）</strong></p>
-<ul>
-<li><p>ファイルに加えた変更（差分）のスナップショットを取ること．多くの場合，「機能 A を加えた」「〇〇のバグを修正した」等のファイルに対する変更が何らかの意味をもつような粒度で，変更を記録していくイメージ．</p></li>
-</ul>
-</li>
-<li><p><strong>branch（ブランチ）</strong></p>
-<ul>
-<li><p>元のレポジトリのコピーを並列に保持したまま，新しい機能を追加してテストしたり，A さん・B さんで別々にブランチを切って後でメインのブランチに統合する等，共同編集・チーム開発に特化したバックアップシステムのようなもの．</p></li>
-</ul>
-</li>
-<li><p><strong>clone（クローン）</strong></p>
-<ul>
-<li><p>リモートレポジトリを，ローカルにコピーしてくることです．</p></li>
-</ul>
-</li>
-<li><p><strong>push / fetch（プッシュ / フェッチ）</strong></p>
-<ul>
-<li><p>ここでは非常にラフな説明にとどめますが，プッシュはローカルの変更をリモートに反映すること（自分から他ユーザーへの共有に繋がる），フェッチはリモートの変更を ローカルに取ってくること（他ユーザーから自分への共有）です．</p></li>
-</ul>
-</li>
-<li><p><strong>merge / pull（マージ / プル）</strong></p>
-<ul>
-<li><p>マージは，他のブランチを現在のブランチに統合することです（つまり他のブランチに加えられたファイルの変更が現在のブランチに適応される）．プルは，fetch + mergeのことで，リモートブランチの変更をローカルに取ってきた上で，現在のブランチに統合することです．</p></li>
-</ul>
-</li>
-</ul>
-</div>
+<h3>Git<a class="headerlink" href="#git" title="Permalink to this headline">#</a></h3>
+<!-- #### About
+
+Git は，ファイルの変更履歴を記録するバージョン管理ツールで，チームによるソフトウェア開発で使われます．
+Git において最低限押さえておくと良い概念をいくつか述べます． -->
+<!-- - **local / remote（ローカル / リモート）**
+  - 手元の PC 内にある環境がローカル．他のユーザーなどがアクセスできるようにサーバー上にレポジトリを置く場所がリモート．リモートレポジトリをホストする代表的なサービスとして **Github** がある．
+- **commit（コミット）**
+  - ファイルに加えた変更（差分）のスナップショットを取ること．「機能 A を加えた」「〇〇のバグを修正した」等，ファイルに対する変更が何らかの意味をもつような粒度で，変更履歴を刻んでいく．
+- **branch（ブランチ）**
+  - 元のレポジトリのコピーを並列に保持したまま，新しい機能を追加してテストしたり，A さん・B さんで別々にブランチを切って後でメインのブランチに統合したりするなど，共同編集・チーム開発に特化したバックアップシステムのようなもの．
+- **clone（クローン）**
+  - リモートレポジトリを，ローカルにコピーしてくること．
+- **push / fetch（プッシュ / フェッチ）**
+  - プッシュはローカルの変更をリモートに反映すること（自分から他ユーザーへの共有），フェッチはリモートの変更をローカルに取ってくること（他ユーザーから自分への共有）です．
+- **merge / pull（マージ / プル）**
+  - マージは，他のブランチを現在のブランチに統合すること（つまり他のブランチに加えられたファイルの変更が現在のブランチに適応される）．プルは，fetch + merge のことで，リモートブランチの変更をローカルに取ってきた上で，現在のブランチに統合すること． -->
+<section id="how-to-clone-this-repository">
+<h4>How to Clone This Repository<a class="headerlink" href="#how-to-clone-this-repository" title="Permalink to this headline">#</a></h4>
 <p>MEA Book のノートブック一覧を丸ごとローカルにコピーして走らせたい方は，次のように Github からクローンしてください．CLI や Git が苦手な方は，Github から Download ZIP もできます．</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/tk-neuron/meabook.git
 </pre></div>
 </div>
+<p>クローン後，次の手順で同じ Python 環境を構築できます．</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>meabook/
+$<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+$<span class="w"> </span>.<span class="w"> </span>venv/bin/activate
+<span class="o">(</span>venv<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+<br>
+</section>
+<section id="how-to-contribute-to-mea-book">
+<h4>How to Contribute to MEA Book<a class="headerlink" href="#how-to-contribute-to-mea-book" title="Permalink to this headline">#</a></h4>
 <p>また，<strong>Contribution</strong>（寄稿）してくださる方を積極的に募集しています．基本的にはプルリクエストを通じて行ってくださると助かりますが，小さな提案の場合は Github の機能である Issue を通じて送ってくださるのも歓迎です．</p>
-<p>以下にプルリクエスト作成までの大まかな流れを紹介します．まず，上記の手順でレポジトリをクローンした後，次のように新しいブランチを切ってください．ブランチ名には追加したい機能の名前を含めることが多いです．</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>-M<span class="w"> </span><span class="o">[</span>feature/XXX<span class="o">]</span>
+<p>以下にプルリクエスト作成までの大まかな流れを紹介します．まず，上記の手順でレポジトリをクローンした後，次のように新しいブランチを切って移動してください．ブランチ名には追加したい機能の名前を含めることが多いです．</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span><span class="o">[</span>feature/XXX<span class="o">]</span>
 </pre></div>
 </div>
 <p>新しいノートブックを追加したり，既存のファイルを変更したりして編集が済んだら，コミットしてください．</p>
@@ -587,11 +587,12 @@ $<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </spa
 </div>
 <p>すると，Github 上で先ほどプッシュしたブランチに紐づくプルリクエストが編集できるようになります．プルリクエストとは，変更の内容をまとめて，ブランチを統合するためのリクエストを送っていただくものです．プロジェクトのオーナーはプルリクエストをレビューし，内容が問題ない場合はメインのブランチに統合され，今回の場合は Web ページに提案された変更内容が反映されます．</p>
 </section>
+</section>
 <section id="google-colaboratory-colab">
-<h3><span class="section-number">2.3.2. </span>Google Colaboratory (Colab)<a class="headerlink" href="#google-colaboratory-colab" title="Permalink to this headline">#</a></h3>
-<p>Google のサーバー上に構築された Jupyter 環境に無料でアクセスできるツールで，Python による解析が環境構築不要で行えます．定番のライブラリ群はすでにインストールされているため（本ノートブックのライブラリは全て網羅されていると思われます），Python・環境構築に慣れていない方はまずこちらから始めてみるのも良さそうです．</p>
-<p>各ノートブックの右上に，Open Colaboratory というボタンがありますので，それをクリックしていただくと，Colab のページ が開き，すぐに解析を始めることができます．</p>
-<p>データのやり取りは，Google Drive を通じて行います．本ノートブックでもサンプルデータを用いて解析を行うため，詳しくは次章 <a class="reference internal" href="03_datasets.html"><span class="doc">Datasets</span></a>を参照してください．</p>
+<h3>Google Colaboratory (Colab)<a class="headerlink" href="#google-colaboratory-colab" title="Permalink to this headline">#</a></h3>
+<p>Google のサーバー上に構築された Jupyter 環境に無料でアクセスできるツールで，Python による解析が環境構築不要で行えます．定番のライブラリ群はすでにインストールされているため，Python・環境構築に慣れていない方はまずこちらから始めてみるのがオススメです．</p>
+<p><strong>各ノートブックの右上にある Open Colaboratory というボタンをクリックしていただくと，Colab のページ が開き，すぐに解析を始めることができます．</strong></p>
+<p>Colab 上ではファイルのやり取りを Google Drive を通じて行います．本ノートブックでもサンプルデータを用いて解析を行うため，詳しくは次章 <a class="reference internal" href="03_datasets.html"><span class="doc">Datasets</span></a>を参照してください．</p>
 </section>
 </section>
 </section>
@@ -627,13 +628,13 @@ $<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </spa
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1. </span>Preface</p>
+            <p class="prev-next-title">Preface</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="03_datasets.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>Datasets</p>
+        <p class="prev-next-title">Datasets</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -6,7 +6,7 @@ root: index
 
 parts:
   - caption: introduction
-    numbered: True
+    numbered: False
     chapters:
       - file: 0_introduction/01_general
       - file: 0_introduction/02_python

@@ -5,16 +5,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<meta property="og:title" content="3. Datasets" />
+<meta property="og:title" content="Datasets" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://tk-neuron.github.io/meabook/0_introduction/03_datasets.html" />
 <meta property="og:site_name" content="Python" />
-<meta property="og:description" content="Download: 本ノートブックで使用するデータはGithubからダウンロードできるが，以下にPythonにより自動でダウンロードする方法を示す（推奨）． 以下はダウンロードするファイルの一覧である． デフォルトでは，このコードを実行する親ディレクトリ直下に datasets/ ディレクトリを作り，その配下にサブディレクトリ 01~ 04 を作り，ファイル一覧をダウンロードする設定になって..." />
+<meta property="og:description" content="Download: 本ノートブックで使用するデータはGithubからダウンロードできるが，以下にPythonにより自動でダウンロードする方法を示す（推奨）． 以下のコードは，このコードを実行する親ディレクトリ直下に datasets/ ディレクトリ，およびその配下にサブディレクトリ 01~ 04 を作り，ファイル一覧をダウンロードする． datadir のパスは環境に合わせて適宜変更してくだ..." />
 <meta property="og:image" content="https://tk-neuron.github.io/meabook/_static/icon.png" />
 <meta property="og:image:alt" content="Python" />
-<meta name="description" content="Download: 本ノートブックで使用するデータはGithubからダウンロードできるが，以下にPythonにより自動でダウンロードする方法を示す（推奨）． 以下はダウンロードするファイルの一覧である． デフォルトでは，このコードを実行する親ディレクトリ直下に datasets/ ディレクトリを作り，その配下にサブディレクトリ 01~ 04 を作り，ファイル一覧をダウンロードする設定になって..." />
+<meta name="description" content="Download: 本ノートブックで使用するデータはGithubからダウンロードできるが，以下にPythonにより自動でダウンロードする方法を示す（推奨）． 以下のコードは，このコードを実行する親ディレクトリ直下に datasets/ ディレクトリ，およびその配下にサブディレクトリ 01~ 04 を作り，ファイル一覧をダウンロードする． datadir のパスは環境に合わせて適宜変更してくだ..." />
 
-    <title>3. Datasets &#8212; MEA Book: Python Tutorial for Analyzing MEA Recording</title>
+    <title>Datasets &#8212; MEA Book: Python Tutorial for Analyzing MEA Recording</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -63,7 +63,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="1. Visualization of Spike Data" href="../1_spikes/01_visualization.html" />
-    <link rel="prev" title="2. Python" href="02_python.html" />
+    <link rel="prev" title="Python" href="02_python.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -83,7 +83,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="visually-hidden">Toggle in-page Table of Contents</div>
 </label>
 <!-- Headers at the top -->
-<div class="announcement header-item noprint">MEABookは執筆途中です.</div>
+<div class="announcement header-item noprint">MEA Bookは執筆途中です.</div>
 <div class="header header-item noprint"></div>
 
     
@@ -131,17 +131,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01_general.html">
-   1. Preface
+   Preface
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="02_python.html">
-   2. Python
+   Python
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   3. Datasets
+   Datasets
   </a>
  </li>
 </ul>
@@ -173,7 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../1_spikes/05_stimulus.html">
-   5. PSTH
+   5. Peri-Stimulus Time Histogram
   </a>
  </li>
 </ul>
@@ -424,12 +424,12 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#download">
-   3.1. Download
+   Download
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#for-colab-users">
-   3.2. For Colab Users
+   For Colab Users
   </a>
  </li>
 </ul>
@@ -453,12 +453,12 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#download">
-   3.1. Download
+   Download
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#for-colab-users">
-   3.2. For Colab Users
+   For Colab Users
   </a>
  </li>
 </ul>
@@ -472,9 +472,9 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="datasets">
-<h1><span class="section-number">3. </span>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">#</a></h1>
+<h1>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">#</a></h1>
 <section id="download">
-<h2><span class="section-number">3.1. </span>Download<a class="headerlink" href="#download" title="Permalink to this headline">#</a></h2>
+<h2>Download<a class="headerlink" href="#download" title="Permalink to this headline">#</a></h2>
 <p>本ノートブックで使用するデータはGithubからダウンロードできるが，以下にPythonにより自動でダウンロードする方法を示す（推奨）．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -484,12 +484,12 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>以下はダウンロードするファイルの一覧である．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">baseurl</span> <span class="o">=</span> <span class="s1">&#39;https://tk-neuron.github.io/meabook&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download URL</span>
+<span class="n">baseurl</span> <span class="o">=</span> <span class="s1">&#39;https://tk-neuron.github.io/meabook&#39;</span>
 
-<span class="c1"># sub-directory: files</span>
+<span class="c1"># sub-directory: list of files to download</span>
 <span class="n">files</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;01&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mapping.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;spikes.csv&#39;</span><span class="p">],</span>
     <span class="s1">&#39;02&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;spikes_unit.csv&#39;</span><span class="p">],</span>
@@ -500,11 +500,17 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>デフォルトでは，このコードを実行する親ディレクトリ直下に<code class="docutils literal notranslate"><span class="pre">datasets/</span></code>ディレクトリを作り，その配下にサブディレクトリ <code class="docutils literal notranslate"><span class="pre">01</span></code>~<code class="docutils literal notranslate"><span class="pre">04</span></code>を作り，ファイル一覧をダウンロードする設定になっている．<code class="docutils literal notranslate"><span class="pre">datasets/</span></code>ディレクトリのパスは適宜変更可能．</p>
+<p>以下のコードは，このコードを実行する親ディレクトリ直下に<code class="docutils literal notranslate"><span class="pre">datasets/</span></code>ディレクトリ，およびその配下にサブディレクトリ <code class="docutils literal notranslate"><span class="pre">01</span></code>~<code class="docutils literal notranslate"><span class="pre">04</span></code>を作り，ファイル一覧をダウンロードする．<code class="docutils literal notranslate"><span class="pre">datadir</span></code>のパスは環境に合わせて適宜変更してください．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datadir</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="s1">&#39;datasets&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create dataset directory (if already exists, pass)</span>
-<span class="n">datadir</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="s1">&#39;datasets&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;root for dataset: &#39;</span><span class="p">,</span> <span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">Path</span><span class="p">(</span><span class="n">datadir</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -529,7 +535,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="for-colab-users">
-<h2><span class="section-number">3.2. </span>For Colab Users<a class="headerlink" href="#for-colab-users" title="Permalink to this headline">#</a></h2>
+<h2>For Colab Users<a class="headerlink" href="#for-colab-users" title="Permalink to this headline">#</a></h2>
 <p>Python実行環境としてColabを用いる場合は，データセットをGoogle Driveを通じてやりとりする必要がある．この場合，マウントという特殊な手順が必要になる．</p>
 <p>まず，右上のロケットマークからOpen in Colabをクリックし，Colabのページを開く．</p>
 <div class="admonition-mount admonition">
@@ -550,13 +556,7 @@ title="Print to PDF"
 <p>マウントが完了すると，Google Drive上のファイルパスをローカルと同じように指定することができる．例えばデータセットをダウンロードするディレクトリを以下のようにMy Drive直下に設定することが可能．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datadir</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/content/drive/MyDrive/&#39;</span><span class="p">),</span> <span class="s1">&#39;datasets&#39;</span><span class="p">)</span>
-<span class="n">datadir</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PosixPath(&#39;/content/drive/MyDrive/datasets&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datadir</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/content/drive/MyDrive&#39;</span><span class="p">),</span> <span class="s1">&#39;datasets&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -595,7 +595,7 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">2. </span>Python</p>
+            <p class="prev-next-title">Python</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../1_spikes/01_visualization.html" title="next page">
