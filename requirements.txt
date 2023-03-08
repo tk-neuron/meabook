@@ -1,3 +1,14 @@
-jupyter-book
+# basic science libraries
 matplotlib
 numpy
+pandas
+scipy
+statsmodels
+
+# for hdf5
+h5py
+
+# visualization
+bokeh
+seaborn
+networkx
