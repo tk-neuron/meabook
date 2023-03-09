@@ -1,3 +1,10 @@
 jupyter-book
 matplotlib
 numpy
+pandas
+scipy
+Bokeh
+seaborn
+networkx
+h5py
+scikit-learn
