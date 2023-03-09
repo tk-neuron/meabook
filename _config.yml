@@ -4,6 +4,7 @@
 title: "MEA Book: Python Tutorial for Analyzing MEA Recording"
 author: Takuma Furukawa
 logo: icon.png
+only_build_toc_files: true
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -32,7 +33,7 @@ html:
   use_repository_button: true
   use_multitoc_numbering: false
   baseurl: "https://tk-neuron.github.io/meabook/"
-  announcement: "*MEA Bookは執筆途中です."
+  announcement: "MEA Bookは執筆途中です."
 
 exclude_patterns:
   - venv/*

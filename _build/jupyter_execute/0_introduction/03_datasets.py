@@ -14,14 +14,13 @@ from pathlib import Path
 import urllib.request
 
 
-# 以下はダウンロードするファイルの一覧である．
-
 # In[2]:
 
 
+# download URL
 baseurl = 'https://tk-neuron.github.io/meabook'
 
-# sub-directory: files
+# sub-directory: list of files to download
 files = {
     '01': ['mapping.csv', 'spikes.csv'],
     '02': ['spikes_unit.csv'],
@@ -30,13 +29,18 @@ files = {
 }
 
 
-# デフォルトでは，このコードを実行する親ディレクトリ直下に`datasets/`ディレクトリを作り，その配下にサブディレクトリ `01`~`04`を作り，ファイル一覧をダウンロードする設定になっている．`datasets/`ディレクトリのパスは適宜変更可能．
+# 以下のコードは，このコードを実行する親ディレクトリ直下に`datasets/`ディレクトリ，およびその配下にサブディレクトリ `01`~`04`を作り，ファイル一覧をダウンロードする．`datadir`のパスは環境に合わせて適宜変更してください．
 
 # In[3]:
 
 
-# create dataset directory (if already exists, pass)
 datadir = Path.joinpath(Path.cwd().parent, 'datasets')
+
+
+# In[4]:
+
+
+# create dataset directory (if already exists, pass)
 print('root for dataset: ', datadir, '\n')
 Path(datadir).mkdir(exist_ok=True)
 
@@ -80,9 +84,14 @@ for key, values in files.items():
 
 # マウントが完了すると，Google Drive上のファイルパスをローカルと同じように指定することができる．例えばデータセットをダウンロードするディレクトリを以下のようにMy Drive直下に設定することが可能．
 
-# In[4]:
+# In[5]:
 
 
-datadir = Path.joinpath(Path('/content/drive/MyDrive/'), 'datasets')
-datadir
+datadir = Path.joinpath(Path('/content/drive/MyDrive'), 'datasets')
+
+
+# In[ ]:
+
+
+
 
