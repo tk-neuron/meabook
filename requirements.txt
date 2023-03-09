@@ -3,6 +3,7 @@ matplotlib
 numpy
 pandas
 scipy
+scikit-learn
 statsmodels
 
 # for hdf5
